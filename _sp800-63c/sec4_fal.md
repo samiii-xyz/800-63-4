@@ -139,7 +139,7 @@ At FAL1, the trust agreement between the IdP and RP **MAY** be established entir
 既存のフェデレーションプロトコルで FAL1 に該当するのは， OpenID Connectの Implicitクライアントプロファイル [[OIDC-Implicit]](references.md#ref-OIDC-implicit)、[[OIDC]](参照. md#ref-OIDC)，OpenID Connectのハイブリッドクライアントプロファイル [[OIDC]](references.md#ref-OIDC), 追加機能のない SAML Web SSO [[SAML-WebSSO]](references.md#ref-SAML-websso) プロファイルであるがあげられる．これらのプロファイルのそれぞれで，アサーションは IdP によって署名され，署名によってカバーされるアサーションの一部で RP が識別される．
 
 <details>
-
+<summary>原文</summary>
 In existing federation protocols, FAL1 can be implemented with the OpenID Connect Implicit Client profile [[OIDC-Implicit]](references.md#ref-OIDC-implicit), the OpenID Connect Hybrid Client profile in [[OIDC]](references.md#ref-OIDC), or the SAML Web SSO [[SAML-WebSSO]](references.md#ref-SAML-websso) profile with no additional features. In each of these profiles, the assertion is signed by the IdP and the RP is identified in a portion of the assertion covered by the signature.
 </details>
 
