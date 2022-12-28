@@ -25,11 +25,6 @@ In a federation protocol, a three-party relationship is formed between the subsc
 
 IdP と RP 間のフェデレーション関係は，多段階プロセスで確立される.
 
-<details>
-<summary>原文</summary>
-A federation relationship between an IdP and RP is established in a multi-stage process:
-</details>
-
 1. まず，IdP と RP が信頼の合意を形成する．この合意は，当事者間の二者間，当局の要請による多者間，または信頼できる当事者を通じてプロキシされる場合がある．この手順は，件の2つのシステムが接続するための最初の許可を表す．要求および提示できるもののパラメーターはこのステップで確立されるが，特定の加入者(subscriber)の特定の RP に提示される属性の詳細は，後の段階まで延期できる．
 
 2. 次に，IdP と RP は登録を実行してプロトコルレベルで信頼を確立し，関係者間で情報を安全に交換できるようにする．最初のステップでは，接続の許可を表すポリシー決定が必要だが，このステップでは，フェデレーションプロトコルを介した通信を許可するために，IdP と RP を表すクレデンシャルと識別子を確立する．この段階は,加入者(subscriber)が RP にログインしようとする前に，または，加入者(subscriber)が RP で IdP を使用しようとする試行への応答として発生する．
@@ -40,13 +35,16 @@ A federation relationship between an IdP and RP is established in a multi-stage 
   
 <details>
 <summary>原文</summary>
-  1. First, the IdP and RP agree to enter into a trust agreement. This agreement can be bilateral between the parties, multilateral at the behest of an authority, or proxied through a trusted party. This step represents initial permission for the two systems in question to connect. Parameters of what can be requested and released are established in this step, though the details of which attributes are released to a given RP for a given subscriber can be deferred until a later stage.
+A federation relationship between an IdP and RP is established in a multi-stage process:
+
+1. First, the IdP and RP agree to enter into a trust agreement. This agreement can be bilateral between the parties, multilateral at the behest of an authority, or proxied through a trusted party. This step represents initial permission for the two systems in question to connect. Parameters of what can be requested and released are established in this step, though the details of which attributes are released to a given RP for a given subscriber can be deferred until a later stage.
   
-  2. Next, the IdP and RP perform registration to establish their trust at a protocol level, allowing for information to be securely exchanged between the parties. While the first step entails a policy decision representing a permission to connect, this step entails establishment of credentials and identifiers representing the IdP and RP to allow communication through the federation protocol. This stage can occur before any subscriber tries to log in to the RP or as a response to a subscriber's attempt to use an IdP at an RP.
+2. Next, the IdP and RP perform registration to establish their trust at a protocol level, allowing for information to be securely exchanged between the parties. While the first step entails a policy decision representing a permission to connect, this step entails establishment of credentials and identifiers representing the IdP and RP to allow communication through the federation protocol. This stage can occur before any subscriber tries to log in to the RP or as a response to a subscriber's attempt to use an IdP at an RP.
   
-  3. Next, the IdP and RP determine that they want to engage in a federated authentication transaction to authenticate the subscriber. As part of this, they determine which attributes about the subscriber are to be passed from the IdP to the RP during this transaction. The decision made in this step builds on the trust agreement established in the first step and the identities of the RP and IdP established in the second step.
+3. Next, the IdP and RP determine that they want to engage in a federated authentication transaction to authenticate the subscriber. As part of this, they determine which attributes about the subscriber are to be passed from the IdP to the RP during this transaction. The decision made in this step builds on the trust agreement established in the first step and the identities of the RP and IdP established in the second step.
   
-  4. Finally, the subscriber authenticates to the IdP and the result of that authentication event is asserted to the RP across the network. The RP processes this assertion from the IdP and establishes an authenticated session with the subscriber.
+4. Finally, the subscriber authenticates to the IdP and the result of that authentication event is asserted to the RP across the network. The RP processes this assertion from the IdP and establishes an authenticated session with the subscriber.
+
 </details>
 
 
