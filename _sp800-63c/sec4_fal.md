@@ -38,7 +38,7 @@ Each FAL is characterized by a set of requirements that increase the security an
 インジェクション保護
 : RP は，現在のフェデレーショントランザクションリクエスト以外の状況でアサーションを提示する攻撃者から強力に保護される．
 
-信頼協定
+信頼の合意
 : IdP と RP は，加入者（subscriber）が RP にログインする目的で，相互にフェデレーショントランザクションに参加することに同意する．これは，当事者間の静的な合意にまでさかのぼる，あるいは，接続自体から暗黙的に発生する可能性がある．
 
 登録
@@ -73,7 +73,7 @@ Presentation
 [表1 フェデレーションアサーション レベル](sec4_fal.md#table-1){:name="table-1"}
 {:latex-ignore="true"}
 
-|FAL|インジェクション保護|信頼協定|登録|提示|
+|FAL|インジェクション保護|信頼の合意|登録|提示|
 |:--:|----|----|----|----|----|----|
 |1|推奨|Dynamic or Static|Dynamic or Static|Bearer Assertion|
 |2|必須|Static|Dynamic or Static|Bearer Assertion|
@@ -128,7 +128,7 @@ All assertions at FAL1 **SHALL** be audience-restricted to a specific RP or set 
 </details>
 
 
-FAL1 では，IdP と RP の間の信頼協定を完全に動的に確立**してもよい(MAY)**．例えば，加入者(subscriber)が使用できるように RP が IdP のパラメーターを検出して自身を登録することを許容することで，加入者(subscriber)が実行時に選択した RP を IdP に対して識別させることができる．加入者(subscriber)は RP に提供する属性と提供目的を決定するようIdP から求められる．この例では，IdP と RP の間の信頼は，加入者(subscriber)の要望と行動によって完全に決定される．注記：FAL1 では，信頼の合意と登録が静的に行われることもある．
+FAL1 では，IdP と RP の間の信頼の合意を完全に動的に確立**してもよい(MAY)**．例えば，加入者(subscriber)が使用できるように RP が IdP のパラメーターを検出して自身を登録することを許容することで，加入者(subscriber)が実行時に選択した RP を IdP に対して識別させることができる．加入者(subscriber)は RP に提供する属性と提供目的を決定するようIdP から求められる．この例では，IdP と RP の間の信頼は，加入者(subscriber)の要望と行動によって完全に決定される．注記：FAL1 では，信頼の合意と登録が静的に行われることもある．
 
 <details>
 
@@ -165,7 +165,7 @@ At FAL2, the assertion **SHALL** also be strongly protected from being injected 
 
 
 
-FAL2 では，IdP と RP の間の信頼協定を静的に確立し**なければならない(SHALL)**．これには，RP で使用できる属性とその目的の制限を設定することも含まれる．この信頼協定は，IdP と RP の間の二者間**でも良く(MAY)**，多者間のフェデレーションパートナーシップを使用して管理され**ても良い(MAY)**． RP と IdP が実行時にそれらの間で確立された信頼協定への接続を証明できる場合，登録は動的に行われ**ても良い(MAY)**．このような証明の方法は，フェデレーションプロトコルによって異なるが，ソフトウェアアテステーションの提示や，信頼されたドメインの URL に対する制御の証明を含めることができる．
+FAL2 では，IdP と RP の間の信頼の合意を静的に確立し**なければならない(SHALL)**．これには，RP で使用できる属性とその目的の制限を設定することも含まれる．この信頼の合意は，IdP と RP の間の二者間**でも良く(MAY)**，多者間のフェデレーションパートナーシップを使用して管理され**ても良い(MAY)**． RP と IdP が実行時にそれらの間で確立された信頼の合意への接続を証明できる場合，登録は動的に行われ**ても良い(MAY)**．このような証明の方法は，フェデレーションプロトコルによって異なるが，ソフトウェアアテステーションの提示や，信頼されたドメインの URL に対する制御の証明を含めることができる．
 
 <details>
 <summary>原文</summary>
@@ -197,7 +197,7 @@ At FAL3, the subscriber **SHALL** authenticate to the RP by presenting an authen
 </details>
 
 
-FAL3 では，IdP と RP の間の信頼協定と登録を静的に確立し**なければならない(SHALL)**．すべての当事者 (RP に送信される属性のリストを含む) の，すべての識別キー マテリアルおよびフェデレーションパラメータは，フェデレーション認証プロセスが実行される前に，事前に修正され**なければならない(SHALL)**． 実行時の決定は，フェデレーション認証プロセスの当事者間で送信されるものをさらに制限するために使用され**ても良い(MAY)**．例えば，実行時の決定では，メールアドレスの属性が信頼協定のパラメーターに含まれていたとしても，メールアドレスを開示しないことを選択できる．
+FAL3 では，IdP と RP の間の信頼の合意と登録を静的に確立し**なければならない(SHALL)**．すべての当事者 (RP に送信される属性のリストを含む) の，すべての識別キー マテリアルおよびフェデレーションパラメータは，フェデレーション認証プロセスが実行される前に，事前に修正され**なければならない(SHALL)**． 実行時の決定は，フェデレーション認証プロセスの当事者間で送信されるものをさらに制限するために使用され**ても良い(MAY)**．例えば，実行時の決定では，メールアドレスの属性が信頼の合意のパラメーターに含まれていたとしても，メールアドレスを開示しないことを選択できる．
 
 <details>
 <summary>原文</summary>
@@ -237,7 +237,7 @@ The RP **SHALL** be informed of the following information for each federated tra
 - The FAL of the federated transaction
 </details>
 
-RP は，[Sec. 5.1](sec5_federation.md#trust-agreement#trust-agreement)で説明されている信頼協定のパラメーターと、[Sec. 6](sec6_assertions.md#assertions)で説明されているアサーションに含まれる情報との組み合わせから，この xAL 情報を取得する．IdP と RP の間のすべてのメッセージで xAL が不変の場合，xAL の情報は IdP と RP の間の信頼協定のパラメータに含まれ**なければならない(SHALL)**．xAL が異なる場合，[Sec. 6](sec6_assertions.md#assertions) で説明されているように，アサーションの一部として情報を含め**なければならない(SHALL)**．
+RP は，[Sec. 5.1](sec5_federation.md#trust-agreement#trust-agreement)で説明されている信頼の合意のパラメーターと、[Sec. 6](sec6_assertions.md#assertions)で説明されているアサーションに含まれる情報との組み合わせから，この xAL 情報を取得する．IdP と RP の間のすべてのメッセージで xAL が不変の場合，xAL の情報は IdP と RP の間の信頼の合意のパラメータに含まれ**なければならない(SHALL)**．xAL が異なる場合，[Sec. 6](sec6_assertions.md#assertions) で説明されているように，アサーションの一部として情報を含め**なければならない(SHALL)**．
 
 <details>
  <summary>原文</summary>
@@ -245,7 +245,7 @@ The RP gets this xAL information from a combination of parameters in the trust a
 </details>
 
 
-IdP は，特定のフェデレーショントランザクションについて，身元確認(IAL) または 当人認証(AAL) が行われていないことを示し**ても良い(MAY)**． このような場合，結果の xAL にデフォルト値は割り当てられない．つまり，信頼協定またはアサーションのいずれかで IAL 宣言のないフェデレーショントランザクションは，機能的には“IALなし“と見なされ，RP は，アカウントがこのスイートで説明されている最小の IAL である“IAL1”を満たしているとみなすことはできない．
+IdP は，特定のフェデレーショントランザクションについて，身元確認(IAL) または 当人認証(AAL) が行われていないことを示し**ても良い(MAY)**． このような場合，結果の xAL にデフォルト値は割り当てられない．つまり，信頼の合意またはアサーションのいずれかで IAL 宣言のないフェデレーショントランザクションは，機能的には“IALなし“と見なされ，RP は，アカウントがこのスイートで説明されている最小の IAL である“IAL1”を満たしているとみなすことはできない．
 
 <details>
  <summary>原文</summary>
@@ -275,7 +275,7 @@ The RP **SHALL** ensure that the federation transaction meets the requirements o
 </details>
 
 
-IdP は，RP が信頼協定の一部として許容可能な最小 xAL のセットを指定するメカニズムをサポートし**なければならず(SHALL)**，フェデレーショントランザクションの一部として実行時により厳密な最小セットを指定する RP をサポートする**必要がある(SHOULD)**．RP が特定の xAL を要求する場合，可能であれば，IdP はその要求を満たす**必要があり(SHOULD)**，アサーションで結果の xAL を示さ**なければならない(SHALL)**．たとえば，加入者(subscriber)が AAL1 で認証されたアクティブなセッションを持っているが RP が AAL2 を要求した場合，可能であれば，IdP は加入者(subscriber)に AAL2 認証を要求して，加入者(subscriber)が IdP での対話中に IdP でセッションのセキュリティを強化する必要がある．IdP は，返却するアサーションの一部として結果の AAL（AAL1 （元のセッション）または AAL2（強化された認証）を送信する．
+IdP は，RP が信頼の合意の一部として許容可能な最小 xAL のセットを指定するメカニズムをサポートし**なければならず(SHALL)**，フェデレーショントランザクションの一部として実行時により厳密な最小セットを指定する RP をサポートする**必要がある(SHOULD)**．RP が特定の xAL を要求する場合，可能であれば，IdP はその要求を満たす**必要があり(SHOULD)**，アサーションで結果の xAL を示さ**なければならない(SHALL)**．たとえば，加入者(subscriber)が AAL1 で認証されたアクティブなセッションを持っているが RP が AAL2 を要求した場合，可能であれば，IdP は加入者(subscriber)に AAL2 認証を要求して，加入者(subscriber)が IdP での対話中に IdP でセッションのセキュリティを強化する必要がある．IdP は，返却するアサーションの一部として結果の AAL（AAL1 （元のセッション）または AAL2（強化された認証）を送信する．
 
 <details>
  <summary>原文</summary>
