@@ -12,29 +12,74 @@ section: 5
 
 *This section is normative.*
 
-In a federation protocol, a three-party relationship is formed between the subscriber, the IdP, and the RP, as shown in [Figure 1](sec5_federation.md#fig-1). 
+フェデレーションプロトコルでは，[Figure 1](sec5_federation.md#fig-1)に示すように，加入者(subscriber)，IdP，RP の間で三者関係が形成される．
 
+<details>
+<summary>原文</summary>
+In a federation protocol, a three-party relationship is formed between the subscriber, the IdP, and the RP, as shown in [Figure 1](sec5_federation.md#fig-1). 
+</details>
 [Figure 1. Federation Overview](sec5_federation.md#fig-1){:name="fig-1"}
 {:latex-ignore="true"}
 
 ![Overview diagram of federated authentication systems showing parties involved and major steps in the process.]({{site.baseurl}}/{{page.collection}}/media/federation.png 'Federation Overview'){:style="width:628px;height:600px;;min-width: 628px;min-height: 600px;" latex-src="federation.png" latex-fig="1" latex-place="h"}
 
+IdP と RP 間のフェデレーション関係は，多段階プロセスで確立される.
+
+<details>
+<summary>原文</summary>
 A federation relationship between an IdP and RP is established in a multi-stage process:
+</details>
 
-1. First, the IdP and RP agree to enter into a trust agreement. This agreement can be bilateral between the parties, multilateral at the behest of an authority, or proxied through a trusted party. This step represents initial permission for the two systems in question to connect. Parameters of what can be requested and released are established in this step, though the details of which attributes are released to a given RP for a given subscriber can be deferred until a later stage.
+1. まず，IdP と RP が信頼の合意を形成する．この合意は，当事者間の二者間，当局の要請による多者間，または信頼できる当事者を通じてプロキシされる場合がある．この手順は，件の2つのシステムが接続するための最初の許可を表す．要求および提示できるもののパラメーターはこのステップで確立されるが，特定の加入者(subscriber)の特定の RP に提示される属性の詳細は，後の段階まで延期できる．
 
-2. Next, the IdP and RP perform registration to establish their trust at a protocol level, allowing for information to be securely exchanged between the parties. While the first step entails a policy decision representing a permission to connect, this step entails establishment of credentials and identifiers representing the IdP and RP to allow communication through the federation protocol. This stage can occur before any subscriber tries to log in to the RP or as a response to a subscriber's attempt to use an IdP at an RP.
+2. 次に，IdP と RP は登録を実行してプロトコルレベルで信頼を確立し，関係者間で情報を安全に交換できるようにする．最初のステップでは，接続の許可を表すポリシー決定が必要だが，このステップでは，フェデレーションプロトコルを介した通信を許可するために，IdP と RP を表すクレデンシャルと識別子を確立する．この段階は,加入者(subscriber)が RP にログインしようとする前に，または，加入者(subscriber)が RP で IdP を使用しようとする試行への応答として発生する．
 
-3. Next, the IdP and RP determine that they want to engage in a federated authentication transaction to authenticate the subscriber. As part of this, they determine which attributes about the subscriber are to be passed from the IdP to the RP during this transaction. The decision made in this step builds on the trust agreement established in the first step and the identities of the RP and IdP established in the second step.
+3. 続いて，IdP と RP は，加入者(subscriber)を認証するためにフェデレーション認証トランザクションに関連することを決定する．その一環として，このトランザクション中に IdP から RP に加入者(subscriber)に関するどの属性を渡すかを決定する．このステップで行われる決定は，最初のステップで形成された信頼の合意と，2番目のステップで確立された RP および IdP の アイデンティティ に基づいている．
 
-4. Finally, the subscriber authenticates to the IdP and the result of that authentication event is asserted to the RP across the network. The RP processes this assertion from the IdP and establishes an authenticated session with the subscriber.
+4. 最後に，加入者(subscriber)が IdP に対して認証を行い，その認証イベントの結果がネットワークを介して RP に提示される．RP は IdP から提示されたアサーションを処理し，加入者(subscriber)との認証済みセッションを確立する．
+  
+<details>
+<summary>原文</summary>
+  1. First, the IdP and RP agree to enter into a trust agreement. This agreement can be bilateral between the parties, multilateral at the behest of an authority, or proxied through a trusted party. This step represents initial permission for the two systems in question to connect. Parameters of what can be requested and released are established in this step, though the details of which attributes are released to a given RP for a given subscriber can be deferred until a later stage.
+  
+  2. Next, the IdP and RP perform registration to establish their trust at a protocol level, allowing for information to be securely exchanged between the parties. While the first step entails a policy decision representing a permission to connect, this step entails establishment of credentials and identifiers representing the IdP and RP to allow communication through the federation protocol. This stage can occur before any subscriber tries to log in to the RP or as a response to a subscriber's attempt to use an IdP at an RP.
+  
+  3. Next, the IdP and RP determine that they want to engage in a federated authentication transaction to authenticate the subscriber. As part of this, they determine which attributes about the subscriber are to be passed from the IdP to the RP during this transaction. The decision made in this step builds on the trust agreement established in the first step and the identities of the RP and IdP established in the second step.
+  
+  4. Finally, the subscriber authenticates to the IdP and the result of that authentication event is asserted to the RP across the network. The RP processes this assertion from the IdP and establishes an authenticated session with the subscriber.
+</details>
 
+
+このトランザクションでは，[[SP800-63B]](../_sp800-63b/sec1_purpose.md#purpose){:latex-href="#ref-SP800-63B"}で説明されているように，IdP は加入者(subscriber)のオーセンティケーターの検証者として機能する．認証イベント情報は，[Sec. 6](sec6_assertions.md#assertions)で説明されているアサーションを使用して IdP から RP に運ばれる．
+IdP は，このアサーションの一部として，または承認されたクレデンシャルによって保護された派生のアイデンティティプロトコルを介して，加入者(subscriber)の属性情報に関するステートメントを作成することもできる．
+
+<details>
+<summary>原文</summary>
 In this transaction, the IdP acts as the verifier of the subscriber's authenticators, as described in [[SP800-63B]](../_sp800-63b/sec1_purpose.md#purpose){:latex-href="#ref-SP800-63B"}. The authentication event information is carried from the IdP to the RP through the use of an assertion, described in [Sec. 6](sec6_assertions.md#assertions). The IdP can also make statements about identity attributes of the subscriber as part of this assertion or through a secondary identity protocol protected by an authorized credential.
+</details>
 
-## Trust Agreements {#trust-agreement}
+## 信頼の合意(Trust Agreements) {#trust-agreement}
 
+認証サービスを提供する IdP と，それらのサービスを使用する RP は，フェデレーションのメンバーとして知られている．IdP から見ると，フェデレーションは，サービスを提供する RP で構成される．RP から見ると，フェデレーションは，使用する IdP で構成される．本節では，現在使用されている一般的なアイデンティティフェデレーションモデルの概要と要件について説明する．各モデルでは，フェデレーションのメンバー間に関係が確立される．これらの関係は，次節で説明するように，二者間または多者間で確立される．
+
+<details>
+<summary>原文</summary>
 IdPs that provide authentication services and RPs that consume those services are known as members of a federation. From an IdP's perspective, the federation consists of the RPs that it serves. From an RP's perspective, the federation consists of the IdPs that it uses. This section provides an overview of and requirements for common identity federation models currently in use. In each model, relationships are established between members of the federation. These relationships are  established in either a bilateral or multilateral fashion, as described in the following sections. 
+</details>
 
+信頼の合意では，次のパラメータを確立し**なければならない(SHALL)**．
+
+- IdP が RP へ提示できる属性のセット
+- IdP がアサーションを作成できる加入者(subscriber)アカウントの集合
+- RP が要求する属性のセット (利用可能な属性のサブセット)
+- RP によって要求された各属性の利用目的
+- 加入者(subscriber)の属性の提供に関する決定に責任を負う authorized party
+- RP への属性提供について加入者(subscriber)に通知する手段
+- IdP が提供可能な xAL
+- RP が必要とする xAL
+
+<details>
+<summary>原文</summary>
 Trust agreements **SHALL** establish the following parameters:
 
 - The set of attributes the IdP can make available to the RP
@@ -45,73 +90,180 @@ Trust agreements **SHALL** establish the following parameters:
 - The means of informing subscribers about attribute release to the RP
 - The xALs available from the IdP
 - The xALs required by the RP
+</details>
 
+信頼の合意は，静的あるいは動的に形成できる．静的に形成する場合，多くの場合において，当事者を一連の期待される行動，権利，および要件に拘束する法的または契約上の合意がある．静的に信頼の合意を行う際のパラメーターは，IdP のオペレーター，RP のオペレーター，および影響を受ける加入者(subscriber)を含む，合意に関わるのすべての関係者が利用でき**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 Trust agreements are able to be established either statically or dynamically. In a static establishment, there is often a legal or contractual agreement binding the parties to a set of expected behaviors, rights, and requirements. The parameters of static trust agreements **SHALL** be available to all parties in the agreement, including the operator of the IdP, the operator of the RP, and affected subscribers.
+</details>
 
+
+対照的に，動的に信頼を形成する場合では，加入者(subscriber)のログインのために RP と IdP が最初に相互に連絡するときに，信頼の合意が暗黙的に定義される．動的に信頼の合意を行う際のパラメータの表現は，適切なフェデレーションプロトコルによって駆動され，通常，フェデレーションパーティ間の契約上の合意に結び付けられることはない．動的に信頼の合意を行う際のパラメータは，フェデレーショントランザクション中に RP および IdP によって加入者(subscriber)に開示され**なければならない(SHALL)**．
+<details>
+<summary>原文</summary>
 In dynamic trust establishment, in contrast, the trust agreement is implicitly defined when the RP and IdP first contact each other for the purposes of a subscriber's login. The expression of the parameters of a dynamic trust agreement is driven by the federation protocol in place, and are not usually tied to a contractual agreement between the federating parties. The parameters of a dynamic trust agreement **SHALL** be disclosed to the subscriber by the RP and the IdP during the federation transaction.
+</details>
 
+信頼の合意における _authorized party_ とは，加入者(subscriber)属性のリリースを含む，信頼の合意の対象となる特定の提示の決定に責任を負う組織，人，またはエンティティである．静的な信頼の合意の場合，authorized party は IdP を担当する組織で**もよい(MAY)**．この場合，属性提示への同意は，すべての加入者(subscriber)に対して決定され，[Sec. 5.3.1](sec5_federation.md#idp-allowlist) で説明されているように許可リストによって確立される．これにより，加入者(subscriber)による直接の決定や関与なしに属性情報の開示が可能になる．静的な信頼の合意は，[Sec. 5.3.3](sec5_federation.md#idp-runtime-decision) で説明されているように，加入者(subscriber)などの個人が属性を開示することに同意するよう実行時に求められることを規定**してもよい(MAY)**． 動的な信頼の合意は加入者(subscriber)のアクションによって形成されるため，動的な信頼の合意の authorized party は常に加入者(subscriber)である．動的な信頼の合意における属性の開示は，加入者(subscriber)からの実行時の決定に従わ**なければならず(SHALL)**，IdP の許可リストに従っては**ならない(SHALL NOT)．
+
+<details>
+<summary>原文</summary>
 The _authorized party_ in a trust agreement is the organization, person, or entity that is responsible for the specific release decisions covered by the trust agreement, including the release of subscriber attributes. For a static trust agreement, the authorized party **MAY** be the organization responsible for the IdP. In this case, consent to release attributes is decided for all subscribers and established by an allowlist as described in [Sec. 5.3.1](sec5_federation.md#idp-allowlist), allowing for the disclosure of attribute information without direct decisions and involvement by the subscriber. A static trust agreement **MAY** stipulate that an individual, such as the subscriber, is to be prompted at runtime for consent to disclose attributes as discussed in [Sec. 5.3.3](sec5_federation.md#idp-runtime-decision). Since dynamic trust agreements are established by subscriber actions, the authorized party in a dynamic trust agreement is always the subscriber. Disclosure of attributes in dynamic trust agreements **SHALL** be subject to a runtime decision from the subscriber and **SHALL NOT** be subject to an allowlist at the IdP.
+</details>
 
+たとえば, エンタープライズサービス (RP) に接続する組織 (IdP) に対して静的な信頼の合意が形成され，許可リストにある組織のすべての加入者(subscriber)が利用できるようになる場合，この信頼の合意の authorized party は組織である．加入者(subscriber)がエンタープライズサービスにログインする際に，サービスに関する実行時の決定は要求されない．これは，静的な信頼の合意によってアプリオリに確立されているためである．別のシナリオでは，同じ組織のすべての加入者(subscriber)が別のサービスを利用できるようになるが，静的な信頼協定では，加入者(subscriber)が authorized party であることが規定されている．サービスに初めてログインする際に各加入者(subscriber)は，属性を RP に提示することに同意するよう求められる．別のシナリオでは，加入者(subscriber)が RP（動的な信頼の合意をしなければIdPに知られていないRP） にアクセスしようとすると，動的な信頼の合意が暗黙的に形成される．RP は IdP から要求されているすべての属性の使用について加入者(subscriber)に通知し，IdP は加入者(subscriber)に RP に属性を提示することに同意するように求める．
+
+<details>
+<summary>原文</summary>
 For example, a static trust agreement is established for an organization (the IdP) connecting to an enterprise service (the RP) to be made available to all subscribers at the organization on an allowlist. The authorized party for this trust agreement is the organization. When a subscriber logs in to the enterprise service, they are not prompted with any runtime decisions regarding the service since the static trust agreement establishes this a priori. In a different scenario, another service is made available to all subscribers at the same organization, but the static trust agreement stipulates that the subscriber is the authorized party. When logging in to the service for the first time, each subscriber is prompted for their consent to release their attributes to the RP. In another scenario, a dynamic trust agreement is established implicitly when a subscriber goes to access an RP that is otherwise unknown by their IdP. The RP informs the subscriber about the uses of all attributes being requested from the IdP, and the IdP prompts the subscriber for consent to release their attributes to the RP.
+</details>
 
+IdP と RP が共有のセキュリティドメインまたは共有の法的所有権を持っている場合でも，すべてのフェデレーショントランザクションには信頼の合意の形成が必要である．そのような場合，信頼の合意の形成は，迅速に完了することができる内部プロセスである．
+
+<details>
+<summary>原文</summary>
 Establishment of a trust agreement is required for all federation transactions, even those in which the IdP and RP have a shared security domain or shared legal ownership. In such cases, the establishment of the trust agreement is an internal process that can be completed quickly.
+</details>
 
+単一のフェデレーショントランザクションの過程で，IdP と RP のポリシーと期待が，すべての関係者にとって明確であることが重要である．したがって，特定のトランザクションに対して有効な信頼の合意のセットは 1 つだけである**必要がある(SHOUD)**．これは通常，単一の IdP と単一の RP で構成される一意のペアによって決定される．ただし，これらの合意は，IdP と RP が異なる加入者(subscriber)集団に対して異なる合意を形成しているなど，別の部分で異なる場合がある．
+<details>
+<summary>原文</summary>
 During the course of a single federation transaction, it is important for the policies and expectations of the IdP and RP to be unambiguous for all parties involved. Therefore, there **SHOULD** be only one set of trust agreements in effect for a given transaction. This will usually be determined by the unique pair consisting of a single IdP and a single RP. However, these agreements could vary in other ways, such as an IdP and RP having different agreements for different populations of subscribers.
+</details>
 
+
+2つの当事者間の信頼の合意の存在は，合意の各当事者が他の当事者と形成する他の合意の存在を排除するものではない．つまり，IdP は同時に複数の RP と独立した合意を形成することができ (そして一般的にはそうしている)，RP は同様に複数の IdP と独立した合意を同時に形成することができる．
+<details>
+<summary>原文</summary>
 The existence of a trust agreement between two parties does not preclude the existence of other agreements for each party in the agreement to have with other parties. That is to say, an IdP can have (and generally does have) independent agreements with multiple RPs simultaneously, and an RP can likewise have independent agreements with multiple IdPs simultaneously.
+</details>
 
-### Bilateral Trust Agreements {#bilateral}
+### 二者間の信頼の合意 (Bilateral Trust Agreements) {#bilateral}
 
+二者間の信頼の合意では，IdP と RP の潜在的なペアリングが相互に信頼関係を形成する．このモデルでは，IdP と RP がそれぞれ自身の authority として機能し，フェデレーション内でその役割を実行できる相手を確立する．
+
+<details>
+<summary>原文</summary>
 In a bilateral trust agreement, each potential pairing of an IdP and RP form a trust relationship with each other. In this model, the IdP and RP each act as their own authority and establish the other party as capable of performing its role within the federation.
+</details>
 
+
+IdP は，サポートされている IAL，AAL，FAL のレベルを RP に開示し**なければならない(SHALL)**．IdP は，アプリケーションのニーズに応じて，その機能のサブセットを特定の RP に開示**してもよい(MAY)**．たとえば，アカウントが IAL1 以上で証明されていることをリスクの低い RP にのみ開示するなど．
+
+RP は，要求された各属性の使用目的を含め，必要な属性のリストを IdP に開示し**なければならない(SHALL)**．RP は，必要な IAL，AAL，FAL を IdP に通知し**なければならない(SHALL)**．これには、IAL または AAL は必要ないかどうかも含む．
+
+IdP は，RP によって明示的に要求された属性のみを送信し**なければならない(SHALL)**．RP は，要求した属性をプライバシーリスク評価に含める**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 The IdP **SHALL** disclose its supported IAL, AAL, and FAL levels to the RP. The IdP **MAY** disclose a subset of its capabilities to a given RP depending on the needs of the application, for example only disclosing to a low-risk RP that accounts are proofed at IAL1 or better.
 
 The RP **SHALL** disclose its list of required attributes to the IdP, including its purpose for use of each requested attribute. The RP **SHALL** communicate its required IAL, AAL, and FAL to the IdP, including whether no claim is required for IAL or AAL.
 
 The IdP **SHALL** transmit only those attributes that were explicitly requested by the RP. RPs **SHALL** include their requested attributes in their privacy risk assessment.
+</details>
 
-### Multilateral Trust Agreements {#authorities}
+### 多者間の信頼の合意 (Multilateral Trust Agreements) {#authorities}
 
+多者間の信頼の合意では，フェデレーションの当事者は，フェデレーションの信頼に関する決定を支援し，当事者間の協力関係を確立するために，*federation authority* に従う．このモデルでは，federation authority がフェデレーション合意の IdP と RP のメンバーシップを管理する．federation authority は，フェデレーション内の各当事者に対してある程度の審査を行い，信頼の合意を定義する所定の基準に準拠していることを確認する．審査のレベルは，フェデレーション内で採用されているユースケースとモデルに固有のものである．この審査は，[図2] (sec5_federation.md#fig-2) の左側に示されている．
+
+<details>
+<summary>原文</summary>
 In a multilateral trust agreement, the federated parties defer to a *federation authority* to assist in making federation trust decisions and to establish the working relationship between parties. In this model, the federation authority manages the membership of IdPs and RPs in the federation agreement. The federation authority conducts some level of vetting on each party in the federation to verify compliance with predetermined standards that define the trust agreement. The level of vetting is unique to the use cases and models employed within the federation. This vetting is depicted in the left side of [Figure 2](sec5_federation.md#fig-2).
+</details>
 
+federation authority は，IdP が特定の IAL，AAL，FAL で動作することを承認する．この情報は，[図2](sec5_federation.md#fig-2) の右側に示すように，RP が要件を満たす IdP を決定するために使われる．
+
+<details>
+<summary>原文</summary>
 Federation authorities approve IdPs to operate at certain IALs, AALs, and FALs. This information is used by relying parties, as shown in the right side of [Figure 2](sec5_federation.md#fig-2), to determine which identity providers meet their requirements.
+</details>
 
+federation authority は，それらが可能にするフェデレーションリレーションシップに関連して，期待される受入れ可能な IAL，AAL，FAL に関するパラメータを確立し**なければならない(SHALL)**．federation authority は，フェデレーションの各関係者を個別に精査して，期待される基準を遵守しているかどうかを判断し**なければならない(SHALL)**．
+<details>
+<summary>原文</summary>
 Federation authorities **SHALL** establish parameters regarding expected and acceptable IALs, AALs, and FALs in connection with the federated relationships they enable. Federation authorities **SHALL** individually vet each participant in the federation to determine whether they adhere to their expected standards.
+</details>
+
 
 [Figure 2. Federation Authority](sec5_federation.md#fig-2){:name="fig-2"}
 {:latex-ignore="true"}
 
 ![Diagram of a federation authority providing trust decisions for a federation network of IdPs and RPs.]({{site.baseurl}}/{{page.collection}}/media/authority.png 'Federation Authority'){:style="width:789px;height:490px;;min-width:789px;min-height:490px;" latex-src="authority.png" latex-fig="2" latex-place="h"}
 
+IdP と RP の審査では，少なくとも次のことを確立し**なければならない(SHALL)**:
+
+* IdP によって生成されたアサーションは，[Sec. 6](sec6_assertions.md#assertions)でしめされた要件を遵守する．
+* RP は，保持，集約，および第三者への開示など，加入者(subscriber)属性データを処理するための要件を遵守する．
+* RP および IdP システムは，フェデレーションプロトコルの承認済みプロファイルを利用する．
+
+<details>
+<summary>原文</summary>
 Vetting of IdPs and RPs **SHALL** establish, as a minimum, that:
 
 * Assertions generated by IdPs adhere to the requirements in [Sec. 6](sec6_assertions.md#assertions).
 * RPs adhere to requirements for handling subscriber attribute data, such as retention, aggregation, and disclosure to third parties.
 * RP and IdP systems use approved profiles of federation protocols.
+</details>
 
+federation authority は，IdP の構成データの公開や RP のソフトウェアステートメントの発行などによって，メンバー間の技術的な接続と構成プロセスを支援**してもよい(MAY)**．
+
+authorities を通じて管理されるほとんどの federation には，単純なメンバーシップモデルがある．たとえば，当事者は federation に属しているか，そうでないかのいずれかといったものである．より洗練された federation は，federation の他の当事者がより徹底的に審査されているかどうかを判断するために，フェデレーションの当事者が使用できる複数のメンバーシップ層を持っ**てもよい(MAY)**．IdP は，特定の加入者(subscriber)属性が上位層の RP にのみ提示可能であると決定し**てもよく(MAY)**，RP は上位層の IdP からのみ特定の情報を受け入れることを決定し**てもよい(MAY)**．
+
+<details>
+<summary>原文</summary>
 Federation authorities **MAY** assist the technical connection and configuration process between members, such as by publishing configuration data for IdPs or by issuing software statements for RPs.
 
 Most federations managed through authorities have a simple membership model: parties are either in the federation or they are not. More sophisticated federations **MAY** have multiple membership tiers that federated parties can use to tell whether other parties in the federation have been more thoroughly vetted. IdPs **MAY** decide that certain subscriber attributes are only releasable to RPs in higher tiers and RPs **MAY** decide to accept certain information only from IdPs in higher tiers.
+</details>
 
 ### Proxied Federation {#proxied}
 
+proxied federation では，IdP と RP の間のすべての通信は，2 つの当事者間の直接通信を防止する方法で仲介者を通過する．この効果を得るには複数の方法がある．一般的な構成は次のとおり．
+
+* フェデレーションプロキシ (または *ブローカー*) として機能するサードパーティ
+* 通信を分散し，エンドポイント間のプロキシとして機能するノードのネットワーク
+
+<details>
+<summary>原文</summary>
 In a proxied federation, all communication between the IdP and the RP is passed through an intermediary party in a way that prevents direct communication between the two parties. There are multiple methods to achieve this effect. Common configurations include:
 
 * A third party that acts as a federation proxy (or *broker*)
 * A network of nodes that distributes the communications and functions as a proxy between the endpoints
+</details>
 
+
+プロキシが使用されている場合，一方は IdP として機能し，もう一方は RP として機能する．したがって，IdP および RP に適用されるすべての規範的要件は，それぞれの役割のプロキシに適用され**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 Where proxies are used, they function as an IdP on one side and an RP on the other. Therefore, all normative requirements that apply to IdPs and RPs **SHALL** apply to proxies in their respective roles.
+</details>
 
 [Figure 3. Federation Proxy](sec5_federation.md#fig-3){:name="fig-3"}
 {:latex-ignore="true"}
 
 ![Diagram of a federation proxy accepting assertions from an upstream IdP and providing assertions to a downstream RP.]({{site.baseurl}}/{{page.collection}}/media/broker.png 'Federation Proxy'){:style="width:600px;height:150px;;min-width:600px;min-height:150px;" latex-src="broker.png" latex-fig="3" latex-place="h"}
 
+proxied federation モデルには，いくつかの利点がある．フェデレーションプロキシは，統合用の共通インターフェイスを提供することで，RP と IdP 間の技術的統合を簡素化できる．さらに，プロキシが RP と IdP を効果的に相互にブラインドすることで，加入者(subscriber)リストを相互に保護したい組織にある程度のビジネス機密性を提供できる．プロキシは，[Sec. 5.5](sec5_federation.md#privacy-reqs) 以降で説明されているプライバシーリスクの一部を軽減することもできる．
+
+ブラインドの技術，その使用法，および制限の詳細については， [Sec. 9.5](sec9_privacy.md#blinding)を参照．
+
+<details>
+<summary>原文</summary>
 A proxied federation model can provide several benefits. Federation proxies can simplify technical integration between the RP and IdP by providing a common interface for integration. Additionally, to the extent a proxy effectively blinds the RP and IdP from each other, it can provide some business confidentiality for organizations that want to guard their subscriber lists from each other. Proxies can also mitigate some of the privacy risks described in [Sec. 5.5](sec5_federation.md#privacy-reqs) below.
 
 See [Sec. 9.5](sec9_privacy.md#blinding) for further information on blinding techniques, their uses, and limitations.
+</details>
 
+プロキシを介して提示されるフェデレーションは，プロキシされたトランザクション中に使用される最小の FAL によって表され**なければならない(SHALL)**．たとえば，プロキシが FAL2 で IdP からアサーションを受け取ったものの，FAL1 で RP にアサーションを提示する場合，トランザクション全体が FAL1 とみなされる．同様に，federation が FAL1 でアサーションを受け取り，FAL3 で RP にアサーションを提示する場合，トランザクション全体は依然として FAL1 とみなされる．プロキシは，実行時または信頼の合意の一部としての事前構成を通じて，この側面を RP に伝達し**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 Federations presented through a proxy **SHALL** be represented by the lowest FAL used during the proxied transaction. For example, if a proxy takes in an assertion from the IdP at FAL2 but presents a downstream assertion to the RP at FAL1, the entire transaction is considered FAL1. Likewise if a federation takes in an assertion at FAL1 but presents a downstream assertion to the RP at FAL3, the entire transaction is still considered FAL1. The proxy **SHALL** communicate this aspect to the RP either at runtime or through pre-configuration as part of the trust agreement.
+ </details>
 
 ## Registration
 
