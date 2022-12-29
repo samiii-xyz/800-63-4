@@ -624,9 +624,9 @@ In a federated process, the IdP and RP each have their own stores of identity at
 From the RP's perspective, the IdP is the authoritative source for any attributes that the IdP asserts as being associated with the subscriber account at the IdP. However, the RP **MAY** additionally collect, and optionally verify, other attributes to associate with the RP subscriber account. Sometimes, these attributes can even override what's asserted by the IdP. For example, if an IdP asserts a full display name for the subscriber, the RP can allow the subscriber to provide an alternative preferred name for use at the RP.
 </details>
 
-IdP は，RP で利用可能な加入者(subscriber)アカウントの属性が更新されたときに，それを利用しているRP に通知する**必要がある(SHOULD)**．これは，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されているように共有シグナリングを使用するか，[Sec. 5.4.3](sec5_federation.md#provisioning-api) で説明されているようにプロビジョニング API を介すか，アサーションでシグナルを提供することによって実現する (たとえば，関連する属性の最終更新時を示すタイムスタンプで RP がキャッシュの期限切れを確認するなど）．
+IdP は，RP で利用可能な加入者(subscriber)アカウントの属性が更新されたときに，それを利用しているRP に通知する**必要がある(SHOULD)**．これは，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されているように共有信号(shared signaling)を使用するか，[Sec. 5.4.3](sec5_federation.md#provisioning-api) で説明されているようにプロビジョニング API を介すか，アサーションでシグナルを提供することによって実現する (たとえば，関連する属性の最終更新時を示すタイムスタンプで RP がキャッシュの期限切れを確認するなど）．
 
-IdP は，加入者(subscriber)アカウントが終了したとき，または加入者(subscriber)アカウントの RP へのアクセスが取り消されたときに，それを利用しているRP に通知する**必要がある(SHOULD)**．これは，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されている共有シグナリングを使用するか，[Sec. 5.4.3](sec5_federation.md#provisioning-api) で説明されているプロビジョニングAPI を使用して実現される．このような信号を受信すると，RP は RP 加入者(subscriber)アカウントを終了し，RP 加入者(subscriber)アカウントに関連付けられているすべての個人情報を，監査およびセキュリティ目的で必要なものは除いて，削除し**なければならない(SHALL)**．
+IdP は，加入者(subscriber)アカウントが終了したとき，または加入者(subscriber)アカウントの RP へのアクセスが取り消されたときに，それを利用しているRP に通知する**必要がある(SHOULD)**．これは，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されている共有信号(shared signaling)を使用するか，[Sec. 5.4.3](sec5_federation.md#provisioning-api) で説明されているプロビジョニングAPI を使用して実現される．このような信号を受信すると，RP は RP 加入者(subscriber)アカウントを終了し，RP 加入者(subscriber)アカウントに関連付けられているすべての個人情報を，監査およびセキュリティ目的で必要なものは除いて，削除し**なければならない(SHALL)**．
 </詳細>
 <details>
 <summary>原文</summary>
@@ -696,7 +696,7 @@ An RP **SHALL** disclose any additional attributes collected, and their use, as 
 
 ### タイムベースのRP加入者アカウントの削除 (Time-based Removal of RP Subscriber Accounts) {#stale-account}
 
-時間の経過とともに，RP には IdP からアクセスできなくなった RP 加入者(subscriber)アカウントを蓄積される．これは，特に即時プロビジョニングモデルが使用されており，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されているような IdP から加入者(subscriber)アカウントの終了を通知するための共有シグナリングが利用できない場合に，RP 加入者(subscriber)アカウントに個人情報を保持するリスクを RP にもたらす．このような状況では，RP はタイムベースのメカニズムを使用して，一定の期間アクセスがない（たとえば最終アクセスから120日経過など） RP 加入者(subscriber)アカウントを特定し，終了する**必要がある(SHOULD)**．
+時間の経過とともに，RP には IdP からアクセスできなくなった RP 加入者(subscriber)アカウントを蓄積される．これは，特に即時プロビジョニングモデルが使用されており，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されているような IdP から加入者(subscriber)アカウントの終了を通知するための共有信号(shared signaling)が利用できない場合に，RP 加入者(subscriber)アカウントに個人情報を保持するリスクを RP にもたらす．このような状況では，RP はタイムベースのメカニズムを使用して，一定の期間アクセスがない（たとえば最終アクセスから120日経過など） RP 加入者(subscriber)アカウントを特定し，終了する**必要がある(SHOULD)**．
 
 そのような非アクティブなアカウントを処理する場合，RP は，可能であれば，保留しているアカウントの終了について加入者(subscriber)に十分に通知し，予定された終了の前にアカウントを再アクティブ化するオプションを加入者(subscriber)に提供し**なければならない(SHALL)**．終了時に，RP は，監査およびセキュリティ目的で必要なものを除き，RP 加入者(subscriber)アカウントに関連付けられたすべての個人情報を削除し**なければならない(SHALL)**．
 
@@ -735,7 +735,7 @@ If the same subscriber account is asserted to multiple RPs, and those RPs commun
 
 IdP は，信頼の合意(trust agreement)形成時に規定されている場合，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されているように，疑わしいアクティビティの通信や加入者(subscriber)アカウントの侵害など，セキュリティ上の目的で加入者(subscriber)アクティビティに関する情報を RP に開示する**してもよい(MAY)**．信頼の合意(trust agreement)形成時に規定されている場合，RP は，疑わしいアクティビティの通信や RP 加入者(subscriber)アカウントの侵害など，セキュリティ上の目的で加入者(subscriber)アクティビティに関する情報を IdP に開示**してもよい(MAY)**．
 
-IdP は， [Sec. 5.7](sec5_federation.md#shared-signals) で説明されている共有シグナリングを使用して，その加入者(subscriber)アカウントにバインドされたフェデレーション識別子でプロビジョニングされた RP に，加入者(subscriber)アカウントの終了を通知する**必要がある(SHOULD)**．IdP からそのようなシグナルを受信した RP は，RP 加入者(subscriber)アカウントを終了し，RP 加入者(subscriber)アカウントに関連付けられているすべての個人情報を，監査およびセキュリティ目的で必要なものは除いて，削除し**なければならない(SHALL)**．
+IdP は， [Sec. 5.7](sec5_federation.md#shared-signals) で説明されている共有信号(shared signaling)を使用して，その加入者(subscriber)アカウントにバインドされたフェデレーション識別子でプロビジョニングされた RP に，加入者(subscriber)アカウントの終了を通知する**必要がある(SHOULD)**．IdP からそのようなシグナルを受信した RP は，RP 加入者(subscriber)アカウントを終了し，RP 加入者(subscriber)アカウントに関連付けられているすべての個人情報を，監査およびセキュリティ目的で必要なものは除いて，削除し**なければならない(SHALL)**．
 <details>
 <summary>原文</summary>
 An IdP **MAY** disclose information on subscriber activities to RPs for security purposes, such as communication of suspicious activity or a compromised subscriber account as described in [Sec. 5.7](sec5_federation.md#shared-signals), if stated within the trust agreement. An RP **MAY** disclose information on subscriber activities to IdPs for security purposes, such as communication of suspicious activity or a compromised RP subscriber account, if stated within the trust agreement.
@@ -814,19 +814,48 @@ If an RP is granted access to an identity API along with the assertion, the life
 See [[SP800-63B]](../_sp800-63b/sec7_session.md#sec7){:latex-href="#ref-SP800-63B"}, Sec. 7 for more information about session management requirements for both IdPs and RPs.
 </details>
 
-## Shared Signaling {#shared-signals}
+## 共有信号 (Shared Signaling) {#shared-signals}
 
+一部の環境では，IdP と RP がフェデレーショントランザクションの外部で相互に情報を送信すると便利である．これらの信号は，他の方法では認識されない当事者間で状態の重要な変化を伝える．共有信号(shared signaling)の使用は，IdP と RP の間の信頼の合意（trust agreement)で文書化し**なければならない(SHALL)**．IdP から RP への信号は，静的な信頼の合意(trust agreement)形成を行わ**なければならない(SHALL)**．RP から IdP への信号は，静的または動的な信頼の合意(trust agreement)形成で使用され**てもよい(MAY)**．
+
+<details>
+<summary>原文</summary>
 In some environments, it is useful for the IdP and RP to send information to each other outside of the federation transaction. These signals can communicate important changes in state between parties that would not be otherwise known. The use of any shared signaling **SHALL** be documented in the trust agreement between the IdP and RP. Signaling from the IdP to the RP **SHALL** require a static trust agreement. Signaling from the RP to the IdP **MAY** be used in a static or dynamic trust agreement.
+</details>
 
+共有信号(shared signaling)の使用は，文書化され，信頼の合意(trust agreement)で規定されたauthorized party が利用できるようにし**なければならない(SHALL)**．この文書には，信号が送信されるイベント，そのような信号に含まれる情報 (属性情報を含む)，および信号とともに送信される追加のパラメーターを含め**なければならない(SHALL)**．共有信号(shared signaling)の使用は，信頼の合意(trust agreement)に基づくプライバシー ビューの対象とそ**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 Any use of shared signaling **SHALL** be documented and made available to the authorized party stipulated by the trust agreement. This documentation **SHALL** include the events under which a signal is sent, the information included in such a signal (including any attribute information), and any additional parameters sent with the signal. The use of shared signaling **SHALL** be subject to privacy review under the trust agreement.
+</details>
 
+IdP は，次の変更に関する信号を加入者(subscriber)アカウントに送信し**てもよい(MAY)**．
+
+- アカウントが停止された．
+- アカウントが侵害された疑いがある．
+- フェデレーション識別子以外の識別子 (電子メールアドレスや証明書 CN など) を含むアカウントの属性が変更された．
+- アカウントで可能な IAL，AAL，FAL の範囲が変更された．
+<details>
+<summary>原文</summary>
 The IdP **MAY** send a signal regarding the following changes to the subscriber account:
 
 - The account has been terminated.
 - The account is suspected of being compromised.
 - Attributes of the account, including identifiers other than the federated identifier (such as email address or certificate CN), have changed.
 - The possible range of IAL, AAL, or FAL for the account has changed.
+</details>
 
+RP は，次の変更に関する信号を RP 加入者(subscriber) アカウントに送信**てもよい(MAY)**．
+
+- アカウントが停止された．
+- アカウントが侵害された疑いがある．
+- RP 管理の bound authenticator が追加された．
+- RP 管理の bound authenticator が削除された．
+
+IdP と RP の両方からの追加の信号は，信頼の合意(trust agreement)の一部として，プライバシーとセキュリティのレビューを条件として許可され**てもよい(MAY)**．
+<details>
+<summary>原文</summary>
 The RP **MAY** send a signal regarding the following changes to the RP subscriber account:
 
 - The account has been terminated.
@@ -835,3 +864,4 @@ The RP **MAY** send a signal regarding the following changes to the RP subscribe
 - An RP-managed bound authenticator is removed.
 
 Additional signals from both the IdP and RP **MAY** be allowed subject to privacy and security review as part of the trust agreement.
+</details>
