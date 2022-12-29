@@ -699,7 +699,7 @@ An RP **SHALL** disclose any additional attributes collected, and their use, as 
 時間の経過とともに，RP には IdP からアクセスできなくなった RP 加入者(subscriber)アカウントを蓄積される．これは，特に即時プロビジョニングモデルが使用されており，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されているような IdP から加入者(subscriber)アカウントの終了を通知するための共有シグナリングが利用できない場合に，RP 加入者(subscriber)アカウントに個人情報を保持するリスクを RP にもたらす．このような状況では，RP はタイムベースのメカニズムを使用して，一定の期間アクセスがない（たとえば最終アクセスから120日経過など） RP 加入者(subscriber)アカウントを特定し，終了する**必要がある(SHOULD)**．
 
 そのような非アクティブなアカウントを処理する場合，RP は，可能であれば，保留しているアカウントの終了について加入者(subscriber)に十分に通知し，予定された終了の前にアカウントを再アクティブ化するオプションを加入者(subscriber)に提供し**なければならない(SHALL)**．終了時に，RP は，監査およびセキュリティ目的で必要なものを除き，RP 加入者(subscriber)アカウントに関連付けられたすべての個人情報を削除し**なければならない(SHALL)**．
-</詳細>
+
 <details>
 <summary>原文</summary>
 Over time, an RP could accumulate RP subscriber accounts that are no longer accessible from the IdP. This poses a risk to the RP for holding personal information in the RP subscriber accounts, especially when a just-in-time provisioning model is in use and no shared signaling is available from the IdP to signal subscriber account termination as discussed in [Sec. 5.7](sec5_federation.md#shared-signals). In such circumstances, the RP **SHOULD** employ a time-based mechanism to identify RP subscriber accounts for termination that have not been accessed after a period of time, for example, 120 days since last access.
@@ -707,25 +707,52 @@ Over time, an RP could accumulate RP subscriber accounts that are no longer acce
 When processing such an inactive account, the RP **SHALL** provide sufficient notice to the subscriber, if possible, about the pending termination of the account and provide the subscriber with an option to re-activate the account prior to its scheduled termination. Upon termination, the RP **SHALL** remove all personal information associated with the RP subscriber account, except what is required for audit and security purposes.
 </details>
 
-## Privacy Requirements {#privacy-reqs}
+## プライバシー要件 (Privacy Requirements) {#privacy-reqs}
+
+加入者(subscriber)の最終的な目標は，RP と対話して使用することである．フェデレーションには，トランザクションに関与していないサードパーティ &mdash; IdP からの個人属性の転送が含まれる．また，フェデレーションにより，IdP は加入者(subscriber)のアクティビティと状態を幅広く可視化できる可能性がある．したがって，フェデレーションに関連する特定のプライバシー要件が生じる．
+
+RP と IdP 間の通信により，加入者(subscriber)がトランザクションを実行している場所が IdP に明らかになる．複数の RP との通信により，IdP はフェデレーションなしでは存在しなかった加入者(subscriber)トランザクションのプロファイルを構築できてしまう．この集約により，加入者(subscriber)の追跡と，プロファイル情報の使用（加入者(subscriber)のプライバシーの利益と必ずしも一致しない）の新しい機会を与えてしまう．
+
 <details>
 <summary>原文</summary>
 The ultimate goal of a subscriber is to interact with and use the RP. Federation involves the transfer of personal attributes from a third party that is not otherwise involved in a transaction &mdash; the IdP. Federation also potentially gives the IdP broad visibility into subscriber activities and status. Accordingly, there are specific privacy requirements associated with federation.
 
 Communication between the RP and the IdP could reveal to the IdP where the subscriber is conducting a transaction. Communication with multiple RPs allows the IdP to build a profile of subscriber transactions that would not have existed without federation. This aggregation could enable new opportunities for subscriber tracking and use of profile information that do not always align with subscribers' privacy interests.
 </details>
+
+IdP が RP での加入者(subscriber)のアクティビティに関する情報を任意の関係者に開示する場合，または 身元確認(identity proofing)，認証(authentication)，属性アサーション (総称して「アイデンティティサービス」) 以外の目的で加入者(subscriber)の属性を処理する場合，IdP は，追加の処理から生じるプライバシーリスクに見合った予測可能性と管理可能性を維持するための手段を実装し**なければならない(SHALL)**．これは，詐欺の軽減に関連して，法律または法的手続きを遵守するため，または特定のユーザーからの要求の場合に情報を送信するためである．
+
+措置には，明確な通知の提供，加入者(subscriber)の同意の取得，または属性の選択的な使用または開示の有効化が含まれ**てもよい(MAY)**．IdP が同意手段を使用する場合，IdP は追加処理の同意をアイデンティティサービスの条件にしては**ならない(SHALL NOT)**．
+
+同じ加入者(subscriber) アカウントが複数の RP に提示され，それらの RP が相互に通信する場合，共謀している RP は，複数のアプリケーションとセキュリティドメインにわたって加入者(subscriber)のアクティビティを追跡できてしまう．IdP は，分離可能性を提供して RP 間の加入者(subscriber)アクティビティの追跡とプロファイリングを思いとどまらせるために，[Sec. 6.2.5](sec6_assertions.md#ppi) で説明されている PPID またはプライバシー強化された暗号プロトコルの使用などの技術的手段を採用する**必要がある(SHOULD)**．
+
 <details>
 <summary>原文</summary>
 If an IdP discloses information on subscriber activities at an RP to any party, or processes the subscriber's attributes for any purpose other than identity proofing, authentication, or attribute assertions (collectively "identity service"), related fraud mitigation, to comply with law or legal process, or, in the case of a specific user request, to transmit the information, the IdP **SHALL** implement measures to maintain predictability and manageability commensurate with the privacy risk arising from the additional processing. Measures **MAY** include providing clear notice, obtaining subscriber consent, or enabling selective use or disclosure of attributes. When an IdP uses consent measures, the IdP **SHALL NOT** make consent for the additional processing a condition of the identity service.
 
 If the same subscriber account is asserted to multiple RPs, and those RPs communicate with each other, the colluding RPs could track a subscriber's activity across multiple applications and security domains. The IdP **SHOULD** employ technical measures, such as the use of pairwise pseudonymous identifiers described in [Sec. 6.2.5](sec6_assertions.md#ppi) or privacy-enhancing cryptographic protocols, to provide disassociability and discourage subscriber activity tracking and profiling between RPs.
 </details>
+
+IdP は，信頼の合意形成時に規定されている場合，[Sec. 5.7](sec5_federation.md#shared-signals) で説明されているように，疑わしいアクティビティの通信や加入者(subscriber)アカウントの侵害など，セキュリティ上の目的で加入者(subscriber)アクティビティに関する情報を RP に開示する**してもよい(MAY)**．信頼の合意形成時に規定されている場合，RP は，疑わしいアクティビティの通信や RP 加入者(subscriber)アカウントの侵害など，セキュリティ上の目的で加入者(subscriber)アクティビティに関する情報を IdP に開示**してもよい(MAY)**．
+
+IdP は， [Sec. 5.7](sec5_federation.md#shared-signals) で説明されている共有シグナリングを使用して，その加入者(subscriber)アカウントにバインドされたフェデレーション識別子でプロビジョニングされた RP に，加入者(subscriber)アカウントの終了を通知する**必要がある(SHOULD)**．IdP からそのようなシグナルを受信した RP は，RP 加入者(subscriber)アカウントを終了し，RP 加入者(subscriber)アカウントに関連付けられているすべての個人情報を，監査およびセキュリティ目的で必要なものは除いて，削除し**なければならない(SHALL)**．
 <details>
 <summary>原文</summary>
 An IdP **MAY** disclose information on subscriber activities to RPs for security purposes, such as communication of suspicious activity or a compromised subscriber account as described in [Sec. 5.7](sec5_federation.md#shared-signals), if stated within the trust agreement. An RP **MAY** disclose information on subscriber activities to IdPs for security purposes, such as communication of suspicious activity or a compromised RP subscriber account, if stated within the trust agreement.
 
 An IdP **SHOULD** signal subscriber account termination to RPs that have been provisioned with federated identifiers bound to that subscriber account using shared signaling as discussed in [Sec. 5.7](sec5_federation.md#shared-signals). RPs that receive such a signal from the IdP **SHALL** terminate the RP subscriber account and remove all personal information associated with the RP subscriber account, except what is required for audit and security purposes.
 </details>
+
+次の要件は，特に federal agencies に適用される．
+
+1. 機関は，プライバシーに関する Senior Agency Official for Privacy (SAOP) と相談して，プライバシー法(Privacy Act) の要件が，IdP として機能している機関，RP として機能している機関，またはその両方によって引き起こされているか（[Sec. 9.4](sec9_privacy.md#agency-privacy) を参照）を判断する分析を実施し**なければならない(SHALL)**．
+
+2. 機関は，該当する場合，System of Records Notice (SORN) によってカバレッジを公開または特定し**なければならない(SHALL)**．
+
+3. 機関は，SAOP と相談して，電子政府法(E-Government Act) の要件が IdP として機能している機関，RP として機能している機関，またはその両方によって引き起こされているかどうかを判断する分析を実施し**なければならない(SHALL)**．
+
+4. 機関は，該当する場合，Privacy Impact Assessment (PIA) によって適用範囲を公開または特定し**なければならない(SHALL)**．
+
 <details>
 <summary>原文</summary>
 The following requirements apply specifically to federal agencies:
@@ -738,10 +765,14 @@ The following requirements apply specifically to federal agencies:
 
 4. The agency **SHALL** publish or identify coverage by a Privacy Impact Assessment (PIA) as applicable.
 </details>
+
+[Sec. 5.4.3](sec5_federation.md#provisioning-api) で説明されているように，RP 加入者(subscriber)アカウントのライフサイクルプロセスがプロビジョニングAPI を介して属性へのアクセスを RP に与える場合，情報アクセスの幅広い性質を考慮して，追加のプライバシー対策を実装し**なければならない(SHALL)**．具体的には，加入者(subscriber)がその RP と対話することなく，加入者(subscriber)の属性を RP に提供することが可能である．結果として，プロビジョニングAPI が使用される場合，IdP は RP で利用できる属性を最小限に抑え**なければならない(SHALL)**．RP を全く使用しないユーザーの属性の送信を防ぐために，IdP は，プロビジョニングAPI を介して利用可能な加入者(subscriber)アカウントの集団を，信頼の合意時に RP の使用を許可された加入者(subscriber)の集団に制限し**なければならない(SHALL)**．
+
 <details>
 <summary>原文</summary>
 If the RP subscriber account lifecycle process gives the RP access to attributes through a provisioning API as discussed in [Sec. 5.4.3](sec5_federation.md#provisioning-api), additional privacy measures **SHALL** be implemented given the wide nature of information access. Specifically, it is possible for the attributes of a subscriber to be provided to an RP without the subscriber ever interacting with the RP in question. As a consequence, when a provisioning API is used, the IdP **SHALL** minimize the attributes made available to the RP. To prevent the transmission of attributes for users that will never use an RP, the IdP **SHALL** limit the population of subscriber accounts available via the provisioning API to the population of subscribers authorized to use the RP by the trust agreement.
 </details>
+
 ##  Reauthentication and Session Requirements in Federated Environments {#federation-session}
 
 In a federated environment, the RP manages its sessions separately from any sessions at the IdP. The assertion is related to both sessions but its validity period is ultimately independent of them. In order for the IdP to create an assertion for the subscriber, the subscriber needs to establish an authenticated session with the IdP. To create an authenticated session at the RP, the RP needs to process a valid assertion from the IdP.
