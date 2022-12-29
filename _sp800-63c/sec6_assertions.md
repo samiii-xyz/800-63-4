@@ -8,12 +8,34 @@ anchor: assertions
 section: 6
 ---
 
-# Assertions {#assertions}
+# アサーション (Assertions) {#assertions}
 
 *This section is normative.*
 
-An assertion used for authentication is a packaged set of attribute values or derived attribute values about or associated with an authenticated subscriber that is passed from the IdP to the RP in a federated identity system. Assertions contain a variety of information, including: assertion metadata, attribute values and derived attribute values about the subscriber, information about the subscriber's authentication at the IdP, and other information that the RP can leverage (e.g., restrictions and validity time window). While the assertion's primary function is to authenticate the user to an RP, the information conveyed in the assertion can be used by the RP for a number of use cases &mdash; for example, authorization or personalization of a website. These guidelines do not restrict RP use cases nor the type of protocol or data payload used to federate an identity, provided the chosen solution meets all mandatory requirements contained herein.
+認証に使用されるアサーションは，フェデレーションアイデンティティシステムで IdP から RP に渡される認証済み加入者(subscriber)に関する（またはそれに関連付けられた）属性値や派生の属性値のパッケージ化されたセットである．アサーションにはさまざまな情報が含まれる．アサーションメタデータ，加入者(subscriber)に関する属性値と派生の属性値，IdP での加入者(subscriber)の認証に関する情報，RP が活用できるその他の情報 (制限や有効期間など) などである．アサーションの主な機能は RP に対してユーザーを認証することであるが，アサーションで伝達される情報は，多くのユースケースで RP によって使用できる．たとえば，Web サイトの承認やパーソナライズなど．これらのガイドラインは，選択されたソリューションがここに含まれるすべての必須要件を満たしている限り，RP のユースケース，使用されるプロトコルやフェデレーションに使うデータペイロードの種類を制限しない．
 
+<details>
+<summary>原文</summary>
+An assertion used for authentication is a packaged set of attribute values or derived attribute values about or associated with an authenticated subscriber that is passed from the IdP to the RP in a federated identity system. Assertions contain a variety of information, including: assertion metadata, attribute values and derived attribute values about the subscriber, information about the subscriber's authentication at the IdP, and other information that the RP can leverage (e.g., restrictions and validity time window). While the assertion's primary function is to authenticate the user to an RP, the information conveyed in the assertion can be used by the RP for a number of use cases &mdash; for example, authorization or personalization of a website. These guidelines do not restrict RP use cases nor the type of protocol or data payload used to federate an identity, provided the chosen solution meets all mandatory requirements contained herein.
+</details>
+
+アサーションは，IdP で加入者(subscriber)の個別の認証イベントを表さ**なければならなず(SHALL)**，RP で個別の認証イベントとして処理され**なければならない(SHALL)**．
+
+すべてのアサーションには，次の属性が含まれてい**なければならない(SHALL)**．
+
+1. 主体識別子(subject identifier): アサーションが適用される当事者（つまり，加入者(subscriber)）の識別子．
+2. 発行者識別子(issuer identifier): アサーションの発行者（つまり，IdP）の識別子．
+3. 対象者識別子(audience identifier): アサーションを消費することを意図した当事者（つまり，RP）の識別子．
+4. 発行時刻(issuance time): IdP がアサーションを発行した時刻を示すタイムスタンプ．
+5. 有効期間(validity time window): ここで示される期間以外では，加入者(subscriber)を認証し，RP で認証されたセッションを開始する目的で，アサーションを RP が有効として受け入れては **ならない(SHALL NOT)** ．これは通常，発行タイムスタンプに加えて，アサーションの有効期限タイムスタンプによって通知される．
+6. アサーション識別子(assertion identifier): このアサーションを一意に識別する値で，攻撃者が以前のアサーションをリプレイすることを防ぐために使用される．
+7. 署名(signature): アサーション全体をカバーする，IdP に関連付けられた鍵識別子または公開鍵を含む，デジタル署名またはメッセージ認証コード(MAC)．
+8. 認証時間(authentication time): IdP が主要な認証イベント（利用可能な場合）を通じて IdP で加入者(subscriber)の存在を最後に確認した日時を示すタイムスタンプ．
+9. IAL: アサーションで表されている加入者(subscriber)アカウントの IAL のインジケーター，または IAL が提示されていないことのしるし．
+10. AAL: 加入者(subscriber)が IdP に対して認証されたときに使用された AAL のインジケーター，または AAL が提示されていないことのしるし．
+11. FAL: アサーションによって表されるフェデレーションプロセスの IdP の意図した FAL のインジケーター．
+<details>
+<summary>原文</summary>
 Assertions **SHALL** represent a discrete authentication event of the subscriber at the IdP and **SHALL** be processed as a discrete authentication event at the RP.
 
 All assertions **SHALL** include the following attributes:
@@ -29,16 +51,42 @@ All assertions **SHALL** include the following attributes:
 9. IAL: Indicator of the IAL of the subscriber account being represented in the assertion, or an indication that no IAL is asserted.
 10. AAL: Indicator of the AAL used when the subscriber authenticated to the IdP, or an indication that no AAL is asserted.
 11. FAL: An indicator of the IdP's intended FAL of the federation process represented by the assertion.
+</details>
 
+[Sec. 6.1.2](sec6_assertions.md#boundauth) で説明されているように，FAL3 でアサーションが bound authenticator と共に使用される場合，アサーションは以下を含ま**なければならない(SHALL)**．
+
+1. Authenticator binding: 公開鍵，鍵識別子，その他の加入者(subscriber)が保持する bound authenticator の識別子（IdP 管理の bound authenticator の場合) ，RP 管理の bound authenticator が 個のアサーションの検証に必要であることを示すインジケーター．
+
+<details>
+<summary>原文</summary>
 If the assertion is used at FAL3 with a bound authenticator as described in [Sec. 6.1.2](sec6_assertions.md#boundauth), the assertion **SHALL** include the following:
 
 1. Authenticator binding: The public key, key identifier, or other identifier of subscriber-held bound authenticator (for IdP-managed bound authenticators) or indicator that an RP-managed bound authenticator is required for verification of this assertion. 
+</details>
+アサーションには，次の情報を含む追加の項目が含まれ**てもよい(MAY)**．
 
+1. 属性値と派生の属性値: 加入者(subscriber)に関する情報．
+2. 属性メタデータ: NIST Internal Report 8112 [[NISTIR8112]](references.md#ref-nistir8112) で説明されているような，1 つまたは複数の加入者(subscriber)属性に関する追加情報．
+
+<details>
+<summary>原文</summary>
 Assertions **MAY** also include additional items, including the following information:
 
 1. Attribute values and derived attribute values: Information about the subscriber.
 2. Attribute metadata: Additional information about one or more subscriber attributes, such as those described in NIST Internal Report 8112 [[NISTIR8112]](references.md#ref-nistir8112).
+</details>
 
+アサーションは，認証イベントが提示されている場合は AAL を指定し，身元証明(identity proofing)された属性 (またはそれらの属性から派生した値) が提示されている場合は IAL を指定する**必要がある(SHOULD)**．
+
+アサーション内のすべてのメタデータは，受信時に RP によって検証され**なければならない(SHALL)**．
+
+  - *発行者の検証*: アサーションが，RP が期待する IdP によって発行されたことを確認する．
+  - *署名の検証*: アサーションの署名が有効であり，アサーションを送信する IdP に属する鍵に対応していることを確認する．
+  - *時間の検証*: 有効期限と発行時間が現在のタイムスタンプの許容範囲内であることを確認する．
+  - *対象者の制限*: この RP がアサーションの意図された受信者であることを確認する．
+
+<details>
+<summary>原文</summary>
 Assertions **SHOULD** specify the AAL when an authentication event is being asserted and IAL when identity proofed attributes (or values derived from those attributes) are being asserted.
 
 All metadata within the assertion **SHALL** be validated by the RP upon receipt:
@@ -47,50 +95,87 @@ All metadata within the assertion **SHALL** be validated by the RP upon receipt:
  - *Signature validation*: ensuring the signature of the assertion is valid and corresponds to a key belonging to the IdP sending the assertion.
  - *Time validation*: ensuring the expiration and issue times are within acceptable limits of the current timestamp.
  - *Audience restriction*: ensuring this RP is the intended recipient of the assertion.
+</details>
 
+RP は，主体識別子を本質的にグローバルに一意ではないものとして扱わ**なければならない(SHALL)**．代わりに，アサーションの主体識別子の値は通常，アサーション発行者の制御下にある名前空間にある．これにより，RP は，異なる IdP からの主体を誤って混同することなく，複数の IdP と通信することができる．
+<details>
+<summary>原文</summary>
 An RP **SHALL** treat subject identifiers as not inherently globally unique. Instead, the value of the assertion's subject identifier is usually in a namespace under the assertion issuer's control. This allows an RP to talk to multiple IdPs without incorrectly conflating subjects from different IdPs.
+</details>
 
+アサーションには，加入者(subscriber)に関する追加の属性を含め**てもよい(MAY)**．[Section 6.2.3](sec6_assertions.md#encrypted-assertion) には，アサーションで属性を提示するためのプライバシー要件が含まれている．RP は，加入者(subscriber)の追加の属性を取得するために RP が使用できるアサーションと共に，[Sec. 6.3](#s-identity-api) で説明されているように，アイデンティティAPI への制限付きアクセスを与えられ**てもよい(MAY)**．
+
+<details>
+<summary>原文</summary>
 Assertions **MAY** include additional attributes about the subscriber. [Section 6.2.3](sec6_assertions.md#encrypted-assertion) contains privacy requirements for presenting attributes in assertions. The RP **MAY** be given limited access to an identity API as discussed in [Sec. 6.3](#s-identity-api) along with the assertion, which the RP can use to fetch additional identity attributes for the subscriber.
+</details>
 
+詳細は使用しているフェデレーションプロトコルによって異なるが，アサーションは RP への個別のログインイベントを表す．アサーションの有効期間は，IdP または RP でのセッション管理に関連しているが，それとは別のものである．具体的には，IdP での認証済みセッションの中でアサーションが作成され，アサーションを処理すると RP で認証済みセッションが作成される．IdP がアサーションを作成した後，IdP のセッションの有効性はアサーションの有効性とは無関係である．IdP でセッションがまだ有効な間に，認証を繰り返す要求が IdP に送信されると，それ用の有効期間で作成される新しい別のアサーションが発生する．同様に，RP がアサーションを消費した後，RP のセッションの有効性はアサーションの有効性とは無関係である．また同様に，アイデンティティAPI に付与されたアクセスは，アサーションの有効性や RP での認証済みセッションの有効期間とは無関係である．セッション管理の詳細については，[Sec. 5.3](sec5_federation.md#federation-session)  を参照．
+
+<details>
+<summary>原文</summary>
 Although details vary based on the exact federation protocol in use, an assertion represents a discrete login event to the RP. The validity time window of an assertion is related to but separate from any session management at the IdP or RP. Specifically, an assertion is created during an authenticated session at the IdP, and processing an assertion creates an authenticated session at the RP. After the IdP creates the assertion, the validity of the IdP's session is independent of the validity of the assertion. If a request comes to the IdP for a repeated authentication while the session is still valid at the IdP, this results in a new and separate assertion being created with its own validity time window. Similarly, after the RP consumes the assertion, the validity of the RP's session is independent of the validity of the assertion. Access granted to an identity API is likewise independent of the validity of the assertion or the lifetime of the authenticated session at the RP. See [Sec. 5.3](sec5_federation.md#federation-session) for more information on session management.
+</details>
 
+アサーションの有効期間は，発行から有効期限までの時間である．この期間は，RP がアサーションを処理し，加入者(subscriber)のローカルアプリケーションセッションを作成できるように十分な長ささである必要があるが，そのような処理に必要な時間を超えて長くすべきではない．有効期間の長いアサーションは，盗まれたりリプレイされたりするリスクが高くなる．アサーションの有効期間を短くすると，このリスクが軽減される．アサーションの有効期間は，RP でのセッションを制限するために使用しては**ならない(SHALL NOT)**．詳細は [Sec. 5.3](sec5_federation.md#federation-session) を参照．
+<details>
+<summary>原文</summary>
 The assertion's validity time window is the time between its issuance and its expiration. This window needs to be large enough to allow the RP to process the assertion and create a local application session for the subscriber, but should not be longer than necessary for such establishment. Long-lived assertions have a greater risk of being stolen or replayed; a short assertion validity time window mitigates this risk. Assertion validity time windows **SHALL NOT** be used to limit the session at the RP. See [Sec. 5.3](sec5_federation.md#federation-session) for more information.
-
+</details>
+<details>
+<summary>原文</summary>
+ 
 ## Assertion Binding  {#assertion-binding}
 
 Assertion binding can be classified based on whether presentation by a claimant of an assertion is sufficient for binding to the party currently in session with the RP as the subscriber, or if the RP requires additional proof through the successful presentation of an authenticator bound to the subscriber.
-
+</details>
+<details>
+<summary>原文</summary>
 ### Bearer Assertions  {#bearer}
 
 A bearer assertion can be presented by any party as proof of the bearer's identity. Similarly, a bearer assertion reference can be presented by any party to the RP and used by the RP to fetch an assertion; the assertion in this instance is also considered a bearer assertion. If an attacker can capture or manufacture a valid assertion or assertion reference representing a subscriber and can successfully present that assertion or reference to the RP, then the attacker could be able to impersonate the subscriber at that RP.
 
 Note that mere possession of a bearer assertion or reference is not always enough to impersonate a subscriber. For example, if an assertion is presented in the back-channel federation model (described in [Sec. 7.1](sec7_presentation.md#back-channel)), additional controls **MAY** be placed on the transaction (such as identification of the RP and assertion injection protections) that help further protect the RP from fraudulent activity.
-
+</details>
+<details>
+<summary>原文</summary>
 ### Bound Authenticators {#boundauth}
 
 A bound authenticator is an authenticator presented to the RP by the subscriber alongside the assertion. In proving possession of the bound authenticator to the RP, the subscriber also proves with a certain degree of assurance that they are the rightful subject of the assertion. It is more difficult for an attacker to use a stolen assertion issued to a subscriber since the attacker would need to steal the bound authenticator as well as the assertion and be able to present them together. Furthermore, use of a bound authenticator protects the RP against malicious or compromised IdPs through the use of independent authentication.
-
+</details>
+<details>
+<summary>原文</summary>
 A bound authenticator **SHALL** be unique per subscriber at the RP such that two subscribers cannot present the same authenticator for their separate RP subscriber accounts. All bound authenticators **SHALL** be phishing resistant. Consequently, subscriber-chosen values such as a memorized secret cannot be used as bound authenticators.
 The RP **SHALL** accept authentication from a bound authenticator only in the context of processing an assertion. Consequently, the subscriber can not use a bound authenticator to log into the RP directly, bypassing the IdP in the process.
-
+</details>
+<details>
+<summary>原文</summary>
 A bound authenticator can be managed by either the IdP or the RP under different circumstances, as detailed in the sections below. An FAL3 assertion contains an indication of whether the IdP expects the subscriber to present a specific IdP-managed bound authenticator or an RP-managed bound authenticator at the RP to reach FAL3.
-
+</details>
+<details>
+<summary>原文</summary>
 #### IdP-Managed Bound Authenticators
 
 When the bound authenticator is managed by the IdP as in [Fig. 9](sec6_assertions.md#fig-9), a unique identifier for the authenticator (such as its public key) **SHALL** be included in the assertion presented to the RP. The RP **SHALL** prompt the subscriber to prove possession of the identified bound authenticator.
-
+</details>
+<details>
+<summary>原文</summary>
 [Figure 9. IdP-Managed Bound Authenticators](sec6_assertions.md#fig-9){:name="fig-9"}
 {:latex-ignore="true"}
 
 ![Diagram illustrating the use of bound authenticators managed at the IdP.]({{site.baseurl}}/{{page.collection}}/media/IdP-Managed-Bound-Auth.png 'IdP-Managed Bound Authenticators'){:latex-src="IdP-Managed-Bound-Auth.pdf" latex-fig="9" latex-place="h"}
 
 An IdP-managed bound authenticator **MAY** be distinct from the primary authenticator the subscriber uses to authenticate to the IdP. Bound authenticators managed at the IdP **SHALL** be phishing resistant and **SHALL** be independently dereferenceable by the RP based on a mutually-trusted security framework, such as a public-key infrastructure. When processing an IdP-managed bound authenticator for the first time, the RP **SHOULD** verify whether the authenticator being presented is appropriate to be associated with the subscriber account, such as through account resolution from the attributes in the authenticator's presented information.
-
+</details>
+<details>
+<summary>原文</summary>
 
 For example, a subscriber could have a smart card loaded with a certificate, which is a multi-factor cryptographic device. Since the certificate can be presented to both the IdP and the RP, the IdP can include an identifier for the certificate in the FAL3 assertion to the RP. The RP would then prompt the subscriber to present the certificate from their smart card in order to reach FAL3.
 
 "Holder of Key" (HoK) assertions are one example of IdP-managed bound authenticators, since the IdP knows the subscriber's key to be used at the RP and includes the key information in the assertion presented to the RP.
-
+</details>
+<details>
+<summary>原文</summary>
 ~~~
 \clearpage
 ~~~
@@ -99,18 +184,26 @@ For example, a subscriber could have a smart card loaded with a certificate, whi
 #### RP-Managed Bound Authenticators
 
 When the bound authenticator is managed by the RP as in [Fig. 10](sec6_assertions.md#fig-10), the IdP **SHALL** include an indicator in the assertion that the assertion is to be used with a bound authenticator at FAL3. The unique identifier for the authenticator (such as its public key) **SHALL** be stored in the RP subscriber account.
-
+</details>
+<details>
+<summary>原文</summary>
 [Figure 10. RP-Managed Bound Authenticators](sec6_assertions.md#fig-10){:name="fig-10"}
 {:latex-ignore="true"}
 
 ![Diagram illustrating the use of bound authenticators managed at the RP.]({{site.baseurl}}/{{page.collection}}/media/RP-Managed-Bound-Auth.png 'RP-Managed Bound Authenticators'){:latex-src="RP-Managed-Bound-Auth.pdf" latex-fig="10" latex-place="h"}
 
 Before an RP can successfully accept an FAL3 assertion, the RP subscriber account must include a bound authenticator. These authenticators can be provided by either the RP or the subscriber, with slightly different requirements applying to the initial binding of the authenticator to the RP subscriber account in each case.
-
+</details>
+<details>
+<summary>原文</summary>
 For RP-provided authenticators, the administrator of the RP **SHALL** issue the authenticator to the subscriber directly for use with an FAL3 login. The administrator of the RP **SHALL** store a unique identifier for the bound authenticator in the RP subscriber account. The administrator of the RP **SHALL** determine through independent means that the party to which the authenticator is issued is the identified subject of the RP subscriber account.
-
+</details>
+<details>
+<summary>原文</summary>
 For subscriber-provided authenticators, if no bound authenticators are associated with the RP subscriber account, the RP **SHALL** perform a binding ceremony to establish the connection between the authenticator, the subscriber, and the RP subscriber account as shown in [Fig. 11](sec6_assertions.md#fig-11). The RP **SHALL** first establish an authenticated session using federation with an assertion that meets all the other requirements of FAL3, including an indication that the assertion is intended for use at FAL3 with an RP-managed bound authenticator. The subscriber **SHALL** immediately be prompted to present and authenticate with the proposed authenticator. Upon successful presentation of the authenticator, the RP **SHALL** store a unique identifier for the authenticator (such as its public key) and associate this with the RP subscriber account associated with the federated identifier. If the subscriber fails to successfully present an appropriate authenticator, the binding ceremony fails. The binding ceremony session **SHALL** have a timeout of five minutes or less. The session used during the ceremony is not an authenticated session for the purposes of logging in. Upon successful completion of the binding ceremony, the RP **SHALL** immediately request a new assertion from the IdP at FAL3, including prompting the subscriber for the newly-bound authenticator.
-
+</details>
+<details>
+<summary>原文</summary>
 [Figure 11. Binding Ceremony](sec6_assertions.md#fig-11){:name="fig-11"}
 {:latex-ignore="true"}
 
@@ -118,7 +211,9 @@ For subscriber-provided authenticators, if no bound authenticators are associate
 
 An RP **MAY** allow a subscriber to bind multiple subscriber-provided authenticators at FAL3. If this is the case, and the RP subscriber account has one or more existing bound authenticators, the binding ceremony makes use of the existing ability to reach FAL3. The subscriber **SHALL** first be prompted to present an existing bound authenticator to reach FAL3. Upon successful authentication, the RP **SHALL** immediately prompt the subscriber for the newly-bound authenticator.
 
-
+</details>
+<details>
+<summary>原文</summary>
 An RP **MAY** allow a subscriber to unbind a bound subscriber-provided authenticator from their RP subscriber account, thereby removing the ability to use that authenticator for FAL3. When a bound authenticator is unbound, the RP **SHALL** terminate all current FAL3 sessions for the subscriber and **SHALL** require reauthentication of the subscriber from the IdP. Note that in many cases, a subscriber will need to unbind a bound authenticator to account for a lost or compromised authenticator, and the subscriber will therefore not have access to the authenticator during the unbinding process.
 
 ~~~
@@ -130,9 +225,11 @@ The RP **SHALL** notify the subscriber through an out-of-band mechanism, and **S
 
 - A new authenticator is bound to the RP subscriber account.
 - An existing bound authenticator is unbound from the RP subscriber account.
-
+</details>
+<details>
+<summary>原文</summary>
 For example, a subscriber could have a single factor cryptographic device as an authenticator. This authenticator uses name-based phishing resistance so the IdP and RP would see different keys when used in each location. The RP can use a binding ceremony as described here to allow the subscriber to use this device as a bound authenticator at FAL3. The RP will prompt the subscriber for this authenticator whenever it sees an assertion for this subscriber at FAL3 from the IdP.
-
+</details>
 #### Processing Bound Authenticators
 
 When the RP receives an assertion associated with a bound authenticator, the subscriber proves possession of the bound authenticator directly to the RP. The primary authentication at the IdP and the federated authentication at the RP are processed separately. While the subscriber could use the same authenticator during the primary authentication at the IdP and as the bound authenticator at the RP, there is no assumption that these will be the same.
