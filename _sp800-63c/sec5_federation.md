@@ -104,14 +104,14 @@ Trust agreements are able to be established either statically or dynamically. In
 In dynamic trust establishment, in contrast, the trust agreement is implicitly defined when the RP and IdP first contact each other for the purposes of a subscriber's login. The expression of the parameters of a dynamic trust agreement is driven by the federation protocol in place, and are not usually tied to a contractual agreement between the federating parties. The parameters of a dynamic trust agreement **SHALL** be disclosed to the subscriber by the RP and the IdP during the federation transaction.
 </details>
 
-信頼の合意における _authorized party_ とは，加入者(subscriber)属性のリリースを含む，信頼の合意の対象となる特定の提示の決定に責任を負う組織，人，またはエンティティである．静的な信頼の合意の場合，authorized party は IdP を担当する組織で**もよい(MAY)**．この場合，属性提示への同意は，すべての加入者(subscriber)に対して決定され，[Sec. 5.3.1](sec5_federation.md#idp-allowlist) で説明されているように許可リストによって確立される．これにより，加入者(subscriber)による直接の決定や関与なしに属性情報の開示が可能になる．静的な信頼の合意は，[Sec. 5.3.3](sec5_federation.md#idp-runtime-decision) で説明されているように，加入者(subscriber)などの個人が属性を開示することに同意するよう実行時に求められることを規定**してもよい(MAY)**． 動的な信頼の合意は加入者(subscriber)のアクションによって形成されるため，動的な信頼の合意の authorized party は常に加入者(subscriber)である．動的な信頼の合意における属性の開示は，加入者(subscriber)からの実行時の決定に従わ**なければならず(SHALL)**，IdP の許可リストに従っては**ならない(SHALL NOT)．
+信頼の合意における _authorized party_ とは，加入者(subscriber)属性のリリースを含む，信頼の合意の対象となる特定の提示の決定に責任を負う組織，人，またはエンティティである．静的な信頼の合意の場合，authorized party は IdP を担当する組織で**もよい(MAY)**．この場合，属性提示への同意は，すべての加入者(subscriber)に対して決定され，[Sec. 5.3.1](sec5_federation.md#idp-allowlist) で説明されているようにホワイトリストによって確立される．これにより，加入者(subscriber)による直接の決定や関与なしに属性情報の開示が可能になる．静的な信頼の合意は，[Sec. 5.3.3](sec5_federation.md#idp-runtime-decision) で説明されているように，加入者(subscriber)などの個人が属性を開示することに同意するよう実行時に求められることを規定**してもよい(MAY)**． 動的な信頼の合意は加入者(subscriber)のアクションによって形成されるため，動的な信頼の合意の authorized party は常に加入者(subscriber)である．動的な信頼の合意における属性の開示は，加入者(subscriber)からの実行時の決定に従わ**なければならず(SHALL)**，IdP のホワイトリストに従っては**ならない(SHALL NOT)．
 
 <details>
 <summary>原文</summary>
 The _authorized party_ in a trust agreement is the organization, person, or entity that is responsible for the specific release decisions covered by the trust agreement, including the release of subscriber attributes. For a static trust agreement, the authorized party **MAY** be the organization responsible for the IdP. In this case, consent to release attributes is decided for all subscribers and established by an allowlist as described in [Sec. 5.3.1](sec5_federation.md#idp-allowlist), allowing for the disclosure of attribute information without direct decisions and involvement by the subscriber. A static trust agreement **MAY** stipulate that an individual, such as the subscriber, is to be prompted at runtime for consent to disclose attributes as discussed in [Sec. 5.3.3](sec5_federation.md#idp-runtime-decision). Since dynamic trust agreements are established by subscriber actions, the authorized party in a dynamic trust agreement is always the subscriber. Disclosure of attributes in dynamic trust agreements **SHALL** be subject to a runtime decision from the subscriber and **SHALL NOT** be subject to an allowlist at the IdP.
 </details>
 
-たとえば, エンタープライズサービス (RP) に接続する組織 (IdP) に対して静的な信頼の合意が形成され，許可リストにある組織のすべての加入者(subscriber)が利用できるようになる場合，この信頼の合意の authorized party は組織である．加入者(subscriber)がエンタープライズサービスにログインする際に，サービスに関する実行時の決定は要求されない．これは，静的な信頼の合意によってアプリオリに確立されているためである．別のシナリオでは，同じ組織のすべての加入者(subscriber)が別のサービスを利用できるようになるが，静的な信頼協定では，加入者(subscriber)が authorized party であることが規定されている．サービスに初めてログインする際に各加入者(subscriber)は，属性を RP に提示することに同意するよう求められる．別のシナリオでは，加入者(subscriber)が RP（動的な信頼の合意をしなければIdPに知られていないRP） にアクセスしようとすると，動的な信頼の合意が暗黙的に形成される．RP は IdP から要求されているすべての属性の使用について加入者(subscriber)に通知し，IdP は加入者(subscriber)に RP に属性を提示することに同意するように求める．
+たとえば, エンタープライズサービス (RP) に接続する組織 (IdP) に対して静的な信頼の合意が形成され，ホワイトリストにある組織のすべての加入者(subscriber)が利用できるようになる場合，この信頼の合意の authorized party は組織である．加入者(subscriber)がエンタープライズサービスにログインする際に，サービスに関する実行時の決定は要求されない．これは，静的な信頼の合意によってアプリオリに確立されているためである．別のシナリオでは，同じ組織のすべての加入者(subscriber)が別のサービスを利用できるようになるが，静的な信頼協定では，加入者(subscriber)が authorized party であることが規定されている．サービスに初めてログインする際に各加入者(subscriber)は，属性を RP に提示することに同意するよう求められる．別のシナリオでは，加入者(subscriber)が RP（動的な信頼の合意をしなければIdPに知られていないRP） にアクセスしようとすると，動的な信頼の合意が暗黙的に形成される．RP は IdP から要求されているすべての属性の使用について加入者(subscriber)に通知し，IdP は加入者(subscriber)に RP に属性を提示することに同意するように求める．
 
 <details>
 <summary>原文</summary>
@@ -388,70 +388,145 @@ IdPs **SHOULD** issue pairwise pseudonymous subject identifiers to dynamically r
 Where possible, dynamic registration **SHOULD** be augmented by *software statements* anchored in their trust agreement. Software statements are lists of attributes describing the RP software, cryptographically signed by an authority (either the IdP itself, a federation authority as in [Sec. 5.1.2](sec5_federation.md#authorities), or another trusted party). Software statements allow federated parties to cryptographically verify some attributes of an RP being dynamically registered without necessarily having all of the identifying information for that RP ahead of time. This cryptographically verifiable statement allows the connection to be established or elevated between the federating parties without relying solely on self-asserted attributes. (See [[RFC7591]](references.md#ref-RFC7591) Sec. 2.3 for more information on one protocol's implementation of software statements.)
 </details>
 
-## Authentication and Attribute Disclosure
+## 認証と属性開示 (Authentication and Attribute Disclosure)
 
+IdP と RP が信頼の合意を形成し，登録を完了すると，フェデレーションプロトコルを使用して IdP から RP に加入者(subscriber)属性を渡すことができる．認証を行うことができるかどうか，または属性を渡すことができるかどうかの決定は，ホワイトリスト，ブラックリスト，または実行時の決定を使用して，信頼の合意形成時に規定された authorized party によって決定され**なければならない(SHALL)**．
+
+加入者(subscriber)の属性は，IdP と RP の間で，アイデンティティフェデレーショントランザクション，または[Sec. 5.5](sec5_federation.md#privacy-reqs)で説明されている侵害された加入者(subscriber)アカウントの識別などのサポート機能のためにのみ送信され**なければならない(SHALL)**．ホワイトリストに登録されている場合でも，加入者(subscriber)の属性を他の目的で送信してはならない．
+
+<details>
+<summary>原文</summary>
 Once the IdP and RP have entered into a trust agreement and have completed registration, the federation protocol can be used to pass subscriber attributes from the IdP to the RP. The decision of whether an authentication can occur or attributes may be passed **SHALL** be determined by the authorized party stipulated by the trust agreement, through use of an allowlist, a blocklist, or a runtime decision.
 
 A subscriber's attributes **SHALL** be transmitted between IdP and RP only for identity federation transactions or support functions such as identification of compromised subscriber accounts as discussed in [Sec. 5.5](sec5_federation.md#privacy-reqs). A subscriber's attributes are not to be transmitted for any other purposes, even when parties are allowlisted.
+</details>
 
+加入者(subscriber)の属性は，信頼の合意形成時に規定された目的以外で RP が使用し**てはならない(SHALL NOT)**．
+
+RP へ属性が送信する際には，加入者(subscriber)に通知し**なければならない(SHALL)**．authorized party が組織である場合，組織は，承認された RP のリストと，それらの RP に送信された関連する属性のセットを加入者(subscriber)が利用できるようにし**なければならない(SHALL)**．authorized party が加入者(subscriber)である場合，加入者(subscriber)は，[Sec. 5.3.3](sec5_federation.md#idp-runtime-decision) で説明されているように，IdP での実行時の決定を使用して，属性を提示する前にプロンプトを表示され**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 A subscriber's attributes **SHALL NOT** be used by the RP for purposes other than those stipulated in the trust agreement.
 
 The subscriber **SHALL** be informed of the transmission of attributes to an RP. In the case where the authorized party is the organization, the organization **SHALL** make available to the subscriber the list of approved RPs and the associated sets of attributes sent to those RPs. In the case where the authorized party is the subscriber, the subscriber **SHALL** be prompted prior to release of attributes using a runtime decision at the IdP as described in [Sec. 5.3.3](sec5_federation.md#idp-runtime-decision).
+</details>
 
+IdP は，加入者(subscriber)の苦情や問題 (たとえば，加入者(subscriber)が不正確な属性値を発見するなど) を是正するための効果的なメカニズムを提供し**なければならない(SHALL)**．救済のためのユーザビリティに関する考慮事項については，[Sec. 10](sec10_usability.md#usability)参照．
+<details>
+<summary>原文</summary>
 The IdP **SHALL** provide effective mechanisms for redress of subscriber complaints or problems (e.g., subscriber identifies an inaccurate attribute value). See [Sec. 10](sec10_usability.md#usability) on usability considerations for redress.
+</details>
 
-### IdP Allowlists of RPs {#idp-allowlist}
+### IdPにおけるRPのホワイトリスト (IdP Allowlists of RPs) {#idp-allowlist}
 
+静的な信頼の合意では，IdP は，加入者(subscriber)に実行時に確認することなしに，IdP から認証と属性を受け取ることを許可された RP のホワイトリストを確立**してもよい(MAY)**．RP をそのホワイトリストに登録する場合，IdP は，RP が SP 800-63 ガイドラインの該当するすべての規定と要件を遵守していることを保証**なければならない(SHALL)**．IdP は，認証時にホワイトリストに登録された RP に渡される 属性を決定し**なければならない(SHALL)**．IdP は，[Sec. 9.2](sec9_privacy.md#notice) で説明されているように，加入者(subscriber)がホワイトリストを利用できるようにし**なければならない(SHALL)**．
+
+IdP におけるホワイトリストは，使用中のフェデレーションプロトコルに適用可能なドメイン名，暗号鍵，またはその他の識別子を使用して，RP を一意に識別し**なければならない(SHALL)**．識別子を共有するすべてのエンティティは，ホワイトリストの目的で同等と見なさし**なければならない(SHALL)**．たとえば，ワイルドカードドメイン識別子「\*.example.com」は，「www.example.com」「service.example.com」「unknown.example.com」に等しく一致する． これら 3 つのサイトはすべて，ホワイトリストを使用した開示を決定する際に同じ RP として扱われる． ホワイトリストは，RP の意図しないなりすましを避けるため，できるだけ具体的にする**必要がある(SHOULD)**．
+
+<details>
+<summary>原文</summary>
 In a static trust agreement, IdPs **MAY** establish allowlists of RPs authorized to receive authentication and attributes from the IdP without a runtime decision from the subscriber. When placing an RP on its allowlist, the IdP **SHALL** ensure that the RP abides by all applicable provisions and requirements in the SP 800-63 guidelines. The IdP **SHALL** determine which identity attributes are passed to the allowlisted RP upon authentication. IdPs **SHALL** make allowlists available to subscribers as described in [Sec. 9.2](sec9_privacy.md#notice).
 
 IdP allowlists **SHALL** uniquely identify RPs through the means of domain names, cryptographic keys, or other identifiers applicable to the federation protocol in use. Any entities that share an identifier **SHALL** be considered equivalent for the purposes of the allowlist. For example, a wildcard domain identifier of "*.example.com" would match the domains "www.example.com", "service.example.com", and "unknown.example.com" equally. All three of these sites would be treated as the same RP for disclosure decisions using the allowlist. Allowlists **SHOULD** be as specific as possible to avoid unintentional impersonation of an RP.
+</details>
 
-### IdP Blocklists of RPs
+### IdPにおけるRPのブラックリスト (IdP Blocklists of RPs)
 
+IdP は，加入者(subscriber)によって要求された場合でも，IdP から認証アサーションまたは属性を受信することを許可されていない RP のブラックリストを確立**してもよい(MAY)**．RP が IdP のブラックリストにある場合，IdP は，いかなる状況においても，その RP をターゲットとするアサーションを生成し**てはならない(SHALL NOT)**．
+
+IdP におけるブラックリストは，使用中のフェデレーションプロトコルに適用可能なドメイン名，暗号鍵，またはその他の識別子を使用して，RP を一意に識別し**なければならない(SHALL)**．識別子を共有するすべてのエンティティは，ブラックリストの目的で同等と見なさし**なければならない(SHALL)**．たとえば，ワイルドカードドメイン識別子「\*.example.com」は，「www.example.com」「service.example.com」「unknown.example.com」に等しく一致する． これら 3 つのサイトはすべて，ブラックリストを使用する際に同じ RP として扱われる．
+
+<details>
+<summary>原文</summary>
 IdPs **MAY** establish blocklists of RPs not authorized to receive authentication assertions or attributes from the IdP, even if requested to do so by the subscriber. If an RP is on an IdP's blocklist, the IdP **SHALL NOT** produce an assertion targeting the RP in question under any circumstances.
 
 IdP blocklists **SHALL** uniquely identify RPs through the means of domain names, cryptographic keys, or other identifiers applicable to the federation protocol in use. Any entities that share an identifier **SHALL** be considered equivalent for the purposes of the blocklist. For example, a wildcard domain identifier of "*.example.com" would match the domains "www.example.com", "service.example.com", and "unknown.example.com" equally. All three of these sites would be treated as the same RP for decisions using the blocklist.
+</details>
 
-### IdP Runtime Decisions {#idp-runtime-decision}
+### IdPにおける実行時の決定 (IdP Runtime Decisions) {#idp-runtime-decision}
 
+IdP と信頼の合意を形成しているが，その IdP とのホワイトリストまたはブラックリストには含まれていないすべての RP は，IdPのデフォルトポリシーによって判断され**なければならない(SHALL)**．このポリシーでは，実行時の承認の決定は，信頼の合意時に規定された authorized party によって行われる．ほとんどの場合，実用上，authorized party は加入者(subscriber)である． ただし，加入者(subscriber)に代わって，管理者またはその他の関係者に確認される場合もある．動的な信頼の合意では，注記：属性の提示を承認できるのは実行時の決定のみである．
+
+<details>
+<summary>原文</summary>
 Every RP that is in a trust agreement with an IdP but not on an allowlist or a blocklist with that IdP **SHALL** be governed by a default policy in which runtime authorization decisions will be made by an authorized party identified by the trust agreement. In most circumstances, and for practical purposes, the authorized party is the subscriber; however, it is possible for an administrator or other party to be prompted on behalf of the subscriber. Note that in a dynamic trust agreement, only a runtime decision can be used to authorize the release of attributes.
+</details>
 
+この操作モードでは，認証アサーションを提供し，加入者(subscriber)に代わって RP に特定の属性を提示することに同意するために，フェデレーショントランザクション中に authorized party が IdP によって確認を求められる．IdP は，加入者(subscriber)に関する属性が RP に送信される前に，authorized party に明示的な通知を出し，肯定的な確認をし**なければならない(SHALL)**．少なくとも，通知は，[Sec. 9.2](sec9_privacy.md#notice) に記載されている通り，最も効果的な通知を提供し，確認結果を得る立場にある当事者によって提供される**必要がある(SHOULD)**．IdP は，トランザクションが承認された場合に RP に提示される属性を開示し**なければならない(SHALL)**．使用中のフェデレーションプロトコルが実行時にオプションの属性開示を許可する場合，authorized party には，フェデレーショントランザクションを完全に終了することなく，特定の属性を RP に送信するかどうかを決定するオプションが与えられ**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 In this mode of operation, the authorized party is prompted by the IdP during the federation transaction for their consent to provide an authentication assertion and release specific attributes to the RP on behalf of the subscriber. The IdP **SHALL** provide the authorized party with explicit notice and prompt them for positive confirmation before any attributes about the subscriber are transmitted to the RP. At a minimum, the notice **SHOULD** be provided by the party in the position to provide the most effective notice and obtain confirmation, consistent with [Sec. 9.2](sec9_privacy.md#notice). The IdP **SHALL** disclose which attributes will be released to the RP if the transaction is approved. If the federation protocol in use allows for optional attribute disclosure at runtime, the authorized party **SHALL** be given the option to decide whether to transmit specific attributes to the RP without terminating the federation transaction entirely.
+</details>
 
+機密情報が許可なく公開される (ショルダーサーフィンなど) リスクを軽減するために，IdP はデフォルトで，authorized party に表示される機密情報をマスクし**なければならない(SHALL)**．authorized party が加入者(subscriber)である場合，IdP は，加入者(subscriber)が送信前に完全な値を表示できるように，加入者(subscriber)が一時的にマスク解除するメカニズムを提供し**なければならない(SHALL)**．マスキングの詳細については，ユーザビリティの考慮事項に関する[Sec. 10](sec10_usability.md#usability)を参照．
+
+IdP は，authorized party の決定を記録しておき，同じ属性のセットを同じ RP に再送信するメカニズムを採用**してもよい(MAY)**．このメカニズムは，IdP によって管理される加入者(subscriber)アカウントに関連付けられる．そのようなメカニズムが提供される場合，IdP は，authorized partyが将来そのような記録されたアクセスを取り消すことを許可し**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 To mitigate the risk of unauthorized exposure of sensitive information (e.g., shoulder surfing), the IdP **SHALL**, by default, mask sensitive information displayed to the authorized party. If the authorized party is the subscriber, the IdP **SHALL** provide mechanisms for the subscriber to temporarily unmask such information in order for the subscriber to view full values before transmission. For more details on masking, see [Sec. 10](sec10_usability.md#usability) on usability considerations.
 
 An IdP **MAY** employ mechanisms to remember and re-transmit the exact attribute bundle to the same RP, remembering the authorized party's decision. This mechanism is associated with the subscriber account as managed by the IdP. If such a mechanism is provided, the IdP **SHALL** allow the authorized party to revoke such remembered access at a future time.
+</details>
 
-### RP Allowlists of IdPs
+### RPにおけるIdPのホワイトリスト (RP Allowlists of IdPs)
 
+RP は，実行時に加入者(subscriber)に確認することなしに，RP が認証と属性を受け入れる IdP のホワイトリストを確立**してもよい(MAY)**．IdP をホワイトリストに登録する場合，RP は，IdP がガイドラインの規定と要件を遵守していることを確認し**なければならない(SHALL)**．
+
+RP におけるホワイトリストは，使用中のフェデレーションプロトコルに適用可能なドメイン名，暗号鍵，またはその他の識別子を使用して IdP を一意に識別し**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 RPs **MAY** establish allowlists of IdPs from which the RP will accept authentication and attributes without a runtime decision from the subscriber. When placing an IdP in its allowlist, the RP **SHALL** ensure that the IdP abides by the provisions and requirements in these guidelines.
 
 RP allowlists **SHALL** uniquely identify IdPs through the means of domain names, cryptographic keys, or other identifiers applicable to the federation protocol in use.
+</details>
 
-### RP Blocklists of IdPs
+### RPにおけるIdPのブラックリスト (RP Blocklists of IdPs)
 
+RP は，加入者(subscriber)によって要求された場合でも，RP が認証または属性を受け入れない IdP のブロックリストを確立**してもよい(MAY)**．ブロックリストに登録された IdP は，RP との有効な信頼の合意を形成している場合もある．たとえば，両方が同じ federation authority の下にある場合など．
+
+RP におけるブロックリストは，使用中のフェデレーションプロトコルに適用可能なドメイン名，暗号化鍵，またはその他の識別子を使用して IdP を一意に識別し**なければならない(SHALL)**．
+
+<details>
+<summary>原文</summary>
 RPs **MAY** also establish blocklists of IdPs that the RP will not accept authentication or attributes from, even when requested by the subscriber. A blocklisted IdP can be otherwise in a valid trust agreement with the RP, for example if both are under the same federation authority.
 
 RP blocklists **SHALL** uniquely identify IdPs through the means of domain names, cryptographic keys, or other identifiers applicable to the federation protocol in use.
+</details>
 
-### RP Runtime Decisions {#rp-runtime-decision}
+### RPにおける実行時の決定 (RP Runtime Decisions) {#rp-runtime-decision}
 
+RP と信頼の合意を形成しているが，RP のホワイトリストまたはブロックリストには含まれていないすべての IdP は，デフォルトポリシーによって管理され**なければならない(SHALL)**．この場合RPは，authorized partyに，加入者(subscriber)に代わって認証のためにどの IdP に接続するか，選択または入力するよう要求する．このプロセスは，加入者(subscriber)が電子メールアドレスなどのhuman-facing な識別子を入力できるようにする discovery のメカニズムを使用することで行うことができる．このプロセスにより，RP はその識別子に適した IdP をプログラムで選択できるようになる．
+
+<details>
+<summary>原文</summary>
 Every IdP that is in a trust agreement with an RP but not on an allowlist or a blocklist with that RP **SHALL** be governed by a default policy in which runtime authorization decisions will be made by the authorized party indicated in the trust agreement. In this mode, the authorized party is prompted by the RP to select or enter which IdP to contact for authentication on behalf of the subscriber. This process can be facilitated through use of a discovery mechanism allowing the subscriber to enter a human-facing identifier such as an email address. This process allows the RP to programmatically select the appropriate IdP for that identifier.
+</details>
 
+RP は，authorized party が特定の IdP を使用することを決定したことを記録するメカニズムを採用し**てもよい(MAY)**．このメカニズムは RP での認証の前に使用されるため，RP がこのメカニズムを提供する方法（たとえば，認証されたセッション外のブラウザー Cookieなど）は，[Sec. 5.4](sec5_federation.md#rp-account) で説明されている RPの加入者(subscriber)アカウントとは別のものである．そのようなメカニズムが提供される場合，RP は，authorized party が将来そのような記録されたオプションを取り消すことを許可し**なければならない(SHALL)**．
+<details>
+<summary>原文</summary>
 The RP **MAY** employ mechanisms to remember the authorized party's decision to use a given IdP. Since this mechanism is employed prior to authentication at the RP, the manner in which the RP provides this mechanism (e.g., a browser cookie outside the authenticated session) is separate from the RP subscriber account described in [Sec. 5.4](sec5_federation.md#rp-account). If such a mechanism is provided, the RP **SHALL** allow the authorized party to revoke such remembered options at a future time.
+</details>
 
 ## RP Subscriber Accounts {#rp-account}
-
+<details>
+<summary>原文</summary>
 It is common for an RP to keep a record representing a subscriber local to the RP itself, known as the *RP subscriber account*. The RP subscriber account can contain things like access rights at the RP as well as a cache of identity attributes for the subscriber. An active RP subscriber account is bound to one or more federated identifiers from the RP's trusted IdPs. Successful authentication of one of these federated identifiers through a federation protocol allows the subscriber to access the information and functionality protected by the RP subscriber account.
 
 An RP subscriber account is _provisioned_ when the RP has associated a set of attributes about the subscriber with a data record representing the subscriber account at the RP. The RP subscriber account **SHALL** be bound to at least one federated identifier, and a given federated identifier is bound to only one RP subscriber account at a given RP. The provisioning can happen prior to authentication or as a result of the federated authentication process, depending on the deployment patterns as discussed in [Sec. 5.4.1](sec5_federation.md#provisioning). Prior to being provisioned, the RP subscriber account does not exist and has no associated data record at the RP.
-
+<details>
+<summary>原文</summary>
 An RP subscriber account is _terminated_ when the RP removes all access to the account at the RP. Termination **SHALL** include unbinding any federated identifiers and bound authenticators as well as removing attributes and information associated with the account except what is required for auditing and security purposes. An RP **MAY** terminate an RP subscriber account independently from the IdP for a variety of reasons, regardless of the current validity of the subscriber account from which it is derived.
 
 An authenticated session **SHALL** be created by the RP only when the RP has processed and verified a valid assertion from the IdP that is the issuer of the federated identifier associated with the RP subscriber account. If the assertion also requires presentation of a bound authenticator at FAL3, the bound authenticator **SHALL** also be presented and processed before the RP subscriber account is associated with an authenticated session, as discussed in [Sec. 6.1.2](sec6_assertions.md#boundauth). Before the federated assertion is processed and after termination of the authenticated session, the RP subscriber account is unauthenticated though it could still be provisioned.
 
 ### Provisioning Models {#provisioning}
-
+<details>
+<summary>原文</summary>
 The lifecycle of the provisioning process for an RP subscriber account varies depending on factors including the trust agreement discussed in [Sec. 5.1](sec5_federation.md#trust-agreement) and the deployment pattern of the IdP and RP. However, in all cases, the RP subscriber account **SHALL** be provisioned at the RP prior to the establishment of an authenticated session at the RP in one of the following ways:
 
 Just-In-Time Provisioning
@@ -467,7 +542,8 @@ This is the most common form of provisioning in federation systems, as it requir
 \clearpage
 ~~~
 {:latex-literal="true"}
-
+<details>
+<summary>原文</summary>
 Pre-provisioning
 : An RP subscriber account is created by the IdP pushing the attributes to the RP or the RP pulling attributes from the IdP. Pre-provisioning of accounts generally occurs in bulk through a provisioning API as discussed in [Sec. 5.4.3](sec5_federation.md#provisioning-api), as the provisioning occurs prior to the represented subscribers authenticating through a federated transaction. Pre-provisioned accounts **SHALL** be bound to a federated identifier at the time of provisioning. Any time a particular federated identifier is seen by the RP, the associated account can be logged in as a result. 
 This form of provisioning requires infrastructure and planning on the part of the IdP and RP, but these processes can be facilitated by automated protocols. The RP also collects attributes about users who have not interacted with the RP system yet, which can cause privacy issues. Additionally, the IdP and RP must keep the set of provisioned accounts synchronized over time as discussed in [Sec. 5.4.2](sec5_federation.md#attribute-sync).
@@ -481,7 +557,8 @@ This form of provisioning requires infrastructure and planning on the part of th
 \clearpage
 ~~~
 {:latex-literal="true"}
-
+<details>
+<summary>原文</summary>
 Ephemeral
 : An RP subscriber account is created when processing the assertion, but then the RP subscriber account is terminated when the authenticated session ends. This process is similar to a just-in-time provisioning, but the RP keeps no long-term record of the account when the session is complete, except what is required for audit and security purposes (such as access logs).
 This form of provisioning is useful for RPs that fully externalize access rights to the IdP, allowing the RP to be more simplified with less internal state. However, this pattern is not common because even the simplest RPs tend to have a need to track state within the application or at least keep a record of actions associated with the federated identifier.
@@ -490,69 +567,83 @@ This form of provisioning is useful for RPs that fully externalize access rights
 {:latex-ignore="true"}
 
 ![Diagram of the stages of an ephemeral RP subscriber account based on a subscriber account.]({{site.baseurl}}/{{page.collection}}/media/Ephemeral-provisioning.png 'Ephemeral Provisioning'){:latex-src="Ephemeral-provisioning.pdf" latex-fig="8" latex-place="h"}
-
+<details>
+<summary>原文</summary>
 Other
 : Other RP subscriber account provisioning models are possible but the details of such models are outside the scope of these guidelines. The details of any alternative provisioning model **SHALL** be included in the privacy risk assessments of the IdP and RP.
 
 All organizations **SHALL** document their provisioning model as part of their trust agreement.
 
 ### Attribute Synchronization {#attribute-sync}
-
+<details>
+<summary>原文</summary>
 In a federated process, the IdP and RP each have their own stores of identity attributes associated with the subscriber account. The IdP has a direct view of the subscriber account, but the RP subscriber account is derived from a subset of attributes from the subscriber account that are presented during the federation transaction. Therefore, it is possible for the IdP's and RP's attribute stores to diverge from with each other over time.
 
 From the RP's perspective, the IdP is the authoritative source for any attributes that the IdP asserts as being associated with the subscriber account at the IdP. However, the RP **MAY** additionally collect, and optionally verify, other attributes to associate with the RP subscriber account. Sometimes, these attributes can even override what's asserted by the IdP. For example, if an IdP asserts a full display name for the subscriber, the RP can allow the subscriber to provide an alternative preferred name for use at the RP.
-
+<details>
+<summary>原文</summary>
 The IdP **SHOULD** signal downstream RPs when the attributes of a subscriber account available to the RP have been updated. This can be accomplished using shared signaling as described in [Sec. 5.7](sec5_federation.md#shared-signals), through a provisioning API as described in [Sec. 5.4.3](sec5_federation.md#provisioning-api), or by providing a signal in the assertion (e.g., a timestamp indicating when relevant attributes were last updated, allowing the RP to determine that its cache is out of date).
 
 The IdP **SHOULD** signal downstream RPs when a subscriber account is terminated, or when the subscriber account's access to an RP is revoked. This can be accomplished using shared signaling as described in [Sec. 5.7](sec5_federation.md#shared-signals) or through a provisioning API as described in [Sec. 5.4.3](sec5_federation.md#provisioning-api). Upon receiving such a signal, the RP **SHALL** terminate the RP subscriber account and remove all personal information associated with the RP subscriber account, except what is required for audit and security purposes.
 
 ### Provisioning APIs {#provisioning-api}
-
+<details>
+<summary>原文</summary>
 As part of some proactive forms of provisioning, the RP can be given access to subscriber attributes through a general-purpose attribute API known as a _provisioning API_. This type of API allows an IdP to push attributes for a range of subscriber accounts, and sometimes allows an RP to query the attributes of these subscriber accounts directly. Since access to the API is granted outside the context of a federated transaction, access to the provisioning API for a given subscriber does not indicate to the RP that a given subscriber has been authenticated. See [Sec. 6, Assertions](sec6_assertions.md#assertions) for more information on how the federated authentication process is accomplished using assertions.
-
+<details>
+<summary>原文</summary>
 The attributes in the provisioning API available to a given RP **SHALL** be limited to only those necessary for the RP to perform its functions. As part of establishing the trust agreement, the IdP **SHALL** document when an RP is given access to a provisioning API including at least the following:
 
 - the purpose for the access using the provisioning model;
 - the set of attributes made available to the RP;
 - whether the API functions as a push to the RP, a pull from the RP, or both; and
 - the population of subscribers whose attributes are made available to the RP.
-
+<details>
+<summary>原文</summary>
 The IdP **SHALL** require authentication from the RP for any pull-based access to a provisioning API. The RP **SHALL** require authentication from the IdP for any push-based access to a provisioning API.
 
 A provisioning API **SHALL NOT** be made available under a dynamic or implicit trust agreement. The IdP **SHALL NOT** make a provisioning API available to any RP outside of an established trust agreement. The IdP **SHALL** provide access to a provisioning API only as part of a federated identity relationship with an RP to facilitate federated transactions with that RP and related functions such as signaling revocation of the subscriber account. The IdP **SHALL** revoke an RP's access to the provisioning API once access is no longer required by the RP for its functioning purposes or when the trust agreement is terminated.
-
+<details>
+<summary>原文</summary>
 Any provisioning API provided to the RP **SHALL** be under the control and jurisdiction of the IdP. External attribute providers **MAY** be used as information sources by the IdP to provide attributes through this provisioning API, but the IdP is responsible for the content and accuracy of the information provided by the referenced attribute providers.
 
 When a provisioning API is in use, the IdP **SHALL** signal to the RP when a subscriber account has been terminated. When receiving such a signal, the RP **SHALL** terminate the associated RP subscriber account.
 
 ### Attribute Collection {#rp-attribute-collection}
-
+<details>
+<summary>原文</summary>
 The RP **MAY** collect and maintain additional attributes from the subscriber beyond those provided by the IdP. These attributes are governed separately from any federation agreement since they are collected directly by the RP. All attributes associated with an RP subscriber account, regardless of their source, **SHALL** be removed when the RP subscriber account is terminated.
-
+<details>
+<summary>原文</summary>
 The RP **SHALL** disclose to the subscriber the purpose for collection of any additional attributes. These attributes **SHALL** be used solely for the stated purposes of the RP's functionality and **SHALL NOT** have any secondary use, including communication of said attributes to other parties.
 
 An RP **SHALL** disclose any additional attributes collected, and their use, as part of its System of Records Notice (SORN). The RP **SHALL** provide an effective means of redress for the subscriber to update and remove these additionally-collected attributes from the RP subscriber account. See [Sec. 10](sec10_usability.md#usability) on usability considerations for redress.
 
 ### Time-based Removal of RP Subscriber Accounts {#stale-account}
-
+<details>
+<summary>原文</summary>
 Over time, an RP could accumulate RP subscriber accounts that are no longer accessible from the IdP. This poses a risk to the RP for holding personal information in the RP subscriber accounts, especially when a just-in-time provisioning model is in use and no shared signaling is available from the IdP to signal subscriber account termination as discussed in [Sec. 5.7](sec5_federation.md#shared-signals). In such circumstances, the RP **SHOULD** employ a time-based mechanism to identify RP subscriber accounts for termination that have not been accessed after a period of time, for example, 120 days since last access.
 
 When processing such an inactive account, the RP **SHALL** provide sufficient notice to the subscriber, if possible, about the pending termination of the account and provide the subscriber with an option to re-activate the account prior to its scheduled termination. Upon termination, the RP **SHALL** remove all personal information associated with the RP subscriber account, except what is required for audit and security purposes.
 
 ## Privacy Requirements {#privacy-reqs}
-
+<details>
+<summary>原文</summary>
 The ultimate goal of a subscriber is to interact with and use the RP. Federation involves the transfer of personal attributes from a third party that is not otherwise involved in a transaction &mdash; the IdP. Federation also potentially gives the IdP broad visibility into subscriber activities and status. Accordingly, there are specific privacy requirements associated with federation.
 
 Communication between the RP and the IdP could reveal to the IdP where the subscriber is conducting a transaction. Communication with multiple RPs allows the IdP to build a profile of subscriber transactions that would not have existed without federation. This aggregation could enable new opportunities for subscriber tracking and use of profile information that do not always align with subscribers' privacy interests.
-
+<details>
+<summary>原文</summary>
 If an IdP discloses information on subscriber activities at an RP to any party, or processes the subscriber's attributes for any purpose other than identity proofing, authentication, or attribute assertions (collectively "identity service"), related fraud mitigation, to comply with law or legal process, or, in the case of a specific user request, to transmit the information, the IdP **SHALL** implement measures to maintain predictability and manageability commensurate with the privacy risk arising from the additional processing. Measures **MAY** include providing clear notice, obtaining subscriber consent, or enabling selective use or disclosure of attributes. When an IdP uses consent measures, the IdP **SHALL NOT** make consent for the additional processing a condition of the identity service.
 
 If the same subscriber account is asserted to multiple RPs, and those RPs communicate with each other, the colluding RPs could track a subscriber's activity across multiple applications and security domains. The IdP **SHOULD** employ technical measures, such as the use of pairwise pseudonymous identifiers described in [Sec. 6.2.5](sec6_assertions.md#ppi) or privacy-enhancing cryptographic protocols, to provide disassociability and discourage subscriber activity tracking and profiling between RPs.
-
+<details>
+<summary>原文</summary>
 An IdP **MAY** disclose information on subscriber activities to RPs for security purposes, such as communication of suspicious activity or a compromised subscriber account as described in [Sec. 5.7](sec5_federation.md#shared-signals), if stated within the trust agreement. An RP **MAY** disclose information on subscriber activities to IdPs for security purposes, such as communication of suspicious activity or a compromised RP subscriber account, if stated within the trust agreement.
 
 An IdP **SHOULD** signal subscriber account termination to RPs that have been provisioned with federated identifiers bound to that subscriber account using shared signaling as discussed in [Sec. 5.7](sec5_federation.md#shared-signals). RPs that receive such a signal from the IdP **SHALL** terminate the RP subscriber account and remove all personal information associated with the RP subscriber account, except what is required for audit and security purposes.
-
+<details>
+<summary>原文</summary>
 The following requirements apply specifically to federal agencies:
 
 1. The agency **SHALL** consult with their Senior Agency Official for Privacy (SAOP) to conduct an analysis determining whether the requirements of the Privacy Act are triggered by the agency that is acting as an IdP, by the agency that is acting as an RP, or both (see [Sec. 9.4](sec9_privacy.md#agency-privacy)).
@@ -562,7 +653,8 @@ The following requirements apply specifically to federal agencies:
 3. The agency **SHALL** consult with their SAOP to conduct an analysis determining whether the requirements of the E-Government Act are triggered by the agency that is acting as an IdP, the agency that is acting as an RP, or both.
 
 4. The agency **SHALL** publish or identify coverage by a Privacy Impact Assessment (PIA) as applicable.
-
+<details>
+<summary>原文</summary>
 If the RP subscriber account lifecycle process gives the RP access to attributes through a provisioning API as discussed in [Sec. 5.4.3](sec5_federation.md#provisioning-api), additional privacy measures **SHALL** be implemented given the wide nature of information access. Specifically, it is possible for the attributes of a subscriber to be provided to an RP without the subscriber ever interacting with the RP in question. As a consequence, when a provisioning API is used, the IdP **SHALL** minimize the attributes made available to the RP. To prevent the transmission of attributes for users that will never use an RP, the IdP **SHALL** limit the population of subscriber accounts available via the provisioning API to the population of subscribers authorized to use the RP by the trust agreement.
 
 ##  Reauthentication and Session Requirements in Federated Environments {#federation-session}
