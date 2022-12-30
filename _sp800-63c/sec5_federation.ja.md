@@ -479,7 +479,7 @@ This is the most common form of provisioning in federation systems, as it requir
 [図6. Just-In-Time Provisioning](sec5_federation.md#fig-6){:name="fig-6"}
 {:latex-ignore="true"}
 
-![Diagram of the stages of a just-in-time provisioning of an RP subscriber account based on a subscriber account.]({{site.baseurl}}/{{page.collection}}/media/JIT-provisioning.png 'Just-In-Time Provisioning'){:latex-src="JIT-provisioning.pdf" latex-fig="6" latex-place="h"}
+![Diagram of the stages of a just-in-time provisioning of an RP subscriber account based on a subscriber account.]({{site.baseurl}}/{{page.collection}}/media/JIT-Provisioning.png 'Just-In-Time Provisioning'){:latex-src="JIT-provisioning.pdf" latex-fig="6" latex-place="h"}
 
 ~~~
 \clearpage
@@ -498,7 +498,7 @@ This form of provisioning requires infrastructure and planning on the part of th
 [図7. Pre-Provisioning](sec5_federation.md#fig-7){:name="fig-7"}
 {:latex-ignore="true"}
 
-![Diagram of the stages of a pre-provisioned RP subscriber account based on a subscriber account.]({{site.baseurl}}/{{page.collection}}/media/Pre-provisioning.png 'Pre-Provisioning'){:latex-src="Pre-provisioning.pdf" latex-fig="7" latex-place="h"}
+![Diagram of the stages of a pre-provisioned RP subscriber account based on a subscriber account.]({{site.baseurl}}/{{page.collection}}/media/Pre-Provisioning.png 'Pre-Provisioning'){:latex-src="Pre-provisioning.pdf" latex-fig="7" latex-place="h"}
 
 ~~~
 \clearpage
