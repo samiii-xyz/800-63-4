@@ -1,14 +1,14 @@
 ---
 layout: default.ja
-title: Federation
+title: フェデレーション
 navOrder: 5
-navTitle: Federation
+navTitle: フェデレーション
 permalink: /sp800-63c/federation/
 anchor: federation
 section: 5
 ---
 
-# Federation {#federation}
+# フェデレーション (Federation) {#federation}
 
 *This section is normative.*
 

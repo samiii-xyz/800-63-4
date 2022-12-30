@@ -1,8 +1,8 @@
 ---
 layout: default.ja
-title: Assertion Presentation
+title: アサーションの提示
 navOrder: 7
-navTitle: Presentation
+navTitle: アサーションの提示
 permalink: /sp800-63c/presentation/
 anchor: presentation
 section: 7

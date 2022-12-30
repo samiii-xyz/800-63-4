@@ -1,13 +1,13 @@
 ---
 layout: default.ja
-title: Definitions
+title: 定義と略語
 navOrder: 3
-navTitle: Definitions
+navTitle: 定義と略語
 permalink: /sp800-63c/definitions/
 anchor: definitions
 section: 3
 ---
 
-# Definitions and Abbreviations {#definitions}
+# 定義と略語 (Definitions and Abbreviations) {#definitions}
 
 See [[SP800-63]](../_sp800-63/definitions.md#def-and-acr){:latex-href="#ref-SP800-63"}, Appendix A for a complete set of definitions and abbreviations.

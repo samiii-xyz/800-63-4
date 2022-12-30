@@ -1,14 +1,14 @@
 ---
 layout: default.ja
-title: Introduction
+title: はじめに
 navOrder: 2
-navTitle: Introduction
+navTitle: はじめに
 permalink: /sp800-63c/introduction/
 anchor: introduction
 section: 2
 ---
 
-# Introduction {#introduction}
+# はじめに (Introduction) {#introduction}
  
 *This section is informative.*
 

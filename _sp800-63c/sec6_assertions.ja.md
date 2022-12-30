@@ -1,8 +1,8 @@
 ---
 layout: default.ja
-title: Assertions
+title: アサーション
 navOrder: 6
-navTitle: Assertions
+navTitle: アサーション
 permalink: /sp800-63c/assertions/
 anchor: assertions
 section: 6

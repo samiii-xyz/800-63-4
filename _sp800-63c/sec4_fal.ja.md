@@ -1,6 +1,6 @@
 ---
 layout: default.ja
-title: Federation Assurance Level
+title: フェデレーション保証レベル
 navOrder: 4
 navTitle: FAL
 permalink: /sp800-63c/fal/
@@ -8,7 +8,7 @@ anchor: fal
 section: 4
 ---
 
-# Federation Assurance Level (FAL) {#fal}
+# フェレデーション保証レベル (Federation Assurance Level (FAL)) {#fal}
 
 *This section is normative.*
 
