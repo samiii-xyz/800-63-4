@@ -13,11 +13,9 @@ section: 4
 *This section is normative.*
 
 この章では，*フェデレーション保証レベル* (FAL) を定義する．FAL は，IdP と RP の間の関係を確立する方法や，アサーションを提示・保護する方法など，フェデレーショントランザクションを保護するための要件を示している．これらのレベルは，実行時に RP によって要求されるか，特定のトランザクションにおける RP と IdP の両方の configuration によって要求される． FAL は，アサーションを受け取る RP に対する保証と，RP が利用するアサーションを作成する IdP に対する保証を提供する．
-<details>
-<summary>▶ 原文</summary>
+```
 This section defines allowable *federation assurance levels* (FALs). The FAL describes requirements for securing federation transactions, including requirements on how relationships between IdPs and RPs are established and how assertions are presented and protected. These levels can be requested by an RP at runtime or required by the configuration of both the RP and the IdP for a given transaction. The FAL provides assurances for the RP receiving the assertion as well as assurances for the IdP creating the assertion to be used by an RP.
-</details>
-
+```
 
 多くの異なるフェデレーション実装オプションが可能である中，FAL は，より安全な展開オプションを表す明確なガイダンスを提供することを目的としている．最も適切な FAL を選択する方法の詳細については、[[SP800-63]](../_sp800-63/sec1_purpose.md#purpose){:latex-href="#ref-SP800-63"} を参照．
 <details>
