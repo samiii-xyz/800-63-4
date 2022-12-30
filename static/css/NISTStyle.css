@@ -651,6 +651,7 @@ blockquote{
 	margin:0 0 20px;
 	font-size:8px;
 	border-left:5px solid #eee;
+	line-height:1.4;
 	color:#999
 }
 
