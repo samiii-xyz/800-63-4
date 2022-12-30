@@ -3,7 +3,7 @@ layout: default.ja
 title: Equity Considerations
 navOrder: 11
 navTitle: Equity
-permalink: /sp800-63c/equity/
+permalink: /ja/sp800-63c/equity/
 anchor: equity
 section: 11
 ---

@@ -3,7 +3,7 @@ layout: default.ja
 title: Examples
 navOrder: 12
 navTitle: Examples
-permalink: /sp800-63c/examples/
+permalink: /ja/sp800-63c/examples/
 anchor: examples
 section: 12
 ---

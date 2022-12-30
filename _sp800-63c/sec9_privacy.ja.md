@@ -3,7 +3,7 @@ layout: default.ja
 title: Privacy
 navOrder: 9
 navTitle: Privacy
-permalink: /sp800-63c/privacy/
+permalink: /ja/sp800-63c/privacy/
 anchor: privacy
 section: 9
 ---

@@ -3,7 +3,7 @@ layout: default.ja
 title: Security
 navOrder: 8
 navTitle: Security
-permalink: /sp800-63c/security/
+permalink: /ja/sp800-63c/security/
 anchor: security
 section: 8
 ---

@@ -4,7 +4,7 @@ title: "NIST SP 800-63 Digital Identity Guidelines"
 description: "NIST Special Publication 800-63 Digital Identity Guidelines"
 permalink: /
 ---
-<meta http-equiv="refresh" content="0; url=/ja/" />
+<meta http-equiv="refresh" content="0; url=ja/" />
 
 ## Call for Comments on Initial Public Draft of Revision 4
 

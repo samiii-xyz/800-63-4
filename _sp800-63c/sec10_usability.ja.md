@@ -3,7 +3,7 @@ layout: default.ja
 title: Usability
 navOrder: 10
 navTitle: Usability
-permalink: /sp800-63c/usability/
+permalink: /ja/sp800-63c/usability/
 anchor: usability
 section: 10
 ---

@@ -3,7 +3,7 @@ layout: default.ja
 title: References
 navOrder: 13
 navTitle: References
-permalink: /sp800-63c/references/
+permalink: /ja/sp800-63c/references/
 anchor: references
 ---
 # References {#references}

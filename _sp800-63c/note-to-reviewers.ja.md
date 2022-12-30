@@ -4,7 +4,7 @@ title: "Note to Reviewers"
 description: "Note to Reviewers"
 navOrder: 0.5
 navTitle: Reviewers
-permalink: /sp800-63c/reviewers/
+permalink: /ja/sp800-63c/reviewers/
 anchor: reviewers
 ---
 

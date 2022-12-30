@@ -4,7 +4,7 @@ title: "SP 800-63C"
 description: "SP 800-63C"
 navOrder: 0
 navTitle: Abstract
-permalink: /sp800-63c/abstract/
+permalink: /ja/sp800-63c/abstract/
 anchor: abstract
 ---
 
