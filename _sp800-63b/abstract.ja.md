@@ -1,10 +1,10 @@
 ---
 layout: default.ja
-title: "SP 800-63C"
-description: "SP 800-63C"
+title: "SP 800-63B"
+description: "SP 800-63B"
 navOrder: 0
 navTitle: Abstract
-permalink: /sp800-63c/abstract/
+permalink: /sp800-63b/abstract/
 anchor: abstract
 ---
 
