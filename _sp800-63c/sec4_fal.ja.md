@@ -20,49 +20,42 @@ section: 4
 > While many different federation implementation options are possible, the FAL is intended to provide clear guidance representing increasingly secure deployment options. See [[SP800-63]](../_sp800-63/sec1_purpose.md#purpose){:latex-href="#ref-SP800-63"} for details on how to choose the most appropriate FAL.
 
 
-
 各 FAL は，FAL が増加するにつれてセキュリティと複雑さが増す一連の要件によって特徴付けられる．これらの要件は以下にリストされており，本書の他のセクションで展開される．
 > Each FAL is characterized by a set of requirements that increase the security and complexity as the FAL increases. These requirements are listed here and expanded in other sections of this document:
 
 
-
 暗号の検証可能性
 : フェデレーションプロトコルで提示されたアサーションは，それを発行した特定の IdP まで追跡可能であり，その接続はデジタル署名や MAC などの暗号化メカニズムで検証可能である．これにより，RP は，アサーションが変更または偽造されていないことを確認することも可能である．本項目は，すべての FAL で必須である．
+
 > Cryptographic Verifiability
- : The assertion presented in the federation protocol is traceable back to a specific IdP that issued it, and that connection can be verified with a cryptographic mechanism such as a digital signature or MAC. This also allows the RP to verify that the assertion was not modified or forged. This is required at all FALs.
-
-
+> : The assertion presented in the federation protocol is traceable back to a specific IdP that issued it, and that connection can be verified with a cryptographic mechanism such as a digital signature or MAC. This also allows the RP to verify that the assertion was not modified or forged. This is required at all FALs.
 
 対象者（Autience） の制約
 : フェデレーションプロトコルで提示されるアサーションは特定の RP を対象としており，RP はアサーションの対象者であることを確認することができる．本項目は，すべての FAL で必須である．
+
 > Audience Restriction
 >: The assertion presented in the federation protocol is targeted to a specific RP and the RP can verify that it is the intended audience of the assertion. This is required at all FALs.
-
-
 
 インジェクション保護
 : RP は，現在のフェデレーショントランザクションリクエスト以外の状況でアサーションを提示する攻撃者から強力に保護される．
 >  Injection Protection
 > : The RP is strongly protected from an attacker presenting an assertion in circumstances outside a current federation transaction request.
 
-
-
 信頼の合意(Trust Agreement)
 : IdP と RP は，加入者（subscriber）が RP にログインする目的で，相互にフェデレーショントランザクションに参加することに同意する．これは，当事者間の静的な合意にまでさかのぼる，あるいは，接続自体から暗黙的に発生する可能性がある．
+
 > Trust Agreement
 > : The IdP and RP have agreed to participate in a federation transaction with each other for the purposes of logging in the subscriber to the RP. This can be traced back to a static agreement between the parties or occur implicitly from the connection itself.
 
-
-
 登録
 : IdP と RP は，将来のフェデレーショントランザクション中にアサーションやその他のアーティファクトを検証できるように，識別子とキー マテリアルを交換する．
+
 > Registration
 > : The IdP and RP have exchanged identifiers and key material to allow for the verification of assertions and other artifacts during future federation transactions.
 
-
-
 提示
 : アサーションは，単独で（ベアラ アサーションとして）RP に提示することも，加入者（subscriber）によって提示された bound authenticator と連携して提示することもできる．
+
 > Presentation
 > : The assertion can be presented to the RP either on its own (as a bearer assertion) or in concert with a bound authenticator presented by the subscriber.
 
@@ -80,18 +73,16 @@ section: 4
 {:latex-table="1" latex-caption="Federation Assurance Levels" latex-columns="p@0.05\textwidth,p@0.16\textwidth,p@0.13\textwidth,p@0.15\textwidth,p@0.25\textwidth"}
 
 > [Table 1](sec4_fal.md#table-1) provides a non-normative summary of aspects for each FAL. Each successive level subsumes and fulfills all requirements of lower levels (e.g., a federation process at FAL3 can be accepted at FAL2 or FAL1 since FAL3 satisfies all the requirements of these lower levels). Combinations not found in the [Table 1](sec4_fal.md#table-1) are possible but outside the scope of this volume.
-
+> 
 > [Table 1 Federation Assertion Levels](sec4_fal.md#table-1){:name="table-1"}
 > {:latex-ignore="true"}
-
+> 
 > |FAL|Injection Protection|Trust Agreement|Registration|Presentation|
 > |:--:|----|----|----|----|----|----|
 > |1|Recommended|Dynamic or Static|Dynamic or Static|Bearer Assertion|
 > |2|Required|Static|Dynamic or Static|Bearer Assertion|
 > |3|Required|Static|Static|Assertion and Bound Authenticator|
 > {:latex-table="1" latex-caption="Federation Assurance Levels" latex-columns="p@0.05\textwidth,p@0.16\textwidth,p@0.13\textwidth,p@0.15\textwidth,p@0.25\textwidth"}
-
-
 
 すべての FAL で，すべてのアサーションは，[Sec. 5](sec5_federation.md#federation)で説明されているようにフェデレーションプロトコルと共に使用し**なければならない(SHALL)**．すべてのアサーションは，[Sec. 6](sec6_assertions.md#assertions)で説明されているように，詳細な要件に準拠し**なければならない(SHALL)**．すべてのアサーションは，[Sec. 7](sec7_presentation.md#プレゼンテーション)で説明されている方法のいずれかを使用して提示し**なければならない(SHALL)**．フェデレーテッドプロトコルで使用されるアサーションの例には，OpenID Connect の ID トークン [[OIDC]](references.md#ref-OIDC) や Security Assertion Markup Language [[SAML]](references.md#ref-SAML) で記述されたアサーションが含まれる．
 > At all FALs, all assertions **SHALL** be used with a federation protocol as described in [Sec. 5](sec5_federation.md#federation). All assertions **SHALL** comply with the detailed requirements in [Sec. 6](sec6_assertions.md#assertions). All assertions **SHALL** be presented using one of the methods described in [Sec. 7](sec7_presentation.md#presentation). Examples of assertions used in federated protocols include the ID Token in OpenID Connect [[OIDC]](references.md#ref-OIDC) and assertions written in the Security Assertion Markup Language [[SAML]](references.md#ref-SAML).
@@ -182,6 +173,7 @@ RP は，フェデレーショントランザクションごとに次の情報�
 - RP に提示している加入者(subscriber)アカウントの IAL，または 身元確認(IAL) が行われていないことの表示
 - IdP での加入者(subscriber)の現在アクティブなセッションの AAL，または 当人認証(AAL) が行われていないことの表示
 - フェデレーショントランザクションの FAL
+
 > The RP **SHALL** be informed of the following information for each federated transaction:
 > 
 > - The IAL of the subscriber account being presented to the RP, or an indication that no IAL claim is being made
