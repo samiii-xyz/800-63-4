@@ -29,7 +29,7 @@ section: 4
 暗号の検証可能性
 : フェデレーションプロトコルで提示されたアサーションは，それを発行した特定の IdP まで追跡可能であり，その接続はデジタル署名や MAC などの暗号化メカニズムで検証可能である．これにより，RP は，アサーションが変更または偽造されていないことを確認することも可能である．本項目は，すべての FAL で必須である．
 > Cryptographic Verifiability
-> : The assertion presented in the federation protocol is traceable back to a specific IdP that issued it, and that connection can be verified with a cryptographic mechanism such as a digital signature or MAC. This also allows the RP to verify that the assertion was not modified or forged. This is required at all FALs.
+ : The assertion presented in the federation protocol is traceable back to a specific IdP that issued it, and that connection can be verified with a cryptographic mechanism such as a digital signature or MAC. This also allows the RP to verify that the assertion was not modified or forged. This is required at all FALs.
 
 
 
