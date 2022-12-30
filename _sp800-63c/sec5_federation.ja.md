@@ -3,7 +3,7 @@ layout: default.ja
 title: フェデレーション
 navOrder: 5
 navTitle: フェデレーション
-permalink: /sp800-63c/federation/
+permalink: /ja/sp800-63c/federation/
 anchor: federation
 section: 5
 ---

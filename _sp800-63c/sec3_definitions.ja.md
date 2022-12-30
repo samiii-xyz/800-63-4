@@ -3,7 +3,7 @@ layout: default.ja
 title: 定義と略語
 navOrder: 3
 navTitle: 定義と略語
-permalink: /sp800-63c/definitions/
+permalink: /ja/sp800-63c/definitions/
 anchor: definitions
 section: 3
 ---

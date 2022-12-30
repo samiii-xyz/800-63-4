@@ -3,7 +3,7 @@ layout: default.ja
 title: Changelog
 navOrder: 14
 navTitle: Changelog
-permalink: /sp800-63c/changelog/
+permalink: /ja/sp800-63c/changelog/
 anchor: changelog
 section: A
 ---

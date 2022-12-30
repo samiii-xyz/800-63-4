@@ -3,7 +3,7 @@ layout: default.ja
 title: フェデレーション保証レベル
 navOrder: 4
 navTitle: FAL
-permalink: /sp800-63c/fal/
+permalink: /ja/sp800-63c/fal/
 anchor: fal
 section: 4
 ---

@@ -2,7 +2,7 @@
 layout: cover
 title: "NIST SP 800-63 Digital Identity Guidelines（翻訳例）"
 description: "NIST Special Publication 800-63 Digital Identity Guidelines（翻訳例）"
-permalink: /
+permalink: /ja
 ---
 
 ## Call for Comments on Initial Public Draft of Revision 4

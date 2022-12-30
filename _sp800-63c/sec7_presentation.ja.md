@@ -3,7 +3,7 @@ layout: default.ja
 title: アサーションの提示
 navOrder: 7
 navTitle: アサーションの提示
-permalink: /sp800-63c/presentation/
+permalink: /ja/sp800-63c/presentation/
 anchor: presentation
 section: 7
 ---

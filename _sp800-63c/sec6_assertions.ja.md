@@ -3,7 +3,7 @@ layout: default.ja
 title: アサーション
 navOrder: 6
 navTitle: アサーション
-permalink: /sp800-63c/assertions/
+permalink: /ja/sp800-63c/assertions/
 anchor: assertions
 section: 6
 ---

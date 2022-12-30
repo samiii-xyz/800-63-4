@@ -3,7 +3,7 @@ layout: default.ja
 title: はじめに
 navOrder: 2
 navTitle: はじめに
-permalink: /sp800-63c/introduction/
+permalink: /ja/sp800-63c/introduction/
 anchor: introduction
 section: 2
 ---
