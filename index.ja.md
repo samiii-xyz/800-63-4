@@ -1,5 +1,5 @@
 ---
-layout: cover.ja
+layout: cover
 title: "NIST SP 800-63 Digital Identity Guidelines（翻訳例）"
 description: "NIST Special Publication 800-63 Digital Identity Guidelines（翻訳例）"
 permalink: /
