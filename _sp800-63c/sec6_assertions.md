@@ -423,24 +423,58 @@ The RPs **SHALL** conduct a privacy risk assessment to consider the privacy risk
 The IdP **SHALL** ensure that only intended RPs are correlated; otherwise, a rogue RP could learn of the pseudonymous identifier for a set of correlated RPs by fraudulently posing as part of that set.
 </details>
 
-## Identity APIs {#s-identity-api}
+## アイデンティティAPI (Identity APIs) {#s-identity-api}
 
+プロファイル情報を含む加入者(subscriber)に関する属性は，_アイデンティティAPI_ として知られる保護された _属性API_ を通じて RP に提供され**てもよい(MAY)**．RP は，アサーションと連携して，フェデレーショントランザクション中に アイデンティティAPI への制限付きアクセスを許可される． たとえば，OpenID Connect では，UserInfo エンドポイントは，加入者(subscriber)に関する属性を取得するための標準化された アイデンティティAPI を提供する．この API は，OpenID Connect のアサーションである ID トークンとともに RP に発行される OAuth 2.0 アクセス トークンによって保護される．フェデレーションアサーションと共に アイデンティティAPI を使用すると，フェデレーションシステムの全体的なセキュリティ，プライバシー，および効率性にいくつかの利点がある．
+<details>
+<summary>原文</summary>
 Attributes about the subscriber, including profile information, **MAY** be provided to the RP through a protected _attribute API_ known as the _identity API_. The RP is granted limited access to the identity API during the federation transaction, in concert with the assertion. For example, in OpenID Connect, the UserInfo Endpoint provides a standardized identity API for fetching attributes about the subscriber. This API is protected by an OAuth 2.0 Access Token, which is issued to the RP along with OpenID Connect's assertion, the ID Token. The use of identity APIs along with federation assertions has several advantages for the overall security, privacy, and efficiency of the federation system. 
+</details>
 
+アイデンティティAPI で属性を使用できるようにすることで，IdP はアサーションを使用して多くの情報を RP に伝える必要がなくなる．これは，機密属性をアサーション自体で保持する必要がないことを意味するだけでなく，アサーションを小さくし，RP による処理を容易にする．アサーションの内容は，必須フィールド (例えば，一意の主体識別子) と，提示される即時認証イベントに関する情報に限定することができる．
+<details>
+<summary>原文</summary>
 By making attributes available at an identity API, the IdP no longer has to use the assertion to convey as much information to the RP. This not only means that sensitive attributes do not have to be carried in the assertion itself, it also makes the assertion smaller and easier to process by the RP. The contents of the assertion can then be limited to essential fields (e.g., unique subject identifiers) and information about the immediate authentication event being asserted.
+</details>
 
+RP は，[Sec. 5.4](../sec5_federation.md#rp-account)で説明されているように，RP 加入者(subscriber)アカウントで IdP によって提供される属性をキャッシュすることがよくある．アサーションで提供される属性はログインごとに渡される．RP は属性が要求される前に加入者(subscriber)の アイデンティティ を知らないため，IdP はアサーション自体にできるだけ多くの情報を含めるようにしようとする．ただし，加入者(subscriber)の属性のほとんどはその後のログイン間で変更されないため，この情報は冗長になる．結果として，これらの変更される頻度の低い属性のほとんどは，代わりに，必要な場合にのみ RP によって呼び出される アイデンティティAPI を介して使用できるようになる．IdP は，加入者(subscriber)の属性が加入者(subscriber)アカウントで最後に更新された時期をアサーションで示すことができる．これにより，RP は属性を新たにフェッチする必要があるかどうか，または それらの RP 加入者(subscriber)アカウントの属性は十分であるかどうかを判断できまる．
+<details>
+<summary>原文</summary>
 The RP often caches attributes provided by the IdP in an RP subscriber account, discussed in [Sec. 5.4](../sec5_federation.md#rp-account). Attributes provided in the assertion are passed on every login, and since the RP does not know the identity of the subscriber before the attribute is requested, the IdP is incentivized to include as much information as possible in the assertion itself. However, most of a subscriber's attributes will not change in between subsequent logins, making this information redundant. As a consequence, most of these more-stable attributes can instead be made available through an identity API that is called by the RP only when necessary. The IdP can indicate in the assertion when the last time the subscriber's attributes have been updated in the subscriber account, allowing the RP to decide if it needs to fetch the attributes anew or if those in the RP subscriber account are sufficient.
+</details>
 
+アイデンティティAPI へのアクセスは時間が制限され**なければならない(SHALL)**．制限される時間は，アサーションの有効期間および RP での認証済みセッションの有効期間とは別のものである．関連付けられた有効なアサーションのない RP による アイデンティティAPI へのアクセスでは，RP で認証されたセッションを確立ために十分であっては**ならない(SHALL NOT)**．．
+<details>
+<summary>原文</summary>
 Access to the identity API **SHALL** be time limited. The time limitation is separate from the validity time window of the assertion and the lifetime of the authenticated session at the RP. Access to an identity API by the RP without an associated valid assertion **SHALL NOT** be sufficient for the establishment of an authenticated session at the RP.
+</details>
 
+特定の アイデンティティAPI を用意することで，IdP がアサーションを作成できるすべての加入者(subscriber)に属性を提供できることが期待されている．ただし，アイデンティティAPI へのアクセスがフェデレーショントランザクションのコンテキスト内で許可される場合，アイデンティティAPI によって提供される属性は，関連付けられたアサーションで識別される単一の加入者(subscriber)のみに関連付けられ**なければならない(SHALL)**．アイデンティティAPI が IdP によってホストされている場合，返される属性には加入者(subscriber)の主体識別子が含まれ**なければならない(SHALL)**．これにより，RP はアサーションの主体を返された属性に積極的に関連付けることができる．注記：[Sec. 5.4.1](sec5_federation.md#provisioning) で説明されているように，属性 API へのアクセスが RP 加入者(subscriber)アカウントの事前プロビジョニングの一部として提供される場合，RP は通常，フェデレーショントランザクションのコンテキスト外でアイデンティティAPI への制限のないアクセスが許可され，これらの要件は適用されない．
+<details>
+<summary>原文</summary>
 A given identity API deployment is expected to be capable of providing attributes for all subscribers for whom the IdP can create assertions. However, when access to the identity API is granted within the context of a federation transaction, the attributes provided by an identity API **SHALL** be associated with only the single subscriber identified in the associated assertion. If the identity API is hosted by the IdP, the returned attributes **SHALL** include the subject identifier for the subscriber. This allows the RP to positively correlate the assertion's subject to the returned attributes. Note that when access to an attribute API is provided as part of pre-provisioning of RP subscriber accounts as discussed in [Sec. 5.4.1](sec5_federation.md#provisioning), the RP is usually granted blanket access to the identity API outside the context of the federated transaction and these requirements do not apply.
+</details>
 
-### Attribute Providers {#s-attribute-providers}
+### 属性プロバイダー(Attribute Providers) {#s-attribute-providers}
 
+フェデレーションで使用されるほとんどの属性 API は IdP の一部としてホストされるが，IdP が外部属性プロバイダーによってホストされる アイデンティティAPI へのアクセスを許可することも可能である．これらのサービスは，IdP から直接利用できる属性に加えて，更なる加入者(subscriber)に関する属性を提供する．
+
+IdP が属性プロバイダーへのアクセスを許可するとき，IdP は，属性プロバイダーから返された情報が，関連付けられたアサーションで識別された加入者(subscriber)に関連付けられていることを明示的に宣言する．信頼の合意(trust agreement)の目的上，IdP は属性 API の正確さと内容について責任を負う．
+
+<details>
+<summary>原文</summary>
 While most attribute APIs used in federation are hosted as part of the IdP, it is also possible for the IdP to grant access to identity APIs hosted by external attribute providers. These services provide attributes about the subscriber in addition to those made available directly from the IdP.
 
 When the IdP grants access to an attribute provider, the IdP is making an explicit statement that the information returned from the attribute provider is associated with the subscriber identified in the associated assertion. For the purposes of the trust agreement, the IdP is the responsible party for the accuracy and content of the attribute API.
+</details>
 
+属性プロバイダーによって返される属性は，IdP から直接返される属性とは無関係であると想定されるため，異なる識別子，形式，またはスキーマを使用**してもよい(MAY)**．RP は，識別された属性プロバイダーが，該当する信頼の合意(trest agreement)の下で，存在する種類の属性について提供することを許容されているか確認し**なければならない(SHALL)**．
+
+たとえば，IdP が，フェデレーションプロセスの一部として加入者(subscriber)の医師免許情報へのアクセスを提供している場合，IdP が免許の状態を直接提示する代わりに，IdP は，医師免許機関の加入者(subscriber)のレコードへの RP からのアクセスを提供する．この場合，免許情報は IdP が使用する主体識別子と同じものを使用しない可能性があるが，RP は現在の加入者(subscriber)と免許情報との間に強力な関連付けを作成できる．
+
+<details>
+<summary>原文</summary>
 The attributes returned by the attribute provider are assumed to be independent of those returned directly from the IdP, and as such **MAY** use different identifiers, formats, or schemas. The RP **SHALL** verify that the identified attribute provider is capable of providing the kinds of attributes that are present, under the auspices of the applicable trust agreement.
 
 For example, an IdP could provide access to a subscriber's medical license information as part of the federation process. Instead of the IdP asserting the license status directly, the IdP provides the RP access to a record for the subscriber at a medical licensure agency. The RP can make a strong association between the current subscriber and the license record, even though the license record will not likely use the same subject identifier that the IdP does in this case.
+</details>
