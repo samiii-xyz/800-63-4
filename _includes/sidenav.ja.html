@@ -25,6 +25,8 @@
             <ul class="subnav">
             {% for p in pages %}
               
+            {% if p.layout == 'default.ja' %}
+            
               {% if p.navOrder >= 0 %}
               
                 {% assign scurrent = '' %}
@@ -40,6 +42,8 @@
                 {% endif %}
               
               {% endif %}
+
+            {% endfor %}
 
             {% endfor %}
           
