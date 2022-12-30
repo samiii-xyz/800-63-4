@@ -80,7 +80,7 @@ section: 6
   - *対象者の制限*: この RP がアサーションの意図された受信者であることを確認する．
 
 > All metadata within the assertion **SHALL** be validated by the RP upon receipt:
-
+> 
 >  - *Issuer verification*: ensuring the assertion was issued by the IdP the RP expects it to be from.
 >  - *Signature validation*: ensuring the signature of the assertion is valid and corresponds to a key belonging to the IdP sending the assertion.
 >  - *Time validation*: ensuring the expiration and issue times are within acceptable limits of the current timestamp.
