@@ -163,7 +163,7 @@ FAL3 で認証アサーションを発行する(asserting authentication) IdP �
 
 
 
-## xALでのリクエストと処理 (Requesting and Processing xALs) {#request-xals}
+## xALのリクエストと処理 (Requesting and Processing xALs) {#request-xals}
 
 IdP は，さまざまなフェデレーションパラメータを使用して，さまざまなオーセンティケータで，多くの異なる加入者(subscriber)のアイデンティティを示すことができるため，IAL，AAL，FAL は，同じ RP であっても，さまざまなフェデレーションログイン間で異なる可能性がある．
 > Since an IdP is capable of asserting the identities of many different subscribers with a variety of authenticators using a variety of federation parameters, the IAL, AAL, and FAL could vary across different federated logins, even to the same RP.
