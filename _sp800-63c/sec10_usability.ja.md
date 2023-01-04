@@ -12,7 +12,7 @@ section: 10
 
 *This section is informative.*
 
-_Ergonomic of Human-System Interaction — Part 11: Usability: Definitions and Concepts_ [[ISO/IEC9241-11]](references.md#ref-ISO9241) defines usability as the "extent to which a system, product or service can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use." This definition focuses on users, goals, and context of use as key elements necessary for achieving effectiveness, efficiency and satisfaction. A holistic approach considering these key elements is necessary to achieve usability.
+_Ergonomic of Human-System Interaction — Part 11: Usability: Definitions and Concepts_ [[ISO/IEC9241-11]](references.ja.md#ref-ISO9241) defines usability as the "extent to which a system, product or service can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use." This definition focuses on users, goals, and context of use as key elements necessary for achieving effectiveness, efficiency and satisfaction. A holistic approach considering these key elements is necessary to achieve usability.
 
 From the usability perspective, one of the major potential benefits of federated identity systems is to address the problem of user fatigue associated with managing multiple authenticators. While this has historically been a problem with usernames and passwords, the increasing need for users to manage many authenticators — whether physical or digital — presents a usability challenge.
 
@@ -26,7 +26,7 @@ The overall user experience with federated identity systems should be as smooth 
 
 Guidelines and considerations are described from the users' perspective.
 
-Accessibility differs from usability and is out of scope for this volume. [[Section508]](references.md#ref-Section508) was enacted to eliminate barriers in information technology and requires federal agencies to make their electronic and information technology public content accessible to people with disabilities. Refer to Section 508 law and standards for accessibility guidance.
+Accessibility differs from usability and is out of scope for this volume. [[Section508]](references.ja.md#ref-Section508) was enacted to eliminate barriers in information technology and requires federal agencies to make their electronic and information technology public content accessible to people with disabilities. Refer to Section 508 law and standards for accessibility guidance.
 
 ## General Usability Considerations 
 
@@ -49,7 +49,7 @@ Federated identity systems should:
 
 * Make trust relationships explicit to users to facilitate informed trust decisions. Trust relationships are often dynamic and context dependent. Users may be more likely to trust some IdPs and RPs with certain attributes or transactions more than others. For example, users may be more hesitant to use federated identity systems on websites that contain valuable personal information (such as financial or health). Depending on the perceived sensitivity of users' personal data, users may be less comfortable with social network providers as IdPs since people are often concerned with the broadcasting nature of social networking implementations.
 
-* Follow the usability considerations specified in [[SP800-63A]](../_sp800-63a/sec9_usability.md#sec9){:latex-href="#ref-SP800-63A"}, Sec. 9 for any user-facing information.
+* Follow the usability considerations specified in [[SP800-63A]](../_sp800-63a/sec9_usability.ja.md#sec9){:latex-href="#ref-SP800-63A"}, Sec. 9 for any user-facing information.
 
 * Clearly communicate how and where to acquire technical assistance. For example, provide users with information such as a link to an online self-service feature, chat sessions or a phone number for help desk support. Avoid redirecting users back and forth among transacting parties (e.g., RPs, IdPs, and brokers) to receive technical assistance.
 
@@ -93,10 +93,10 @@ This sub-section is focused primarily on user trust and user perceptions of bene
 
 To encourage user adoption, IdPs and RPs need to establish and build trust with users and provide them with an understanding of the benefits and risks of adoption. The following factors should be considered:
 
-* Allow users to control their information disclosure and provide explicit consent through the appropriate use of notifications (see [Sec. 9.2](sec9_privacy.md#notice-and-consent)). Balancing the content, size, and frequency of notifications is necessary to avoid thoughtless user click-through.
+* Allow users to control their information disclosure and provide explicit consent through the appropriate use of notifications (see [Sec. 9.2](sec9_privacy.ja.md#notice-and-consent)). Balancing the content, size, and frequency of notifications is necessary to avoid thoughtless user click-through.
 
 * For attribute sharing, consider the following:
-  * Provide a means for users to verify those attributes and attribute values that will be shared. Follow good security practices (see [Sec. 7.3](sec7_presentation.md#protecting-information) and [Sec. 8](sec8_security.md#security)).
+  * Provide a means for users to verify those attributes and attribute values that will be shared. Follow good security practices (see [Sec. 7.3](sec7_presentation.ja.md#protecting-information) and [Sec. 8](sec8_security.ja.md#security)).
   * Enable users to consent to a partial list of attributes, rather than an all-or-nothing approach. Allow users some degree of online access, even if the user does not consent to share all information.
   * Allow users to update their consent to their list of shared attributes.
   * Minimize unnecessary information presented to users. For example, do not display system generated attributes (such as pairwise pseudonymous identifiers) even if they are shared with the RP as part of the authentication response.
@@ -104,7 +104,7 @@ To encourage user adoption, IdPs and RPs need to establish and build trust with 
   * Provide effective and efficient redress methods such that a user can recover from invalid attribute information claimed by the IdP or collected by the RP.
   * Minimize the number of times a user is required to consent to attribute sharing. Limiting the frequency of consent requests avoids user frustration from multiple requests to share the same attribute.
 
-* Collect information for constrained usage only, and minimize information disclosure (see [Sec. 9.3](sec9_privacy.md#minimization)). User trust is eroded by unnecessary and superfluous information collection and disclosure or user tracking without explicit user consent. For example, only request attributes from the user that are relevant to the current transaction, not for all possible transactions a user may or may not access at the RP.
+* Collect information for constrained usage only, and minimize information disclosure (see [Sec. 9.3](sec9_privacy.ja.md#minimization)). User trust is eroded by unnecessary and superfluous information collection and disclosure or user tracking without explicit user consent. For example, only request attributes from the user that are relevant to the current transaction, not for all possible transactions a user may or may not access at the RP.
 
 * Clearly and honestly communicate potential benefits and risks of using federated identity to users. Benefits that users value include time savings, ease of use, reduced number of passwords to manage, and increased convenience.
 
