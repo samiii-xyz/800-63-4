@@ -1,14 +1,14 @@
 ---
 layout: default.ja
-title: Equity Considerations
+title: 公平性の考慮事項
 navOrder: 11
-navTitle: Equity
+navTitle: 公平性
 permalink: /ja/sp800-63c/equity/
 anchor: equity
 section: 11
 ---
 
-# Equity Considerations {#equity}
+# 公平性の考慮事項 (Equity Considerations) {#equity}
 
 _This section is informative._
 
