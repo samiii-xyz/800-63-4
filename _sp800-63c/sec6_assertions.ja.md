@@ -188,7 +188,7 @@ RP が FAL3 アサーションを正常に受け入れる前に，RP 加入者(s
 > Before an RP can successfully accept an FAL3 assertion, the RP subscriber account must include a bound authenticator. These authenticators can be provided by either the RP or the subscriber, with slightly different requirements applying to the initial binding of the authenticator to the RP subscriber account in each case.
 
 
-RP 提供のオーセンティケーターの場合，RP の管理者は，FAL3 ログインで使用するために，加入者(subscriber)にオーセンティケーターを直接発行し**なければならない(SHALL)**．RP SHALL の管理者は， bound authenticator の一意の識別子を RP 加入者(subscriber) アカウントに格納し**なければならない(SHALL)**．RP の管理者は，オーセンティケータが発行される当事者が RP 加入者(subscriber)アカウントの識別された主体であることを，独立した手段を通じて決定し**なければならない(SHALL)**．
+RP 提供のオーセンティケーターの場合，RP の管理者は，FAL3 ログインで使用するために，加入者(subscriber)にオーセンティケーターを直接発行し**なければならない(SHALL)**．RP の管理者は， bound authenticator の一意の識別子を RP 加入者(subscriber) アカウントに格納し**なければならない(SHALL)**．RP の管理者は，オーセンティケータが発行される当事者が RP 加入者(subscriber)アカウントの識別された主体であることを，独立した手段を通じて決定し**なければならない(SHALL)**．
 > For RP-provided authenticators, the administrator of the RP **SHALL** issue the authenticator to the subscriber directly for use with an FAL3 login. The administrator of the RP **SHALL** store a unique identifier for the bound authenticator in the RP subscriber account. The administrator of the RP **SHALL** determine through independent means that the party to which the authenticator is issued is the identified subject of the RP subscriber account.
 
 
