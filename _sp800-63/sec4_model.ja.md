@@ -53,10 +53,7 @@ SP 800-63 ガイドラインでは，現在市場で入手可能な技術とア�
 
 ![RP によって検証機能が実行される，デジタルアイデンティティプロセス全体のエンティティとエンティティ間の相互作用を示す，フェデレーションされていないデジタルアイデンティティモデルの概要図．]({{site.baseurl}}/{{page.collection}}/media/Non-Federated.png '非フェデレーションデジタルアイデンティティモデルの例'){:latex-src="Non-Federated.png" latex-fig="1" latex-place="h"}
 
-
-> ![High-level diagram of a non-federated digital identity model showing the entities and interactions between entities of the entire digital identity process, in which the verifier function is done by the RP.]({{site.baseurl}}/{{page.collection}}/media/Non-Federated.png 'Non-Federated Digital Identity Model Example'){:latex-src="Non-Federated.png" latex-fig="1" latex-place="h"}
-
-[図 1](sec4_model.md#fig-1) は，非フェデレーション モデルにおける一般的な相互作用のシーケンスの例を示しています．他のシーケンスも同じ機能要件を達成できます．身元証明と登録アクティビティの通常の対話シーケンスは次のとおりです．
+[図1](sec4_model.ja.md#fig-1) は，非フェデレーション モデルにおける一般的な相互作用のシーケンスの例を示しています．他のシーケンスも同じ機能要件を達成できます．身元証明と登録アクティビティの通常の対話シーケンスは次のとおりです．
 
 > [Figure 1](sec4_model.md#fig-1) shows an example of a common sequence of interactions in the non-federated model. Other sequences could also achieve the same functional requirements. The usual sequence of interactions for identity proofing and enrollment activities is as follows:
 
@@ -89,9 +86,6 @@ SP 800-63 ガイドラインでは，現在市場で入手可能な技術とア�
 {:latex-ignore="true"}
 
 ![CSP と検証機能が IdP によって実行される，デジタルアイデンティティプロセス全体のエンティティとエンティティ間の相互作用を示すフェデレーションデジタルアイデンティティモデルの概要図．]({{site.baseurl}}/{{page.collection}}/media/Federated.png 'フェデレーションデジタルアイデンティティモデルの例'){:latex-src="Federated.png" latex-fig="2" latex-place="h"}
-
-> ![High-level diagram of a federated digital identity model showing the entities and interactions between entities of the entire digital identity process, in which the CSP and verifier functions are done by the IdP.]({{site.baseurl}}/{{page.collection}}/media/Federated.png 'Federated Digital Identity Model Example'){:latex-src="Federated.png" latex-fig="2" latex-place="h"}
-
 
 [図2](sec4_model.ja.md#fig-2) は、フェデレーションモデルにおける一般的な相互作用の例を示している.
 > [Figure 2](sec4_model.md#fig-2) shows an example of those same common interactions in a federated model.
