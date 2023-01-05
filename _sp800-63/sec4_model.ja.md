@@ -1,80 +1,136 @@
 ---
 layout: default.ja
-title: Digital Identity Model
+title: デジタルアイデンティティモデル
 navOrder: 4
-navTitle: Model
+navTitle: モデル
 permalink: /sp800-63/model/
 anchor: sec4
 section: 4
 ---
 
-# Digital Identity Model {#sec4}
+# デジタルアイデンティティモデル (Digital Identity Model) {#sec4}
 
 *This section is informative.*
 
-## Overview {#s-4-1}
+## 概要 (Overview) {#s-4-1}
+SP 800-63 ガイドラインでは，現在市場で入手可能な技術とアーキテクチャを反映したデジタルアイデンティティモデルを使用している．これらのモデルにはさまざまなエンティティと機能があり，複雑さも異なる．単純なモデルでは，加入者(subscriber)アカウントの作成や属性の提供などの機能が 1つのエンティティにグループ化される．より複雑なモデルでは，これらの機能を多数のエンティティ間で分離する．デジタルアイデンティティモデルに含まれるエンティティとそれに関連する機能には，次のものがある．
 
-The SP 800-63 guidelines use digital identity models that reflect technologies and architectures currently available in the market. These models have a variety of entities and functions and vary in complexity. Simple models group functions, such as creating subscriber accounts and providing attributes, under a single entity. More complex models separate these functions among a larger number of entities. The entities and their associated functions found in digital identity models include:
+> The SP 800-63 guidelines use digital identity models that reflect technologies and architectures currently available in the market. These models have a variety of entities and functions and vary in complexity. Simple models group functions, such as creating subscriber accounts and providing attributes, under a single entity. More complex models separate these functions among a larger number of entities. The entities and their associated functions found in digital identity models include:
 
-**Subject** (represented by one of three roles):
+**主体** (3つの役割のいずれかで表される):
 
-* Applicant &mdash; the subject to be identity proofed
-* Subscriber &mdash; the subject that has successfully completed the identity proofing process or has successfully completed authentication
-* Claimant &mdash; the subject to be authenticated
+* 申請者(applicant) - 身元確認される対象
+* 加入者(subscriber) &mdash; 身元確認プロセスを正常に完了したか，当人認証を正常に完了した主体
+* 主張者(claimant) &mdash; 当人認証対象
 
-**Credential Service Provider (CSP)**: A trusted entity whose functions include identity proofing applicants to the identity service and the registration of authenticators to subscriber accounts. A _subscriber account_ is the CSP's established record of the subscriber, the subscriber's attributes, and associated authenticators. A CSP may be an independent third party.
+> **Subject** (represented by one of three roles):
+> 
+> * Applicant &mdash; the subject to be identity proofed
+> * Subscriber &mdash; the subject that has successfully completed the identity proofing process or has successfully completed authentication
+> * Claimant &mdash; the subject to be authenticated
 
-**Relying Party (RP)**: An entity that relies upon the information in the subscriber account, or an identity provider (IdP) assertion when using federation, typically to process a transaction or grant access to information or a system.
+**クレデンシャルサービスプロバイダー (CSP)**: 信頼されたエンティティであり，その機能には，アイデンティティサービスへの身元証明申請者の登録や，加入者(subscriber)アカウントへのオーセンティケーターの登録が含まれる． _加入者(subscriber)アカウント_ は，加入者(subscriber)，加入者(subscriber)の属性および関連するオーセンティケーターの CSP における確立されたレコードである．CSP は、独立した第三者である場合がある．
 
-**Verifier**: An entity whose function is to verify the claimant's identity by verifying the claimant's possession and control of one or more authenticators using an authentication protocol. To do this, the verifier needs to confirm the binding of the authenticators with the subscriber account and check that the subscriber account is active.
+> **Credential Service Provider (CSP)**: A trusted entity whose functions include identity proofing applicants to the identity service and the registration of authenticators to subscriber accounts. A _subscriber account_ is the CSP's established record of the subscriber, the subscriber's attributes, and associated authenticators. A CSP may be an independent third party.
 
-**Identity Provider (IdP)**: An entity in a federated model that performs both the CSP and Verifier functions. The IdP is responsible for authenticating the subscriber and issuing assertions to communicate with one or more RPs.
+**Relying Party (RP)**: 加入者(subscriber)アカウントの情報，またはフェデレーションを使用する場合のアイデンティティプロバイダー (IdP) アサーションに依存するエンティティで，通常はトランザクションを処理したり，情報やシステムへのアクセスを許可したりする．
 
-The entities and interactions that comprise the non-federated digital identity model are illustrated in [Figure 1](sec4_model.md#fig-1). The federated digital identity model is illustrated in [Figure 2](sec4_model.md#fig-2).
+> **Relying Party (RP)**: An entity that relies upon the information in the subscriber account, or an identity provider (IdP) assertion when using federation, typically to process a transaction or grant access to information or a system.
 
-[Figure 1. Non-federated Digital Identity Model Example](sec4_model.md#fig-1){:name="fig-1"}
+**検証者 (Verifier)**: 認証プロトコルを使用して，主張者(claimant)が 1つ以上のオーセンティケーターを所有および管理していることを確認することにより，主張者(claimant)の身元を確認する機能を持つエンティティ．これを行うには，検証者は，オーセンティケーターと加入者(subscriber)アカウントのバインディングを確認し，加入者(subscriber)アカウントがアクティブであることを確認する必要がある．
+
+> **Verifier**: An entity whose function is to verify the claimant's identity by verifying the claimant's possession and control of one or more authenticators using an authentication protocol. To do this, the verifier needs to confirm the binding of the authenticators with the subscriber account and check that the subscriber account is active.
+
+**アイデンティティプロバイダー (IdP)**: CSP と検証機能の両方を実行するフェデレーションモデル内のエンティティ．IdP は，加入者(subscriber)を認証し，アサーションを発行して 1つ以上の RP と通信する役割を果たす．
+
+> **Identity Provider (IdP)**: An entity in a federated model that performs both the CSP and Verifier functions. The IdP is responsible for authenticating the subscriber and issuing assertions to communicate with one or more RPs.
+
+[図1](sec4_model.ja.md#fig-1) に，非フェデレーションデジタルアイデンティティモデルを構成するエンティティと相互作用を示す．[図2](sec4_model.ja.md#fig-2) は，フェデレーションデジタルアイデンティティモデルを示す．
+> The entities and interactions that comprise the non-federated digital identity model are illustrated in [Figure 1](sec4_model.md#fig-1). The federated digital identity model is illustrated in [Figure 2](sec4_model.md#fig-2).
+
+[図1. 非フェデレーションデジタルアイデンティティモデルの例](sec4_model.ja.md#fig-1){:name="fig-1"}
 {:latex-ignore="true"}
 
-![High-level diagram of a non-federated digital identity model showing the entities and interactions between entities of the entire digital identity process, in which the verifier function is done by the RP.]({{site.baseurl}}/{{page.collection}}/media/Non-Federated.png 'Non-Federated Digital Identity Model Example'){:latex-src="Non-Federated.png" latex-fig="1" latex-place="h"}
+![RP によって検証機能が実行される，デジタルアイデンティティプロセス全体のエンティティとエンティティ間の相互作用を示す，フェデレーションされていないデジタルアイデンティティモデルの概要図．]({{site.baseurl}}/{{page.collection}}/media/Non-Federated.png '非フェデレーションデジタルアイデンティティモデルの例'){:latex-src="Non-Federated.png" latex-fig="1" latex-place="h"}
 
-[Figure 1](sec4_model.md#fig-1) shows an example of a common sequence of interactions in the non-federated model. Other sequences could also achieve the same functional requirements. The usual sequence of interactions for identity proofing and enrollment activities is as follows:
 
-- Step 1: An applicant applies to a CSP through an enrollment process. The CSP identity proofs that applicant.
-- Step 2: Upon successful proofing, the applicant is enrolled in the identity service as a subscriber.  
-    *	A subscriber account and corresponding authenticators are established between the CSP and the subscriber. The CSP maintains the subscriber account, its status, and the enrollment data. The subscriber maintains their authenticators.
+> ![High-level diagram of a non-federated digital identity model showing the entities and interactions between entities of the entire digital identity process, in which the verifier function is done by the RP.]({{site.baseurl}}/{{page.collection}}/media/Non-Federated.png 'Non-Federated Digital Identity Model Example'){:latex-src="Non-Federated.png" latex-fig="1" latex-place="h"}
 
- The usual sequence of interactions involved in using one or more authenticators to perform digital authentication in the non-federated model is as follows:
+[図 1](sec4_model.md#fig-1) は，非フェデレーション モデルにおける一般的な相互作用のシーケンスの例を示しています．他のシーケンスも同じ機能要件を達成できます．身元証明と登録アクティビティの通常の対話シーケンスは次のとおりです．
 
-- Step 3: The RP requests authentication from the claimant.
-- Step 4: The claimant proves possession and control of the authenticators to the verifier through an authentication process.  
-    -	The verifier interacts with the CSP to verify the binding of the claimant's identity to their authenticators in the subscriber account and to optionally obtain additional subscriber attributes.
-    -  The CSP or verifier functions of the service provider provide information about the subscriber. The RP requests the attributes it requires from the CSP. The RP, optionally, uses this information to make authorization decisions.
-- Step 5: An authenticated session is established between the subscriber and the RP.
+> [Figure 1](sec4_model.md#fig-1) shows an example of a common sequence of interactions in the non-federated model. Other sequences could also achieve the same functional requirements. The usual sequence of interactions for identity proofing and enrollment activities is as follows:
 
-[Figure 2. Federated Digital Identity Model Example](sec4_model.md#fig-63Sec4-Figure2){:name="fig-2"}  
+- ステップ 1: 申請者(applicant)は，登録プロセスを通じて CSP に申請する． CSP は，その申請者(applicant)の身元確認をする．
+- ステップ 2: 身元確認が成功すると，申請者(applicant)はアイデンティティサービスに加入者(subscriber)として登録される．
+     * 加入者(subscriber)アカウントと対応するオーセンティケータが，CSP と加入者(subscriber)の間で確立される． CSP は，加入者(subscriber)アカウント，アカウントのステータス，および登録データを維持する．加入者(subscriber)は，オーセンティケーターを維持する．
+
+> - Step 1: An applicant applies to a CSP through an enrollment process. The CSP identity proofs that applicant.
+> - Step 2: Upon successful proofing, the applicant is enrolled in the identity service as a subscriber.  
+>     *	A subscriber account and corresponding authenticators are established between the CSP and the subscriber. The CSP maintains the subscriber account, its status, and the enrollment data. The subscriber maintains their authenticators.
+
+非フェデレーションモデルでデジタル当人認証を実行するために 1つ以上のオーセンティケーターを使用する際の通常のやり取りのシーケンスは次のとおり．
+
+- ステップ 3: RP は主張者(claimant)に当人認証を要求する．
+- ステップ 4: 主張者(claimant)は，認証プロセスを通じて，オーセンティケーターの所有と管理を検証者に証明する．
+     - 検証者は CSP と対話して，加入者(subscriber)アカウントの認証者への主張者(claimant)のアイデンティティのバインディングを検証し，オプションで追加の加入者(subscriber)属性を取得する．
+     - サービスプロバイダーの CSP または検証機能は，加入者(subscriber)に関する情報を提供する．RP は，必要な属性を CSP に要求する． RP は，必要に応じて，この情報を使用して承認の決定を行う．
+- ステップ 5: 加入者(subscriber)と RP の間に認証済みセッションが確立される．
+
+>  The usual sequence of interactions involved in using one or more authenticators to perform digital authentication in the non-federated model is as follows:
+> 
+> - Step 3: The RP requests authentication from the claimant.
+> - Step 4: The claimant proves possession and control of the authenticators to the verifier through an authentication process.  
+>     -	The verifier interacts with the CSP to verify the binding of the claimant's identity to their authenticators in the subscriber account and to optionally obtain additional subscriber attributes.
+>     -  The CSP or verifier functions of the service provider provide information about the subscriber. The RP requests the attributes it requires from the CSP. The RP, optionally, uses this information to make authorization decisions.
+> - Step 5: An authenticated session is established between the subscriber and the RP.
+
+> [Figure 2. Federated Digital Identity Model Example](sec4_model.md#fig-63Sec4-Figure2){:name="fig-2"}  
+[図2. フェデレーションデジタルアイデンティティモデルの例](sec4_model.ja.md#fig-63Sec4-Figure2){:name="fig-2"}  
 {:latex-ignore="true"}
 
-![High-level diagram of a federated digital identity model showing the entities and interactions between entities of the entire digital identity process, in which the CSP and verifier functions are done by the IdP.]({{site.baseurl}}/{{page.collection}}/media/Federated.png 'Federated Digital Identity Model Example'){:latex-src="Federated.png" latex-fig="2" latex-place="h"}
+![CSP と検証機能が IdP によって実行される，デジタルアイデンティティプロセス全体のエンティティとエンティティ間の相互作用を示すフェデレーションデジタルアイデンティティモデルの概要図．]({{site.baseurl}}/{{page.collection}}/media/Federated.png 'フェデレーションデジタルアイデンティティモデルの例'){:latex-src="Federated.png" latex-fig="2" latex-place="h"}
 
-[Figure 2](sec4_model.md#fig-2) shows an example of those same common interactions in a federated model.
+> ![High-level diagram of a federated digital identity model showing the entities and interactions between entities of the entire digital identity process, in which the CSP and verifier functions are done by the IdP.]({{site.baseurl}}/{{page.collection}}/media/Federated.png 'Federated Digital Identity Model Example'){:latex-src="Federated.png" latex-fig="2" latex-place="h"}
 
-- Step 1: An applicant applies to an IdP through an enrollment process. Using its CSP function, the IdP identity proofs the applicant.
-- Step 2: Upon successful proofing, the applicant is enrolled in the identity service as a subscriber.  
-    -	A subscriber account and corresponding authenticators are established between the IdP and the subscriber. The IdP maintains the subscriber account, its status, and the enrollment data collected for the lifetime of the subscriber account (at a minimum). The subscriber maintains their authenticators.
 
-The usual sequence of interactions involved in using one or more authenticators in the federated model to perform digital authentication is as follows:
+[図2](sec4_model.ja.md#fig-2) は、フェデレーションモデルにおける一般的な相互作用の例を示している.
+> [Figure 2](sec4_model.md#fig-2) shows an example of those same common interactions in a federated model.
 
-- Step 3: The RP requests authentication from the claimant. The IdP provides an assertion and optionally additional attributes to the RP through a federation protocol.
-- Step 4: The claimant proves possession and control of the authenticators to the verifier function of the IdP through an authentication process.  
-    -	Within the IdP, the verifier and CSP functions interact to verify the binding of the claimant's authenticators with those bound to the claimed subscriber account and optionally to obtain additional subscriber attributes.
-- Step 5: All communication, including assertions, between the RP and the IdP happens through federation protocols.
-- Step 6: The IdP provides the RP with the authentication status of the subscriber and relevant attributes and an authenticated session is established between the subscriber and the RP.
+- ステップ 1: 申請者(applicant)は，登録プロセスを通じて IdP に申請する．その CSP 機能を使用して，IdP は申請者(applicant)の身元確認をする．
+- ステップ 2: 身元確認が成功すると，申請者(applicant)はアイデンティティサービスに加入者(subscriber)として登録される．
+     - 加入者(subscriber)カウントと対応するオーセンティケーターが IdP と加入者(subscriber)の間で確立される．IdP は，加入者(subscriber)アカウント，アカウントのステータス，および加入者(subscriber)アカウントの存続期間中に収集された登録データを (少なくとも) 維持する．加入者(subscriber)は，オーセンティケーターを維持する．
 
-For both models, the verifier does not always need to communicate in real time with the CSP to complete the authentication activity (e.g., some uses of digital certificates). Therefore, the line between the verifier and the CSP represents a logical link between the two entities. In some implementations, the verifier, RP, and CSP functions may be distributed and separated. However, if these functions reside on the same platform, the interactions between the functions are signals between applications or application modules running on the same system rather than using network protocols.
+> - Step 1: An applicant applies to an IdP through an enrollment process. Using its CSP function, the IdP identity proofs the applicant.
+> - Step 2: Upon successful proofing, the applicant is enrolled in the identity service as a subscriber.  
+>     -	A subscriber account and corresponding authenticators are established between the IdP and the subscriber. The IdP maintains the subscriber account, its status, and the enrollment data collected for the lifetime of the subscriber account (at a minimum). The subscriber maintains their authenticators.
 
-In all cases, the RP should request the attributes it requires from a CSP or IdP before authenticating the claimant.
+フェデレーションモデルで 1つ以上のオーセンティケーターを使用してデジタル当人認証を実行する際の通常の対話シーケンスは次のとおり．
 
-The following sections provide more detailed digital identity models for identity proofing, authentication, and federation.
+- ステップ 3: RP は主張者(claimant)に当人認証を要求する． IdP は，フェデレーションプロトコルを介して RP にアサーションとオプションの追加属性を提供する．
+- ステップ 4: 主張者(claimant)，認証プロセスを通じて IdP の検証者機能に対してオーセンティケータの所有と制御を証明します．
+     - IdP 内では，検証者と CSP 機能が対話して，要求された加入者(subscriber)アカウントにバインドされたものと主張者(claimant)のオーセンティケーターのバインディングを検証し，オプションで追加の加入者(subscriber)属性を取得する．
+- ステップ 5: RP と IdP の間のアサーションを含むすべての通信は，フェデレーションプロトコルを介して行われる．
+- ステップ 6: IdP は RP に加入者(subscriber)の認証ステータスと関連する属性を提供し，加入者(subscriber)と RP の間で認証されたセッションが確立される．
+
+> The usual sequence of interactions involved in using one or more authenticators in the federated model to perform digital authentication is as follows:
+> 
+> - Step 3: The RP requests authentication from the claimant. The IdP provides an assertion and optionally additional attributes to the RP through a federation protocol.
+> - Step 4: The claimant proves possession and control of the authenticators to the verifier function of the IdP through an authentication process.  
+>     -	Within the IdP, the verifier and CSP functions interact to verify the binding of the claimant's authenticators with those bound to the claimed subscriber account and optionally to obtain additional subscriber attributes.
+> - Step 5: All communication, including assertions, between the RP and the IdP happens through federation protocols.
+> - Step 6: The IdP provides the RP with the authentication status of the subscriber and relevant attributes and an authenticated session is established between the subscriber and the RP.
+
+どちらのモデルでも，検証者は，認証アクティビティ (デジタル証明書の使用など) を完了するために，常に CSP とリアルタイムで通信する必要はない．したがって，検証者と CSP の間の線は，2つのエンティティ間の論理リンクを表す．一部の実装では，検証者，RP，CSP 機能が分散され，分離されている場合がある．ただし，これらの機能が同じプラットフォーム上にある場合，機能間の相互作用は，ネットワークプロトコルを使用するのではなく，同じシステム上で実行されているアプリケーションまたはアプリケーションモジュール間のシグナルになる．
+
+> For both models, the verifier does not always need to communicate in real time with the CSP to complete the authentication activity (e.g., some uses of digital certificates). Therefore, the line between the verifier and the CSP represents a logical link between the two entities. In some implementations, the verifier, RP, and CSP functions may be distributed and separated. However, if these functions reside on the same platform, the interactions between the functions are signals between applications or application modules running on the same system rather than using network protocols.
+
+いずれの場合も，RP は主張者(claimant)を認証する前に，CSP または IdP から必要な属性を要求する必要がある．
+
+> In all cases, the RP should request the attributes it requires from a CSP or IdP before authenticating the claimant.
+
+次のセクションでは，身元確認(identity proofing)，当人認証(authentication)，およびフェデレーションのためのより詳細なデジタルアイデンティティモデルを提供する．
+
+> The following sections provide more detailed digital identity models for identity proofing, authentication, and federation.
 
 ## Enrollment and Identity Proofing
 
