@@ -235,223 +235,352 @@ The following sections provide requirements for identity proofing at each IAL.
 
 ## Identity Assurance Level 1 {#IAL1}
 
-IAL1 permits both remote and in-person identity proofing. Identity proofing processes at IAL1 allow for a range of acceptable techniques in order to detect the presentation of fraudulent identities by a malicious actor while facilitating user adoption and minimizing false negatives and application departures (legitimate applicants who do not successfully complete identity proofing). Notably, the use of biometric matching, such as the automated comparison of a facial portrait to supplied evidence, at IAL1 is optional, providing pathways to proofing and enrollment where such collection may not be viable or where privacy and equity risks outweigh security considerations.  
+IAL1 は，リモートおよび対面での両方の身元確認を許容する．IAL1 の身元確認プロセスでは，悪意のあるアクターによる不正な身元の提示を検出する一方で，ユーザーの採用を促進し，偽陰性とアプリケーションの離脱 (身元確認を正常に完了していない正当な申請者(Applicant)) を最小限に抑えるために，さまざまな許容可能な技術を使用できる．特に，顔写真と提供された証拠との自動比較などのバイオメトリックマッチングの IAL1 での使用はオプションであり，そのような収集が実行できない可能性がある場合，またはプライバシーと公平性のリスクがセキュリティ上の考慮事項を上回る場合には，身元確認と登録への方法を提供する．
+
+> IAL1 permits both remote and in-person identity proofing. Identity proofing processes at IAL1 allow for a range of acceptable techniques in order to detect the presentation of fraudulent identities by a malicious actor while facilitating user adoption and minimizing false negatives and application departures (legitimate applicants who do not successfully complete identity proofing). Notably, the use of biometric matching, such as the automated comparison of a facial portrait to supplied evidence, at IAL1 is optional, providing pathways to proofing and enrollment where such collection may not be viable or where privacy and equity risks outweigh security considerations.  
+
+IAL1 で身元確認および登録のサービスを提供するすべての CSP に，以下の要件が適用される．
+
+> The following requirements apply to all CSPs providing identity proofing and enrollment services at IAL1.
+
+### 自動攻撃への防御 (Automated Attack Prevention)
+
+CSP は，身元確認プロセスへの自動攻撃を防ぐ手段を実装する必要がある．利用できる手段としては，以下が含まれるが，これらに限定しない．ボットの検出，緩和，および管理ソリューション．行動分析．Web アプリケーションのファイアウォール設定．トラフィック分析．
+
+> The CSP **SHALL** implement a means to prevent automated attacks on the identity proofing process. Acceptable means include, but are not limited to: bot detection, mitigation, and management solutions; behavioral analytics; web application firewall settings; and traffic analysis.
 
 
-The following requirements apply to all CSPs providing identity proofing and enrollment services at IAL1.
+### 証拠とコア属性の収集要件 (Evidence and Core Attributes Collection Requirements)
 
-###  Automated Attack Prevention
+#### 証拠の収集 (Evidence Collection)
 
-The CSP **SHALL** implement a means to prevent automated attacks on the identity proofing process. Acceptable means include, but are not limited to: bot detection, mitigation, and management solutions; behavioral analytics; web application firewall settings; and traffic analysis.
+リモートまたは対面での ID 証明の場合，CSP は申請者(applicant)から次のうち _1つ_ を収集し**なければならない(SHALL)**．
 
+1. 優れた(SUPERIOR) 証拠 1つ，または
+2. 強力な(STRONG) 証拠 1つと 一般的な(FAIR) 証拠 1つ
 
-
-### Evidence and Core Attributes Collection Requirements
-
-#### Evidence Collection
-
-For remote or in-person identity proofing, the CSP **SHALL** collect _one_ of the following from the applicant:
-
-1. One piece of SUPERIOR evidence, or
-2. One piece of STRONG evidence and one piece of FAIR evidence 
+> For remote or in-person identity proofing, the CSP **SHALL** collect _one_ of the following from the applicant:
+> 
+> 1. One piece of SUPERIOR evidence, or
+> 2. One piece of STRONG evidence and one piece of FAIR evidence 
 
 
-#### Collection of Additional Attributes
+#### 追加属性の収集 (Collection of Additional Attributes)
 
-Validated evidence is the preferred source of identity attributes. If the presented identity evidence does not provide all the attributes the CSP considers core attributes, it **MAY** collect attributes that are self-asserted by the applicant. 
+検証済みの証拠は，ID属性の優先すべき情報源である．提示されたアイデンティティ証拠が，CSP がコア属性と見なすすべての属性を提供しない場合，申請者(Appkicant)が自己主張する属性を収集し**てもよい(MAY)**．
 
-### Evidence and Core Attributes Validation Requirements
+> Validated evidence is the preferred source of identity attributes. If the presented identity evidence does not provide all the attributes the CSP considers core attributes, it **MAY** collect attributes that are self-asserted by the applicant. 
 
-The CSP **SHALL** validate the genuineness of each piece of SUPERIOR and STRONG evidence by _one_ of the following:
+### 証拠とコア属性の検証要件 (Evidence and Core Attributes Validation Requirements)
 
-1. Visual inspection by trained personnel
-2. The use of technologies that can confirm the integrity of physical security features or detect if the evidence is fraudulent or has been inappropriately modified
-3. If present, confirming the integrity of digital security features
+CSP は，優れた(SUPERIOR) および 強力な(STRONG) の各証拠の真正性を，次の _いずれかの方法_ によって検証し**なければならない(SHALL)**．
 
-The CSP **SHALL** validate the genuineness of each piece of FAIR evidence by visual inspection by trained personnel.
+1. 訓練を受けた担当者による目視検査
+2. 物理的なセキュリティ機能の完全性を確認したり，証拠が不正であるかどうか，不適切に変更されているかどうかを検出できる技術の使用
+3. デジタルセキュリティ機能の完全性の確認（存在する場合）
 
-The CSP **SHALL** validate all core attributes by _both_:
+> The CSP **SHALL** validate the genuineness of each piece of SUPERIOR and STRONG evidence by _one_ of the following:
+> 
+> 1. Visual inspection by trained personnel
+> 2. The use of technologies that can confirm the integrity of physical security features or detect if the evidence is fraudulent or has been inappropriately modified
+> 3. If present, confirming the integrity of digital security features
 
-1. Validating the accuracy of attributes (such as account or reference number, name, and date of birth) obtained from pieces of evidence by comparison with authoritative or credible sources, and
-2. Validating the accuracy of self-asserted attributes by comparison with authoritative or credible sources. 
-	
-For added assurance, the CSP **SHALL** evaluate the core attributes, as validated by various sources, for overall consistency.  
+CSP は，訓練を受けた担当者による目視検査によって，各一般的な(FAIR) 証拠の真正性を検証し**なければならない(SHALL)**．
+
+> The CSP **SHALL** validate the genuineness of each piece of FAIR evidence by visual inspection by trained personnel.
+
+CSP は，下記の _両方_ によってすべてのコア属性を検証し**なければならない(SHALL)**．
+
+1. 権威のある情報源(authoritative source)または信頼できる情報源(credible cource)と比較して，証拠から得られた属性 (アカウントまたは参照番号，名前，生年月日など) の正確性を検証する．
+2. 権威のある情報源(authoritative source)または信頼できる情報源(credible cource)と比較して，自己主張属性の正確性を検証する．
+
+> The CSP **SHALL** validate all core attributes by _both_:
+> 
+> 1. Validating the accuracy of attributes (such as account or reference number, name, and date of birth) obtained from pieces of evidence by comparison with authoritative or credible sources, and
+> 2. Validating the accuracy of self-asserted attributes by comparison with authoritative or credible sources. 
+
+追加の保証として，CSP は，全体的な一貫性のために，さまざまなソースによって検証されたコア属性を評価し**なければならない(SHALL)**．
+
+> For added assurance, the CSP **SHALL** evaluate the core attributes, as validated by various sources, for overall consistency.  
 
 
-### Identity Verification Requirements
+### アイデンティティ検証要件 (Identity Verification Requirements)
 
-The CSP **SHALL** verify the binding of the applicant to the claimed identity by _one_ of the following:
+CSP は，申請者(applicant)が主張したアイデンティティにバインドされていることを，次のうちの _いずれかの方法_ によって検証し**なければならない(SHALL)**．
 
-1.	Physical comparison of the applicant’s face or biometric comparison of the facial image of the applicant to the facial portrait included on a piece of SUPERIOR or STRONG evidence, or
-2.	Demonstrated association with a digital account through an AAL1 authentication or an AAL1 and FAL1 federation protocol, or 
-3.	Verification of the applicant's return of a valid enrollment code [Sec. 5.1.6](sec5_ial.md#EnrollCodes)
+1. 申請者(applicant)の顔の物理的比較，または申請者の顔画像と，優れた(SUPERIOR) または 強力な(STRONG) 証拠に含まれる顔画像との生体的な比較．
+2. AAL1 での認証，または AAL1 および FAL1 フェデレーションプロトコルによるデジタルアカウントとの関連付けの実証．
+3. 有効な登録コードの申請者(applicant)が返却されること検証([Sec. 5.1.6](sec5_ial.ja.md#EnrollCodes)参照)．
 
-### Notification of Proofing Requirement
+> The CSP **SHALL** verify the binding of the applicant to the claimed identity by _one_ of the following:
+> 
+> 1.	Physical comparison of the applicant’s face or biometric comparison of the facial image of the applicant to the facial portrait included on a piece of SUPERIOR or STRONG evidence, or
+> 2.	Demonstrated association with a digital account through an AAL1 authentication or an AAL1 and FAL1 federation protocol, or 
+> 3.	Verification of the applicant's return of a valid enrollment code [Sec. 5.1.6](sec5_ial.md#EnrollCodes)
 
-Upon the successful completion of identity proofing at IAL1, the CSP **SHOULD** send a notification of proofing to a validated address for the applicant, as specified in [Sec. 5.1.7](sec5_ial.md#ProofingNotifs). 
+### 身元確認における通知要件 (Notification of Proofing Requirement)
+
+IAL1 での身元証明が正常に完了すると，CSP は，[Sec. 5.1.7](sec5_ial.ja.md#ProofingNotifs) で指定されているように，申請者(applicant)の有効なアドレスに証明の通知を送信する**必要がある(SHOULD)**．
+> Upon the successful completion of identity proofing at IAL1, the CSP **SHOULD** send a notification of proofing to a validated address for the applicant, as specified in [Sec. 5.1.7](sec5_ial.md#ProofingNotifs). 
 
 
 ## Identity Assurance Level 2 {#IAL2}
 
-Like IAL1, IAL2 identity proofing allows for both remote and in-person identity proofing processes in order to maximize accessibility while still mitigating against impersonation attacks and other identity proofing errors.  Remote IAL2 identity proofing can be accomplished by the CSP via a fully automated process, a CSP operator attended process, or a combination of the two. 
+IAL1 と同様に，IAL2 の身元確認では，なりすまし攻撃やその他の身元確認エラーを軽減しながら，アクセシビリティを最大化するために，リモートおよび対面の両方の身元確認プロセスが可能である．リモート IAL2 の身元確認は，完全に自動化されたプロセス，CSP オペレーターが参加するプロセス，またはこの 2つの組み合わせを介して，CSP によって実現される．
+> Like IAL1, IAL2 identity proofing allows for both remote and in-person identity proofing processes in order to maximize accessibility while still mitigating against impersonation attacks and other identity proofing errors.  Remote IAL2 identity proofing can be accomplished by the CSP via a fully automated process, a CSP operator attended process, or a combination of the two. 
 
-###  Automated Attack Prevention
+###  自動攻撃への防御 (Automated Attack Prevention)
 
-The CSP **SHALL** implement a means to prevent automated attacks on the identity proofing process. Acceptable means include, but are not limited to: bot detection, mitigation, and management solutions; behavioral analytics; web application firewall settings; and traffic analysis. 
+CSP は，身元確認プロセスへの自動攻撃を防ぐ手段を実装する必要がある．利用できる手段としては，以下が含まれるが，これらに限定しない．ボットの検出，緩和，および管理ソリューション．行動分析．Web アプリケーションのファイアウォール設定．トラフィック分析．
 
-
-### Evidence and Core Attribute Collection Requirements
-
-#### Evidence Collection
-
-For remote or in-person identity proofing, the CSP **SHALL** collect _one_ of the following from the applicant:
-
-1. One piece of SUPERIOR evidence
-2. One piece of STRONG evidence and one piece of FAIR evidence
+> The CSP **SHALL** implement a means to prevent automated attacks on the identity proofing process. Acceptable means include, but are not limited to: bot detection, mitigation, and management solutions; behavioral analytics; web application firewall settings; and traffic analysis. 
 
 
+### 証拠とコア属性の収集要件 (Evidence and Core Attributes Collection Requirements)
 
-#### Collection of Attributes
+#### 証拠の収集 (Evidence Collection)
 
-Validated evidence is the preferred source of identity attributes. If the presented identity evidence does not provide all the attributes the CSP considers core attributes, it **MAY** collect attributes that are self-asserted by the applicant. 
+リモートまたは対面での ID 証明の場合，CSP は申請者(applicant)から次のうち _1つ_ を収集し**なければならない(SHALL)**．
 
-### Evidence and Core Attributes Validation Requirements
+1. 優れた(SUPERIOR) 証拠 1つ，または
+2. 強力な(STRONG) 証拠 1つと 一般的な(FAIR) 証拠 1つ
 
-The CSP **SHALL** validate the genuineness of each piece of SUPERIOR and STRONG evidence by one of the following:
+> For remote or in-person identity proofing, the CSP **SHALL** collect _one_ of the following from the applicant:
+> 
+> 1. One piece of SUPERIOR evidence
+> 2. One piece of STRONG evidence and one piece of FAIR evidence 
 
-1. Visual inspection by trained personnel
-2. The use of technologies that can confirm the integrity of physical security features or detect if the evidence is fraudulent or has been inappropriately modified
-3. If present, confirming the integrity of digital security features
+#### 追加属性の収集 (Collection of Additional Attributes)
 
-The CSP **SHALL** validate all core attributes by:
+検証済みの証拠は，ID属性の優先すべき情報源である．提示されたアイデンティティ証拠が，CSP がコア属性と見なすすべての属性を提供しない場合，申請者(Appkicant)が自己主張する属性を収集し**てもよい(MAY)**．
 
-1. Validating the accuracy of attributes (such as account or reference number, name, and date of birth) obtained from pieces of evidence by comparison with authoritative or credible sources, and
+> Validated evidence is the preferred source of identity attributes. If the presented identity evidence does not provide all the attributes the CSP considers core attributes, it **MAY** collect attributes that are self-asserted by the applicant. 
 
-2. validating the accuracy of self-asserted attributes by comparison with authoritative or credible sources 
+### 証拠とコア属性の検証要件 (Evidence and Core Attributes Validation Requirements)
 
+CSP は，優れた(SUPERIOR) および 強力な(STRONG) の各証拠の真正性を，次の _いずれかの方法_ によって検証し**なければならない(SHALL)**．
+
+1. 訓練を受けた担当者による目視検査
+2. 物理的なセキュリティ機能の完全性を確認したり，証拠が不正であるかどうか，不適切に変更されているかどうかを検出できる技術の使用
+3. デジタルセキュリティ機能の完全性の確認（存在する場合）
+
+> The CSP **SHALL** validate the genuineness of each piece of SUPERIOR and STRONG evidence by one of the following:
+> 
+> 1. Visual inspection by trained personnel
+> 2. The use of technologies that can confirm the integrity of physical security features or detect if the evidence is fraudulent or has been inappropriately modified
+> 3. If present, confirming the integrity of digital security features
+
+CSP は，下記によってすべてのコア属性を検証し**なければならない(SHALL)**．
+
+1. 権威のある情報源(authoritative source)または信頼できる情報源(credible cource)と比較して，証拠から得られた属性 (アカウントまたは参照番号，名前，生年月日など) の正確性を検証する．
+2. 権威のある情報源(authoritative source)または信頼できる情報源(credible cource)と比較して，自己主張属性の正確性を検証する．
+
+> The CSP **SHALL** validate all core attributes by:
+> 
+> 1. Validating the accuracy of attributes (such as account or reference number, name, and date of birth) obtained from pieces of evidence by comparison with authoritative or credible sources, and
+> 
+> 2. validating the accuracy of self-asserted attributes by comparison with authoritative or credible sources 
+
+追加の保証として，CSP は，全体的な一貫性のために，さまざまなソースによって検証されたコア属性を評価し**なければならない(SHALL)**．
 	
-For added assurance, the CSP **SHALL** evaluate the core attributes, as validated by various sources, for overall consistency.  
+> For added assurance, the CSP **SHALL** evaluate the core attributes, as validated by various sources, for overall consistency.  
 
 
-### Identity Verification Requirements
+### アイデンティティ検証要件 (Identity Verification Requirements)
 
-#### Remote Identity Proofing
+#### リモートでの身元確認(Remote Identity Proofing)
 
-The CSP **SHALL** verify the binding of the applicant to the claimed identity by _one_ of the following: 
+CSP は，申請者(applicant)が主張したアイデンティティにバインドされていることを，次のうちの _いずれか_ によって検証し**なければならない(SHALL)**．
 
-1.	Comparison of a collected biometric characteristic, such as a facial image, to the associated reference biometric contained on a piece of presented SUPERIOR or STRONG evidence  
-2.	Demonstrated association with a digital account through an AAL2 authentication or an AAL2 and FAL2 federation protocol 
+1. 顔画像などの収集された生体特徴と，提示された優れた(SUPERIOR) または 強力な(STRONG) 証拠の一部に含まれる関連参照生体情報との比較．
+2. AAL2 の認証または AAL2 と FAL2 フェデレーションプロトコルによるデジタルアカウントとの関連付けの実証．
+
+> The CSP **SHALL** verify the binding of the applicant to the claimed identity by _one_ of the following: 
+> 
+> 1.	Comparison of a collected biometric characteristic, such as a facial image, to the associated reference biometric contained on a piece of presented SUPERIOR or STRONG evidence  
+> 2.	Demonstrated association with a digital account through an AAL2 authentication or an AAL2 and FAL2 federation protocol 
 
 
-#### In-person Identity Proofing
+#### 対面での身元確認 (In-person Identity Proofing)
 
-The CSP **SHALL** verify the binding of the applicant to the claimed identity by physical or biometric comparison of the facial image of the applicant to the facial portrait contained on a piece of presented SUPERIOR or STRONG evidence.
+CSP は，申請者(applicant)の顔画像と提示された(SUPERIOR) または 強力な(STRONG) 証拠に含まれる顔写真との物理的または生体的な比較によって，申請者(applicant)と主張されているアイデンティティとのバインディングを検証し**なければならない(SHALL)**．
 
-### Notification of Proofing Requirement
+> The CSP **SHALL** verify the binding of the applicant to the claimed identity by physical or biometric comparison of the facial image of the applicant to the facial portrait contained on a piece of presented SUPERIOR or STRONG evidence.
 
-Upon the successful completion of identity proofing at IAL2, the CSP **SHALL** send a notification of proofing to a validated address for the applicant, as specified in [Sec. 5.1.7](sec5_ial.md#ProofingNotifs). 
+### 身元確認における通知要件 (Notification of Proofing Requirement)
+
+IAL2 での身元証明が正常に完了すると，CSP は，[Sec. 5.1.7](sec5_ial.ja.md#ProofingNotifs) で指定されているように，申請者(applicant)の有効なアドレスに証明の通知を送信し**なければならない(SHALL)**．
+
+> Upon the successful completion of identity proofing at IAL2, the CSP **SHALL** send a notification of proofing to a validated address for the applicant, as specified in [Sec. 5.1.7](sec5_ial.md#ProofingNotifs). 
 
 ## Identity Assurance Level 3 {#IAL3}
 
-IAL3 adds additional rigor to the steps required at IAL2 and is subject to additional and specific processes (including the use of biometric information comparison, collection, and retention) to further protect the identity and RP from impersonation, fraud, or other significantly harmful damages. In addition, identity proofing at IAL3 is performed in person (to include supervised remote identity proofing defined in [Sec. 5.5.8](sec4_proofing.md#IAL3supervised)).
+IAL3 は，IAL2 で必要な手順にさらに厳密さを追加し，アイデンティティ と RP をなりすまし，詐欺，またはその他の重大な損害からさらに保護するために，追加の特定のプロセス (生体情報の比較，収集，および保持を含む) の対象となる．さらに，IAL3 での身元確認は，対面で行われる ([Sec. 5.5.8](sec4_proofing.ja.md#IAL3supervised) で定義される監視付きリモートでの身元確認を含む)．
 
-###  Automated Attack Prevention
+> IAL3 adds additional rigor to the steps required at IAL2 and is subject to additional and specific processes (including the use of biometric information comparison, collection, and retention) to further protect the identity and RP from impersonation, fraud, or other significantly harmful damages. In addition, identity proofing at IAL3 is performed in person (to include supervised remote identity proofing defined in [Sec. 5.5.8](sec4_proofing.md#IAL3supervised)).
 
-The CSP **SHALL** implement a means to prevent automated attacks on the identity proofing process. Acceptable means include, but are not limited to: bot detection, mitigation, and management solutions; behavioral analytics; web application firewall settings; and traffic analysis.
+### 自動攻撃への防御 (Automated Attack Prevention)
+
+CSP は，身元確認プロセスへの自動攻撃を防ぐ手段を実装する必要がある．利用できる手段としては，以下が含まれるが，これらに限定しない．ボットの検出，緩和，および管理ソリューション．行動分析．Web アプリケーションのファイアウォール設定．トラフィック分析．
+
+> The CSP **SHALL** implement a means to prevent automated attacks on the identity proofing process. Acceptable means include, but are not limited to: bot detection, mitigation, and management solutions; behavioral analytics; web application firewall settings; and traffic analysis.
 
 
-### Evidence and Core Attributes Collection Requirements
+### 証拠とコア属性の収集要件 (Evidence and Core Attributes Collection Requirements)
 
-#### Evidence Collection
+#### 証拠の収集 (Evidence Collection)
 
-The CSP **SHALL** collect evidence from the applicant according to _one_ of the following options:
+CSP は申請者(applicant)から次のうち _1つ_ を収集し**なければならない(SHALL)**．
 
-1. Two pieces of SUPERIOR evidence, or
-2. One piece of SUPERIOR evidence and one piece of STRONG evidence, or
-3. Two pieces of STRONG evidence and one piece of FAIR evidence
+1. 優れた(SUPERIOR) 証拠 2つ，または
+2. 優れた(SUPERIOR) 証拠 1つと 強力な(STRONG) 証拠 1つ，または
+3. 強力な(STRONG) 証拠 2つと 一般的な(FAIR) 証拠 1つ
 
-#### Collection of Attributes
+> The CSP **SHALL** collect evidence from the applicant according to _one_ of the following options:
+> 
+> 1. Two pieces of SUPERIOR evidence, or
+> 2. One piece of SUPERIOR evidence and one piece of STRONG evidence, or
+> 3. Two pieces of STRONG evidence and one piece of FAIR evidence
 
-Validated evidence is the preferred source of identity attributes. If the presented identity evidence does not provide all the attributes the CSP considers core attributes, it **MAY** collect attributes that are self-asserted by the applicant. 
+#### 属性の収集 (Collection of Attributes)
 
-### Validation Requirements {#s-4-5-3}
+検証済みの証拠は，ID属性の優先すべき情報源である．提示されたアイデンティティ証拠が，CSP がコア属性と見なすすべての属性を提供しない場合，申請者(Appkicant)が自己主張する属性を収集し**てもよい(MAY)**．
 
-#### Evidence Validation Requirements
+> Validated evidence is the preferred source of identity attributes. If the presented identity evidence does not provide all the attributes the CSP considers core attributes, it **MAY** collect attributes that are self-asserted by the applicant. 
 
-The CSP **SHALL** validate the genuineness of each piece of SUPERIOR evidence by confirming the integrity of its cryptographic security features and validating any digital signatures. 
+### 検証要件 (Validation Requirements) {#s-4-5-3}
 
-The CSP **SHALL** validate the genuineness of each piece of STRONG evidence by _one_ of the following:
+#### 証拠の検証要件 (Evidence Validation Requirements)
 
-1. Visual inspection by trained personnel
-2. The use of technologies that can confirm the integrity of physical security features and detect if the evidence is fraudulent or has been inappropriately modified
-3. If present, confirming the integrity of digital security features, including the validity of the issuer's digital signature
+CSP は，暗号化セキュリティ機能の完全性を確認し，デジタル署名を検証することにより，優れた(SUPERIOR) 証拠の各部分の真正性を検証し**なければならない(SHALL)**．
 
-#### Core Attribute Validation Requirements
+> The CSP **SHALL** validate the genuineness of each piece of SUPERIOR evidence by confirming the integrity of its cryptographic security features and validating any digital signatures. 
 
-The CSP **SHALL** validate all core attributes by _both_:
+CSP は，強力な(STRONG) 証拠の真正性を，次の _いずれかの方法_ によって検証し**なければならない(SHALL)**．
 
-1. Validating the accuracy of attributes obtained from pieces of evidence or applicant self-assertion by comparison with authoritative or credible sources
-2. Validating the cryptographic features of any presented digital evidence, as described above 
+1. 訓練を受けた担当者による目視検査
+2. 物理的なセキュリティ機能の完全性を確認したり，証拠が不正であるかどうか，不適切に変更されているかどうかを検出できる技術の使用
+3. 発行者のデジタル署名の有効性を含む，デジタルセキュリティ機能の完全性の確認（存在する場合）
 
+> The CSP **SHALL** validate the genuineness of each piece of STRONG evidence by _one_ of the following:
+
+> 1. Visual inspection by trained personnel
+> 2. The use of technologies that can confirm the integrity of physical security features and detect if the evidence is fraudulent or has been inappropriately modified
+> 3. If present, confirming the integrity of digital security features, including the validity of the issuer's digital signature
+
+#### コア属性の検証要件 (Core Attribute Validation Requirements)
+
+CSP は，下記の _両方_ によってすべてのコア属性を検証し**なければならない(SHALL)**．
+
+1. 権威のある情報源(authoritative source)または信頼できる情報源(credible cource)と比較して，証拠の断片または申請者(applicant)の自己主張から得られた属性の正確性を検証する
+2. 上で記されたように，提示されたデジタル証拠の暗号機能を検証する
+
+> The CSP **SHALL** validate all core attributes by _both_:
+> 
+> 1. Validating the accuracy of attributes obtained from pieces of evidence or applicant self-assertion by comparison with authoritative or credible sources
+> 2. Validating the cryptographic features of any presented digital evidence, as described above 
+
+追加の保証として，CSP は，全体的な一貫性のために，さまざまなソースによって検証されたコア属性を評価し**なければならない(SHALL)**．
 	
-For added assurance, the CSP **SHALL** evaluate the core attributes, as validated by various sources, for overall consistency.  
+> For added assurance, the CSP **SHALL** evaluate the core attributes, as validated by various sources, for overall consistency.  
 
-### Identity Verification Requirements
+### アイデンティティ検証要件 (Identity Verification Requirements)
 
-The CSP **SHALL** verify the binding of the applicant to the claimed identity by _one_ of the following: 
+CSP は，申請者(applicant)が主張したアイデンティティにバインドされていることを，次のうちの _いずれか_ によって検証し**なければならない(SHALL)**．
 
-1.	Comparison of a collected biometric characteristic, such as a facial image, to the associated reference biometric characteristic contained on a piece of presented SUPERIOR or STRONG evidence  
-2.	Demonstrated association with a digital account through, at a minimum, an AAL2 authentication or an AAL2 and FAL2 federation protocol
+1. 収集された顔画像などの生体特性と，提示された優れた(SUPERIOR) または強力な(STRONG) 証拠に含まれる関連する参照生体特性との比較．
+2. 少なくとも，AAL2 での認証，または AAL2 および FAL2 フェデレーションプロトコルを介したデジタルアカウントとの関連付けの実証
 
-
-### Notification of Proofing Requirement
-
-Upon the successful completion of identity proofing at IAL3, the CSP **SHALL** send a notification of proofing to a validated address for the applicant, as specified in [Sec. 5.1.7](sec5_ial.md#ProofingNotifs). 
-
-### Biometric Collection
-
-The CSP **SHALL** collect and record a biometric sample at the time of proofing (e.g., facial image, fingerprints) for the purposes of non-repudiation and re-proofing.
-
-### In-person Proofing Requirements {#vip}
-
-In-person proofing at IAL3 **SHALL** be conducted in _one_ of two ways:
-
-- An in-person interaction between the applicant and a CSP operator, or
-- A remote interaction with the applicant, supervised by an operator, based on the requirements in [Sec. 5.5.8](sec5_ial.md#IAL3supervised), _IAL3 Supervised Remote Identity Proofing_.
+> The CSP **SHALL** verify the binding of the applicant to the claimed identity by _one_ of the following: 
+> 
+> 1.	Comparison of a collected biometric characteristic, such as a facial image, to the associated reference biometric characteristic contained on a piece of presented SUPERIOR or STRONG evidence  
+> 2.	Demonstrated association with a digital account through, at a minimum, an AAL2 authentication or an AAL2 and FAL2 federation protocol
 
 
-Regardless of which of the two methods the CSP employs, the following requirements apply to identity proofing at IAL3:
+### 身元確認における通知要件 (Notification of Proofing Requirement)
 
-1. The CSP **SHALL** have the operator view the biometric source (e.g., fingers, face) for the presence of any non-natural materials.
-2. The CSP **SHALL** collect biometrics in such a way that ensures that the biometric is collected from the applicant, and not another subject.
+IAL2 での身元証明が正常に完了すると，CSP は，[Sec. 5.1.7](sec5_ial.ja.md#ProofingNotifs) で指定されているように，申請者(applicant)の有効なアドレスに証明の通知を送信し**なければならない(SHALL)**．
 
-### Requirements for IAL3 Supervised Remote Identity Proofing {#IAL3supervised}
+> Upon the successful completion of identity proofing at IAL3, the CSP **SHALL** send a notification of proofing to a validated address for the applicant, as specified in [Sec. 5.1.7](sec5_ial.md#ProofingNotifs). 
 
-IAL3 Supervised Remote Identity Proofing is intended to achieve comparable levels of confidence and security to an in-person interaction with the applicant.
+### 生体情報の収集 (Biometric Collection)
 
-The following requirements apply to all IAL3 Supervised Remote Identity Proofing sessions: 
+CSP は，否認防止と再身元確認の目的で，証明時に生体情報サンプル (顔画像，指紋など) を収集および記録し**なければならない(SHALL)**．
 
-1. The CSP **SHALL** monitor the entire identity proofing session, and **SHALL** ensure the applicant is continuously present during the entire identity proofing session — for example, by a continuous high-resolution video transmission of the applicant.
-2. The CSP **SHALL** have a live operator participate remotely with the applicant for the entirety of the identity proofing session.
-3. The CSP **SHALL** require all actions taken by the applicant during the identity proofing session to be clearly visible to the remote operator.
-4. The CSP **SHALL** require that all digital verification of evidence (e.g., via chip or wireless technologies) be performed by integrated scanners and sensors (e.g., embedded fingerprint reader).
-5. The CSP **SHALL** require operators to have undergone a training program to detect potential fraud and to properly perform a supervised remote proofing session.
-6. The CSP **SHALL** employ physical tamper detection and resistance features appropriate for the environment in which it is located. For example, a kiosk located in a restricted area or one where it is monitored by a trusted individual requires less tamper detection than one that is located in a semi-public area such as a shopping mall concourse.
-7. The CSP **SHALL** ensure that all communications occur over a mutually authenticated protected channel.
+> The CSP **SHALL** collect and record a biometric sample at the time of proofing (e.g., facial image, fingerprints) for the purposes of non-repudiation and re-proofing.
+
+### 対面での身元確認の要件 (In-person Proofing Requirements) {#vip}
+
+IAL3 の対面での身元確認は，次の 2つの方法の_いずれか_で実施し**なければならない(SHALL)**．
+
+- 申請者(applicant)と CSP オペレーターとの間の直接のやりとり，または
+- [Sec. 5.5.8](sec5_ial.ja.md#IAL3supervised)の _IAL3 監視付きリモートでの身元確認_ の要件に基づく，オペレーターによって監視された，申請者(applicant)とのリモートインタラクション．
+
+> In-person proofing at IAL3 **SHALL** be conducted in _one_ of two ways:
+> 
+> - An in-person interaction between the applicant and a CSP operator, or
+> - A remote interaction with the applicant, supervised by an operator, based on the requirements in [Sec. 5.5.8](sec5_ial.md#IAL3supervised), _IAL3 Supervised Remote Identity Proofing_.
+
+CSP が 2つの方法のどちらを採用したかに関係なく，IAL3 での身元確認には次の要件が適用される．
+
+1. CSP は，オペレーターに生体情報源 (指，顔など) を見て，非天然物質が存在しないこと確認させ**なければならない(SHALL)**．
+2. CSP は，生体情報が申請者(applicant)から収集され，別の主体から収集されないことを保証するような方法で，生体情報を収集し**なければならない(SHALL)**．
+
+> Regardless of which of the two methods the CSP employs, the following requirements apply to identity proofing at IAL3:
+> 
+> 1. The CSP **SHALL** have the operator view the biometric source (e.g., fingers, face) for the presence of any non-natural materials.
+> 2. The CSP **SHALL** collect biometrics in such a way that ensures that the biometric is collected from the applicant, and not another subject.
+
+### IAL3 監視付きリモートでの身元確認の要件 (Requirements for IAL3 Supervised Remote Identity Proofing) {#IAL3supervised}
+
+IAL3 監視付きリモートでの身元確認は，申請者(applicant)との直接のやり取りに匹敵するレベルの信頼性とセキュリティを実現することを目的としている．
+
+> IAL3 Supervised Remote Identity Proofing is intended to achieve comparable levels of confidence and security to an in-person interaction with the applicant.
+
+次の要件は，すべての IAL3 監視付きリモートでの身元確認セッションに適用される．
+
+> The following requirements apply to all IAL3 Supervised Remote Identity Proofing sessions: 
+
+1. CSP は，身元確認セッション全体を監視し**なければならなず(SHALL)**，身元確認セッション全体の間，申請者(applicant)が継続的に存在していることを保証し**なければならない(SHALL)**．たとえば，申請者(applicant)の継続的な高解像度ビデオ送信など．
+2. CSP は，身元確認セッション全体で，ライブオペレータが申請者とリモートで参加し**なければならない(SHALL)**．
+3. CSP は，身元確認セッション中に申請者(applicant)が行ったすべてのアクションが，リモートオペレータに明確に見えるようにし**なければならない(SHALL)**．
+4. CSP は，証拠のすべてのデジタル検証 (例えば，チップまたはワイヤレス技術を介して) を，統合されたスキャナーとセンサー (例えば，組み込み指紋リーダー) によって実行し**なければならない(SHALL)**．
+5. CSP は，潜在的な詐欺を検出し，監視されたリモートでの身元確認セッションを適切に実行するためのトレーニングプログラムをオペレータに受けさせ**なければならない(SHALL)**．
+6. CSP は，配置されている環境に適した物理的な改ざん検出および耐性機能を採用し**なければならない(SHALL)**．たとえば，立ち入り禁止エリアにあるキオスクや，信頼できる個人によって監視されているキオスクは，ショッピング モールのコンコースなどの半公共エリアにあるキオスクよりも改ざん検出の必要性が低くなる．
+7. CSP は，すべての通信が相互に認証された保護されたチャネルを介して行われることを保証し**なければならない(SHALL)**．
+
+> 1. The CSP **SHALL** monitor the entire identity proofing session, and **SHALL** ensure the applicant is continuously present during the entire identity proofing session — for example, by a continuous high-resolution video transmission of the applicant.
+> 2. The CSP **SHALL** have a live operator participate remotely with the applicant for the entirety of the identity proofing session.
+> 3. The CSP **SHALL** require all actions taken by the applicant during the identity proofing session to be clearly visible to the remote operator.
+> 4. The CSP **SHALL** require that all digital verification of evidence (e.g., via chip or wireless technologies) be performed by integrated scanners and sensors (e.g., embedded fingerprint reader).
+> 5. The CSP **SHALL** require operators to have undergone a training program to detect potential fraud and to properly perform a supervised remote proofing session.
+> 6. The CSP **SHALL** employ physical tamper detection and resistance features appropriate for the environment in which it is located. For example, a kiosk located in a restricted area or one where it is monitored by a trusted individual requires less tamper detection than one that is located in a semi-public area such as a shopping mall concourse.
+> 7. The CSP **SHALL** ensure that all communications occur over a mutually authenticated protected channel.
 
 ## Summary of Requirements
 
-[Table 1](sec5_ial.md#table-1) summarizes the requirements for each of the identity assurance levels:
+[表1](sec5_ial.ja.md#table-1) それぞれの身元確認保証レベル要件のサマリー:
 
-[Table 1 IAL Requirements Summary](sec5_ial.md#table-1){:name="table-1"}
+[表1 IAL 要件のサマリー](sec5_ial.ja.md#table-1){:name="table-1"}
 {:latex-ignore="true"}
 
-Requirement | IAL1 | IAL2 | IAL3
+要件 | IAL1 | IAL2 | IAL3
 ------------|-------|-------|-------
-Presence|Remote or In-person|Remote or In-person|In-person or Supervised Remote Identity Proofing
-Resolution|Minimum attributes to accomplish resolution|Same as IAL1| Same as IAL1
-Evidence|1 piece of SUPERIOR or 1 piece of STRONG plus 1 piece of FAIR|1 piece of SUPERIOR or 1 piece of STRONG plus 1 piece of FAIR|2 pieces of SUPERIOR or 1 piece of SUPERIOR plus 1 piece of STRONG or 2 pieces of STRONG plus 1 piece of FAIR
-Validation|Evidence is validated for genuineness, accuracy, and currency. All core attributes are validated by authoritative or credible sources|Same as IAL1|Same as IAL1
-Verification|Return of an enrollment code or Demonstrated access to a digital account at AAL1 or FAL1|Biometric comparison or Demonstrated access to a digital account at AAL2 or FAL2|Biometric comparison or Demonstrated access to a digital account at AAL2 or FAL2
-Biometric Collection|Optional|Optional|Mandatory
-{:latex-table="1" latex-caption="IAL Requirements Summary" latex-columns="p@0.15\textwidth,p@0.22\textwidth,p@0.22\textwidth,p@0.22\textwidth"}
+Presence|リモート / 対面|リモート / 対面|対面 / 監視付きリモート
+Resolution|解決するための最小属性|IAL1と同じ|IAL1と同じ
+Evidence|・優れた(SUPERIOR)証拠1つ<BR>・強力な(STRONG)証拠1つと一般的な(FAIR)証拠1つ|・優れた(SUPERIOR)証拠1つ<BR>・強力な(STRONG)証拠1つと一般的な(FAIR)証拠1つ|・優れた(SUPERIOR)証拠2つ<BR>・優れた(SUPERIOR)証拠1つと強力な(STRONG)証拠1つ<BR>・強力な(STRONG)証拠2つと一般的な(FAIR)証拠1つ
+Validation|証拠は，真正性，正確性，および最新性について検証される．すべてのコア属性は，権威のある情報源(authoritative source)または信頼できる情報源(credible cource)によって検証されている|IAL1と同じ|IAL1と同じ
+Verification|登録コードの返却，または AAL1 または FAL1 でのデジタルアカウントへの実証済みアクセス|IAL2と同じ
+Biometric Collection|オプション|オプション|必須
+{:latex-table="1" latex-caption="IAL 要件のサマリー" latex-columns="p@0.15\textwidth,p@0.22\textwidth,p@0.22\textwidth,p@0.22\textwidth"}
+
+
+> Requirement | IAL1 | IAL2 | IAL3
+> ------------|-------|-------|-------
+> Presence|Remote or In-person|Remote or In-person|In-person or Supervised Remote Identity Proofing
+> Resolution|Minimum attributes to accomplish resolution|Same as IAL1| Same as IAL1
+> Evidence|1 piece of SUPERIOR or 1 piece of STRONG plus 1 piece of FAIR|1 piece of SUPERIOR or 1 piece of STRONG plus 1 piece of FAIR|2 pieces of SUPERIOR or 1 piece of SUPERIOR plus 1 piece of STRONG or 2 pieces of STRONG plus 1 piece of FAIR
+> Validation|Evidence is validated for genuineness, accuracy, and currency. All core attributes are validated by authoritative or credible sources|Same as IAL1|Same as IAL1
+> Verification|Return of an enrollment code or Demonstrated access to a digital account at AAL1 or FAL1|Biometric comparison or Demonstrated access to a digital account at AAL2 or FAL2|Biometric comparison or Demonstrated access to a digital account at AAL2 or FAL2
+> Biometric Collection|Optional|Optional|Mandatory
+> {:latex-table="1" latex-caption="IAL Requirements Summary" latex-columns="p@0.15\textwidth,p@0.22\textwidth,p@0.22\textwidth,p@0.22\textwidth"}

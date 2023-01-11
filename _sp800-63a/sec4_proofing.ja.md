@@ -88,14 +88,23 @@ Acceptable physical evidence **SHALL** contain all of the following characterist
 
 ### Characteristics of Acceptable Digital Evidence {#digital-evidence}
 
-Acceptable digital evidence **SHALL** contain all of the following characteristics:
+デジタル証拠は，次のすべての特性を含んでい**なければならない(SHALL)**．
 
-1.  The presented digital evidence contains the name of the applicant as the subject of the digital information or account. (See [Sec. 10.1](sec10_equity.md#EquityResolve) - Equity and Resolution - for guidance on dealing with a name on digital evidence that varies from the applicant's claimed identity.)
-2.  The presented digital evidence contains at least one reference (e.g., account number) or sufficient attributes to bind the digital information to the applicant.
-3.  The presented digital evidence contains the name of the issuer of the digital information.
-4.  The issuer of the digital evidence performed identity proofing of the applicant prior to issuing the digital evidence.
-5.  There is reasonable assurance that the digital evidence was delivered or made accessible to intended person.
-6.  If applicable, the presented digital evidence can be verified through authentication at an AAL or FAL commensurate with the assessed IAL. 
+1. デジタル証拠は，デジタル情報またはアカウントの主体として申請者(Applicant)の名前を含む． ([Sec. 10.1](sec10_equity.md#EquityResolve) - Equity and Resolution - for guidance on dealing with a name on digital evidence that varies from the applicant's claimed identity 参照)
+2. デジタル証拠は，少なくとも 1つの参照 (口座番号など) またはデジタル情報を申請者(Applicant)に結び付けるのに十分な属性を含む．
+3. デジタル証拠は，デジタル情報の発行者の名前を含む．
+4. デジタル証拠の発行者は，デジタル証拠を発行する前に，申請者(Applicant)の身元確認(Identity Proofing)を行っている．
+5. デジタル証拠が配信された，または対象者がアクセスできるようになったという合理的な保証がある．
+6. 該当する場合，提示されたデジタル証拠は，評価された IAL に対応する AAL または FAL での認証を通じて検証できる．
+
+> Acceptable digital evidence **SHALL** contain all of the following characteristics:
+> 
+> 1.  The presented digital evidence contains the name of the applicant as the subject of the digital information or account. (See [Sec. 10.1](sec10_equity.md#EquityResolve) - Equity and Resolution - for guidance on dealing with a name on digital evidence that varies from the applicant's claimed identity.)
+> 2.  The presented digital evidence contains at least one reference (e.g., account number) or sufficient attributes to bind the digital information to the applicant.
+> 3.  The presented digital evidence contains the name of the issuer of the digital information.
+> 4.  The issuer of the digital evidence performed identity proofing of the applicant prior to issuing the digital evidence.
+> 5.  There is reasonable assurance that the digital evidence was delivered or made accessible to intended person.
+> 6.  If applicable, the presented digital evidence can be verified through authentication at an AAL or FAL commensurate with the assessed IAL. 
 
 ###  Evidence Strength Requirements {#evidence-strength}
 
