@@ -570,7 +570,7 @@ Presence|リモート / 対面|リモート / 対面|対面 / 監視付きリモ
 Resolution|解決するための最小属性|IAL1と同じ|IAL1と同じ
 Evidence|・優れた(SUPERIOR)証拠1つ<BR>・強力な(STRONG)証拠1つと一般的な(FAIR)証拠1つ|・優れた(SUPERIOR)証拠1つ<BR>・強力な(STRONG)証拠1つと一般的な(FAIR)証拠1つ|・優れた(SUPERIOR)証拠2つ<BR>・優れた(SUPERIOR)証拠1つと強力な(STRONG)証拠1つ<BR>・強力な(STRONG)証拠2つと一般的な(FAIR)証拠1つ
 Validation|証拠は，真正性，正確性，および最新性について検証される．すべてのコア属性は，権威のある情報源(authoritative source)または信頼できる情報源(credible cource)によって検証されている|IAL1と同じ|IAL1と同じ
-Verification|登録コードの返却，または AAL1 または FAL1 でのデジタルアカウントへの実証済みアクセス|IAL2と同じ
+Verification|登録コードの返却，または AAL1 または FAL1 でのデジタルアカウントへの実証済みアクセス|生体認証比較，または AAL2 または FAL2 でのデジタルアカウントへの実証済みアクセス|IAL2と同じ
 Biometric Collection|オプション|オプション|必須
 {:latex-table="1" latex-caption="IAL 要件のサマリー" latex-columns="p@0.15\textwidth,p@0.22\textwidth,p@0.22\textwidth,p@0.22\textwidth"}
 
