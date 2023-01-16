@@ -332,7 +332,7 @@ When the subscriber successfully authenticates, the verifier **SHOULD** disregar
 
 ### Use of Biometrics {#biometric_use}
 
-認証における生体情報 (*something you are*) の使用には，身体的特徴 (例: 指紋，虹彩，顔の特徴) と行動的特徴 (例: タイピングのリズム) の両方の測定が含まれる．どちらのクラスも生体認証モダリティと見なされるが，モダリティが異なると，[Sec. 5.2.9](sec5_authenticators.ja.md#intent)で説明されているように，認証の意図を確立する範囲が異なる場合がある．
+認証における生体情報 (*something you are*) の使用には，身体的特徴 (例: 指紋，虹彩，顔の特徴) と行動的特徴 (例: タイピングのリズム) の両方の測定が含まれる．どちらのクラスも生体情報の様式と見なされるが，様式が異なると，[Sec. 5.2.9](sec5_authenticators.ja.md#intent)で説明されているように，認証の意図を確立する範囲が異なる場合がある．
 
 > The use of biometrics (*something you are*) in authentication includes both measurement of physical characteristics (e.g., fingerprint, iris, facial characteristics) and behavioral characteristics (e.g., typing cadence). Both classes are considered biometric modalities, although different modalities may differ in the extent to which they establish authentication intent as described in [Sec. 5.2.9](sec5_authenticators.md#intent).
 
@@ -367,7 +367,7 @@ When the subscriber successfully authenticates, the verifier **SHOULD** disregar
 
 > The biometric system **SHOULD** implement presentation attack detection (PAD). Testing of the biometric system to be deployed **SHOULD** demonstrate at least 90% resistance to presentation attacks for each relevant attack type (i.e., species), where resistance is defined as the number of thwarted presentation attacks divided by the number of trial presentation attacks. Testing of presentation attack resistance **SHALL** be in accordance with Clause 12 of [[ISO/IEC30107-3]](references.md#ref-ISOIEC30107-3). The PAD decision **MAY** be made either locally on the claimant's device or by a central verifier.
 
-生体認証システムは，上記の要件を満たす PAD が実装されている場合，認証の試行の連続失敗を 5 回まで，または試行の連続失敗を 10 回までに制限し**なければならない(SHALL)**．その制限に達すると，生体情報オーセンティケーターは，後続の各試行の前に少なくとも 30 秒の遅延を課さ**なければならない(SHALL)**．全体的な制限は，連続して失敗した認証試行が 50 回 (PAD が実装されている場合は 100 回) までである．全体的な制限に達すると，生体認証システムは，生体ユーザー認証を無効にし，代替方法が既に利用可能である場合は，別の要素 (たとえば，別の生体認証モダリティまたはそれがまだ必要な要素でない場合はアクティベーションシークレット) を提供**なければならない(SHALL)**．
+生体認証システムは，上記の要件を満たす PAD が実装されている場合，認証の試行の連続失敗を 5 回まで，または試行の連続失敗を 10 回までに制限し**なければならない(SHALL)**．その制限に達すると，生体情報オーセンティケーターは，後続の各試行の前に少なくとも 30 秒の遅延を課さ**なければならない(SHALL)**．全体的な制限は，連続して失敗した認証試行が 50 回 (PAD が実装されている場合は 100 回) までである．全体的な制限に達すると，生体認証システムは，生体ユーザー認証を無効にし，代替方法が既に利用可能である場合は，別の要素 (たとえば，別の生体情報様式またはそれがまだ必要な要素でない場合はアクティベーションシークレット) を提供**なければならない(SHALL)**．
 
 > The biometric system **SHALL** allow no more than 5 consecutive failed authentication attempts or 10 consecutive failed attempts if PAD, meeting the above requirements, is implemented. Once that limit has been reached, the biometric authenticator **SHALL** impose a delay of at least 30 seconds before each subsequent attempt, with an overall limit of no more than 50 consecutive failed authentication attempts (100 if PAD is implemented). Once the overall limit is reached, the biometric system **SHALL** disable biometric user authentication and offer another factor (e.g., a different biometric modality or an activation secret if it is not already a required factor) if such an alternative method is already available.
 
