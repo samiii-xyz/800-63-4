@@ -332,43 +332,82 @@ When the subscriber successfully authenticates, the verifier **SHOULD** disregar
 
 ### Use of Biometrics {#biometric_use}
 
-The use of biometrics (*something you are*) in authentication includes both measurement of physical characteristics (e.g., fingerprint, iris, facial characteristics) and behavioral characteristics (e.g., typing cadence). Both classes are considered biometric modalities, although different modalities may differ in the extent to which they establish authentication intent as described in [Sec. 5.2.9](sec5_authenticators.md#intent).
+認証における生体情報 (*something you are*) の使用には，身体的特徴 (例: 指紋，虹彩，顔の特徴) と行動的特徴 (例: タイピングのリズム) の両方の測定が含まれる．どちらのクラスも生体認証モダリティと見なされるが，モダリティが異なると，[Sec. 5.2.9](sec5_authenticators.ja.md#intent)で説明されているように，認証の意図を確立する範囲が異なる場合がある．
 
-For a variety of reasons, this document supports only limited use of biometrics for authentication. These reasons include:
+> The use of biometrics (*something you are*) in authentication includes both measurement of physical characteristics (e.g., fingerprint, iris, facial characteristics) and behavioral characteristics (e.g., typing cadence). Both classes are considered biometric modalities, although different modalities may differ in the extent to which they establish authentication intent as described in [Sec. 5.2.9](sec5_authenticators.md#intent).
 
-- The biometric False Match Rate (FMR) does not provide confidence in the authentication of the subscriber by itself. In addition, FMR does not account for spoofing attacks.
-- Biometric comparison is probabilistic, whereas the other authentication factors are deterministic.
-- Biometric template protection schemes provide a method for revoking biometric credentials that is comparable to other authentication factors (e.g., PKI certificates and passwords). However, the availability of such solutions is limited, and standards for testing these methods are under development.
-- Biometric characteristics do not constitute secrets. They can often be obtained online or, in the case of a facial image, by taking a picture of someone with or without their knowledge. Latent fingerprints can be lifted from objects someone touches, and iris patterns can be captured with high resolution images. While presentation attack detection (PAD) technologies can mitigate the risk of these types of attacks, additional trust in the sensor or biometric processing is required to ensure that PAD is operating in accordance with the needs of the CSP and the subscriber.
+さまざまな理由から，本書では，認証のための生体情報の限定的な使用のみをサポートしている．理由は次のとおり:
 
-Therefore, the limited use of biometrics for authentication is supported with the following requirements and guidelines:
+> For a variety of reasons, this document supports only limited use of biometrics for authentication. These reasons include:
 
-Biometrics **SHALL** be used only as part of multi-factor authentication with a physical authenticator (*something you have*).
 
-The biometric system **SHALL** operate with a false-match rate (FMR) [[ISO/IEC2382-37]](references.md#ref-ISOIEC2382-37) of 1 in 10000 or better. This FMR **SHALL** be achieved under conditions of a conformant attack (i.e., zero-effort impostor attempt) as defined in [[ISO/IEC30107-1]](references.md#ref-ISOIEC30107-1).
+- 生体情報の誤一致率 (FMR) だけでは，加入者の認証に信頼性はない．さらに，FMR はスプーフィング攻撃を考慮しない．
+- 生体情報の比較は確率論的だが，他の認証要素は決定論的である．
+- 生体情報テンプレート保護スキームは，他の認証要素 (PKI 証明書やパスワードなど) に匹敵する生体情報資格情報を取り消す方法を提供する．ただし，そのようなソリューションの利用可能性は限られており，これらの方法をテストするための標準は開発中である．
+- 生体情報特性は秘密を構成しない．多くの場合，オンラインで入手できる．また，顔画像の場合は，知識の有無にかかわらず誰かの写真を撮ることで入手できる．潜在的な指紋は，誰かが触れたオブジェクトから取得することができ，虹彩パターンも高解像度の画像でキャプチャすることができる．プレゼンテーション攻撃検出 (PAD) 技術は，これらのタイプの攻撃のリスクを軽減できるが，PAD が CSP と加入者のニーズに従って動作していることを確認するには，センサーまたは生体情報処理に対する追加の信頼が必要である．
 
-The biometric system **SHOULD** implement presentation attack detection (PAD). Testing of the biometric system to be deployed **SHOULD** demonstrate at least 90% resistance to presentation attacks for each relevant attack type (i.e., species), where resistance is defined as the number of thwarted presentation attacks divided by the number of trial presentation attacks. Testing of presentation attack resistance **SHALL** be in accordance with Clause 12 of [[ISO/IEC30107-3]](references.md#ref-ISOIEC30107-3). The PAD decision **MAY** be made either locally on the claimant's device or by a central verifier.
+> - The biometric False Match Rate (FMR) does not provide confidence in the authentication of the subscriber by itself. In addition, FMR does not account for spoofing attacks.
+> - Biometric comparison is probabilistic, whereas the other authentication factors are deterministic.
+> - Biometric template protection schemes provide a method for revoking biometric credentials that is comparable to other authentication factors (e.g., PKI certificates and passwords). However, the availability of such solutions is limited, and standards for testing these methods are under development.
+> - Biometric characteristics do not constitute secrets. They can often be obtained online or, in the case of a facial image, by taking a picture of someone with or without their knowledge. Latent fingerprints can be lifted from objects someone touches, and iris patterns can be captured with high resolution images. While presentation attack detection (PAD) technologies can mitigate the risk of these types of attacks, additional trust in the sensor or biometric processing is required to ensure that PAD is operating in accordance with the needs of the CSP and the subscriber.
 
-The biometric system **SHALL** allow no more than 5 consecutive failed authentication attempts or 10 consecutive failed attempts if PAD, meeting the above requirements, is implemented. Once that limit has been reached, the biometric authenticator **SHALL** impose a delay of at least 30 seconds before each subsequent attempt, with an overall limit of no more than 50 consecutive failed authentication attempts (100 if PAD is implemented). Once the overall limit is reached, the biometric system **SHALL** disable biometric user authentication and offer another factor (e.g., a different biometric modality or an activation secret if it is not already a required factor) if such an alternative method is already available.
+したがって，認証のための生体情報の限定的な使用は，次の要件とガイドラインでサポートされている．
 
-The verifier **SHALL** make a determination of sensor and endpoint performance, integrity, and authenticity. Acceptable methods for making this determination include, but are not limited to:
+> Therefore, the limited use of biometrics for authentication is supported with the following requirements and guidelines:
 
-* Authentication of the sensor or endpoint
-* Certification by an approved accreditation authority
-* Runtime interrogation of signed metadata (e.g., attestation) as described in [Sec. 5.2.4](sec5_authenticators.md#attestation).
+生体情報は，物理的な認証システム (*something you have*) による多要素認証の一部としてのみ使用し**なければならない(SHALL)**．
 
-Biometric comparison can be performed locally on the claimant's device or at a central verifier. Since the potential for attacks on a larger scale is greater at central verifiers, comparison **SHOULD** be performed locally.
+> Biometrics **SHALL** be used only as part of multi-factor authentication with a physical authenticator (*something you have*).
 
-If comparison is performed centrally:
+生体認証システムは，10000 分の 1 またはそれ以上の誤一致率 (FMR) [[ISO/IEC2382-37]](references.md#ref-ISOIEC2382-37) で動作し**なければならない(SHALL)**．この FMRは，[[ISO/IEC30107-1]](references.ja.md#ref-ISOIEC30107-1) で定義されている適合攻撃 (意図的でない偽者入力試行(zero-effort impostor attempt)など) の条件下で達成され**なければならない(SHALL)**．
 
-* Use of the biometric as an authentication factor **SHALL** be limited to one or more specific devices that are identified using approved cryptography. Since the biometric has not yet unlocked the main authentication key, a separate key **SHALL** be used for identifying the device.
-* Biometric revocation, referred to as biometric template protection in [[ISO/IEC24745]](references.md#ref-ISOIEC24745), **SHALL** be implemented.
-* An authenticated protected channel between sensor (or an endpoint containing a sensor that resists sensor replacement) and verifier **SHALL** be established and the sensor or endpoint **SHALL** be authenticated prior to capturing the biometric sample from the claimant.
-* All transmission of biometrics **SHALL** be over an authenticated protected channel.
+> The biometric system **SHALL** operate with a false-match rate (FMR) [[ISO/IEC2382-37]](references.md#ref-ISOIEC2382-37) of 1 in 10000 or better. This FMR **SHALL** be achieved under conditions of a conformant attack (i.e., zero-effort impostor attempt) as defined in [[ISO/IEC30107-1]](references.md#ref-ISOIEC30107-1).
 
-Biometric samples collected in the authentication process **MAY** be used to train comparison algorithms or — with user consent — for other research purposes. Biometric samples and any biometric data derived from the biometric sample such as a probe produced through signal processing **SHALL** be zeroized immediately after any training or research data has been derived.
+生体認証システムは，プレゼンテーション攻撃検出 (PAD) を実装する**必要がある(SHOULD)**．展開される生体認証システムのテストは，関連する攻撃の種類 (例えば，種) ごとにプレゼンテーション攻撃に対して少なくとも 90% の耐性があることを実証する**必要がある(SHOULD)**．ここで，耐性は，阻止されたプレゼンテーション攻撃の数で割った者として定義される．プレゼンテーション攻撃耐性のテストは [[ISO/IEC30107-3]](references.ja.md#ref-ISOIEC30107-3) の第 12 条に従わ**なければならない(SHALL)**．PAD の決定は，主張者(claimant)のデバイス上でローカルに，または中央の検証者によって行われ**てもよい(MAY)**．
 
-Biometric authentication technologies **SHALL** provide similar performance for subscribers of different demographic types (racial background, gender, ethnicity, etc.).
+> The biometric system **SHOULD** implement presentation attack detection (PAD). Testing of the biometric system to be deployed **SHOULD** demonstrate at least 90% resistance to presentation attacks for each relevant attack type (i.e., species), where resistance is defined as the number of thwarted presentation attacks divided by the number of trial presentation attacks. Testing of presentation attack resistance **SHALL** be in accordance with Clause 12 of [[ISO/IEC30107-3]](references.md#ref-ISOIEC30107-3). The PAD decision **MAY** be made either locally on the claimant's device or by a central verifier.
+
+生体認証システムは，上記の要件を満たす PAD が実装されている場合，認証の試行の連続失敗を 5 回まで，または試行の連続失敗を 10 回までに制限し**なければならない(SHALL)**．その制限に達すると，生体情報オーセンティケーターは，後続の各試行の前に少なくとも 30 秒の遅延を課さ**なければならない(SHALL)**．全体的な制限は，連続して失敗した認証試行が 50 回 (PAD が実装されている場合は 100 回) までである．全体的な制限に達すると，生体認証システムは，生体ユーザー認証を無効にし，代替方法が既に利用可能である場合は，別の要素 (たとえば，別の生体認証モダリティまたはそれがまだ必要な要素でない場合はアクティベーションシークレット) を提供**なければならない(SHALL)**．
+
+> The biometric system **SHALL** allow no more than 5 consecutive failed authentication attempts or 10 consecutive failed attempts if PAD, meeting the above requirements, is implemented. Once that limit has been reached, the biometric authenticator **SHALL** impose a delay of at least 30 seconds before each subsequent attempt, with an overall limit of no more than 50 consecutive failed authentication attempts (100 if PAD is implemented). Once the overall limit is reached, the biometric system **SHALL** disable biometric user authentication and offer another factor (e.g., a different biometric modality or an activation secret if it is not already a required factor) if such an alternative method is already available.
+
+検証者は，センサーとエンドポイントのパフォーマンス，完全性，および真正性を判断し**なければならない(SHALL)**．この決定を行うための許容される方法には，以下が含まれるが，これらに限定されない．
+
+> The verifier **SHALL** make a determination of sensor and endpoint performance, integrity, and authenticity. Acceptable methods for making this determination include, but are not limited to:
+
+* センサーまたはエンドポイントの認証
+* 承認された認定機関による認定
+*  [Sec. 5.2.4](sec5_authenticators.ja.md#attestation)で説明されているとおり，署名されたメタデータ (アテステーションなど) の実行時の問い合わせ
+
+> * Authentication of the sensor or endpoint
+> * Certification by an approved accreditation authority
+> * Runtime interrogation of signed metadata (e.g., attestation) as described in [Sec. 5.2.4](sec5_authenticators.md#attestation).
+
+生体情報の比較は，主張者(claimant)のデバイスでローカルに実行することも，中央の検証者で実行することもできる．大規模な攻撃の可能性は中央検証者の方が大きいため，比較はローカルで実行する**必要がある(SHOULD)**．
+
+> Biometric comparison can be performed locally on the claimant's device or at a central verifier. Since the potential for attacks on a larger scale is greater at central verifiers, comparison **SHOULD** be performed locally.
+
+比較が一元的に実行される場合:
+
+* 認証要素としての生体情報の使用は，承認された暗号化を使用して識別される 1 つ以上の特定のデバイスに限定され**なければならない(SHALL)**．生体情報はまだメインの認証キーのロックを解除していないため，デバイスの識別には別の鍵を使用し**なければならない(SHALL)**．
+* [[ISO/IEC24745]](references.ja.md#ref-ISOIEC24745) で生体情報テンプレート保護と呼ばれる生体認証の失効は，実装され**なければならない(SHALL)**．
+* センサー (またはセンサーの交換に抵抗するセンサーを含むエンドポイント) と検証者の間の認証された保護されたチャネルが確立され**なければならなず(SHALL)**，センサーまたはエンドポイントが主張者(claimant)から生体情報サンプルを取得する前に認証され**なければならない(SHALL)**．
+* 生体情報のすべての送信は，認証された保護されたチャネルを介して行われ**なければならない(SHALL)**．
+
+> If comparison is performed centrally:
+
+> * Use of the biometric as an authentication factor **SHALL** be limited to one or more specific devices that are identified using approved cryptography. Since the biometric has not yet unlocked the main authentication key, a separate key **SHALL** be used for identifying the device.
+> * Biometric revocation, referred to as biometric template protection in [[ISO/IEC24745]](references.md#ref-ISOIEC24745), **SHALL** be implemented.
+> * An authenticated protected channel between sensor (or an endpoint containing a sensor that resists sensor replacement) and verifier **SHALL** be established and the sensor or endpoint **SHALL** be authenticated prior to capturing the biometric sample from the claimant.
+> * All transmission of biometrics **SHALL** be over an authenticated protected channel.
+
+認証プロセスで収集された生体情報サンプルは，比較アルゴリズムのトレーニングに使用するか，ユーザーの同意を得て，他の研究目的で使用し**てもよい(MAY)**．生体情報サンプルと，信号処理によって生成されたプローブなどの生体情報サンプルから派生した生体情報データは，トレーニングまたは研究データが派生した直後にゼロ化され**なければならない(SHALL)**．
+
+> Biometric samples collected in the authentication process **MAY** be used to train comparison algorithms or — with user consent — for other research purposes. Biometric samples and any biometric data derived from the biometric sample such as a probe produced through signal processing **SHALL** be zeroized immediately after any training or research data has been derived.
+
+生体情報技術は，さまざまな人口統計学的タイプ (人種的背景，性別，民族性など) の加入者(subscriber)に対して同様のパフォーマンスを提供し**なければならない(SHALL)**．
+
+> Biometric authentication technologies **SHALL** provide similar performance for subscribers of different demographic types (racial background, gender, ethnicity, etc.).
 
 ### Attestation {#attestation}
 
@@ -385,27 +424,44 @@ Attestation information **MAY** be used as part of a verifier's risk-based authe
 
 ### Phishing (Verifier Impersonation) Resistance {#verifimpers}
 
-Phishing attacks, previously referred to in SP 800-63B as "verifier impersonation," are attempts by fraudulent verifiers and RPs to fool an unwary claimant into presenting an authenticator to an impostor. In some prior versions of SP 800-63, protocols resistant to phishing attacks were also referred to as "strongly MitM resistant."
+以前 SP 800-63B で「検証者のなりすまし」と呼ばれていたフィッシング攻撃は，詐欺的な検証者と RP が，不注意な主張者(claimant)をだましてオー千ティケーターをなりすまし者に提示させようとする試みである.SP 800-63 の一部の以前のバージョンでは，フィッシング攻撃に耐性のあるプロトコルは，「強力な中間者攻撃耐性」とも呼ばれていた.
 
-The term _phishing_ is widely used to describe a variety of similar attacks. For the purposes of this document, phishing resistance is the ability of the authentication protocol to detect and prevent disclosure of authentication secrets and valid authenticator outputs to an impostor relying party without reliance on the vigilance of the subscriber. The means by which the subscriber was directed to the impostor relying party are not relevant. For example, regardless of whether the subscriber was directed there via search engine optimization or prompted by email, it is considered to be a phishing attack.
+> Phishing attacks, previously referred to in SP 800-63B as "verifier impersonation," are attempts by fraudulent verifiers and RPs to fool an unwary claimant into presenting an authenticator to an impostor. In some prior versions of SP 800-63, protocols resistant to phishing attacks were also referred to as "strongly MitM resistant."
 
-Approved cryptographic algorithms **SHALL** be used to establish phishing resistance where it is required. Keys used for this purpose **SHALL** provide at least the minimum security strength specified in the latest revision of [[SP800-131A]](references.md#ref-SP800-131A) (112 bits as of the date of this publication).
+_phishing_ という用語は，さまざまな同様の攻撃を表すために広く使用されている．このドキュメントの目的上，フィッシング耐性とは，加入者(subscriber)の警戒に頼ることなく，認証シークレットと有効なオーセンティケーターの出力が詐欺師のRPに開示されることを検出して防止する認証プロトコルの機能である．加入者(subscriber)が詐欺師のRPに向けられた手段は関係ない．たとえば，購読者が検索エンジンの最適化によってそこに誘導されたか，電子メールで誘導されたかに関係なく，フィッシング攻撃であると見なされる．
 
-Authenticators that involve the manual entry of an authenticator output, such as out-of-band and OTP authenticators, **SHALL NOT** be considered phishing resistant because the manual entry does not bind the authenticator output to the specific session being authenticated. In an AitM attack, an impostor verifier could replay the OTP authenticator output to the verifier and successfully authenticate.
+> The term _phishing_ is widely used to describe a variety of similar attacks. For the purposes of this document, phishing resistance is the ability of the authentication protocol to detect and prevent disclosure of authentication secrets and valid authenticator outputs to an impostor relying party without reliance on the vigilance of the subscriber. The means by which the subscriber was directed to the impostor relying party are not relevant. For example, regardless of whether the subscriber was directed there via search engine optimization or prompted by email, it is considered to be a phishing attack.
 
-While an individual authenticator may be phishing resistant, phishing resistance for a given subscriber account is only achieved when all methods of authentication are phishing resistant.
 
-Two methods of phishing resistance are recognized: channel binding and verifier name binding. Channel binding is considered more secure than verifier name binding because it is not vulnerable to mis-issuance or misappropriation of relying party certificates, but either method satisfies the requirements for phishing resistance.
+承認された暗号化アルゴリズムを使用して，必要に応じてフィッシング耐性を確立し**なければならない(SHALL)**．この目的で使用される鍵は、少なくとも [[SP800-131A]](references.ja.md#ref-SP800-131A) の最新リビジョンで指定されている最小限のセキュリティ強度（本書の発行日時点では 112 ビット）を提供し**なければならない(SHALL)**．
+
+> Approved cryptographic algorithms **SHALL** be used to establish phishing resistance where it is required. Keys used for this purpose **SHALL** provide at least the minimum security strength specified in the latest revision of [[SP800-131A]](references.md#ref-SP800-131A) (112 bits as of the date of this publication).
+
+アウトオブバンドや OTP オーセンティケーターなど，オーセンティケーター出力の手動入力を伴うオーセンティケーターは，フィッシング耐性があると見なし**てはならない(SHALL NOT)**．AitM 攻撃では、なりすまし検証者が OTP オーセンティケーターの出力を検証者にリプレイし，認証に成功する可能性がある．
+
+> Authenticators that involve the manual entry of an authenticator output, such as out-of-band and OTP authenticators, **SHALL NOT** be considered phishing resistant because the manual entry does not bind the authenticator output to the specific session being authenticated. In an AitM attack, an impostor verifier could replay the OTP authenticator output to the verifier and successfully authenticate.
+
+個々のオーセンティケーターはフィッシング耐性がある場合があるが，特定の加入者(sybscriber)アカウントのフィッシング耐性は，すべての認証方法がフィッシング耐性がある場合にのみ達成される．
+
+> While an individual authenticator may be phishing resistant, phishing resistance for a given subscriber account is only achieved when all methods of authentication are phishing resistant.
+
+フィッシング耐性は 2つの方法が認識されている: チャネルバインディングと検証者名バインディングである．チャネルバインディングは，RP証明書の誤発行や不正使用に対して脆弱ではないため，検証者名バインディングよりも安全であると考えられているが，どちらの方法もフィッシング耐性の要件を満たしている．
+> Two methods of phishing resistance are recognized: channel binding and verifier name binding. Channel binding is considered more secure than verifier name binding because it is not vulnerable to mis-issuance or misappropriation of relying party certificates, but either method satisfies the requirements for phishing resistance.
 
 #### Channel Binding
 
-An authentication protocol with channel binding **SHALL** establish an authenticated protected channel with the verifier. It **SHALL** then strongly and irreversibly bind a channel identifier that was negotiated in establishing the authenticated protected channel to the authenticator output (e.g., by signing the two values together using a private key controlled by the claimant for which the public key is known to the verifier). The verifier **SHALL** validate the signature or other information used to prove phishing resistance. This prevents an impostor verifier, even one that has obtained a certificate representing the actual verifier, from successfully relaying that authentication on a different authenticated protected channel.
+チャネルバインディングを伴う認証プロトコルは，認証された保護されたチャネルを検証者と確立し**なければならない(SHALL)**．次に，認証され保護されたチャネルを確立する際にネゴシエートされたチャネル識別子を，オーセンティケータ出力に強力かつ不可逆的にバインドし**なければならない(SHALL)**． (たとえば，公開鍵が検証者に知られている主張者(claimant)によって制御される秘密鍵を使用して，2つの値を一緒に署名することによって）．検証者は，フィッシング耐性を証明するために使用される署名またはその他の情報を検証し**なければならない(SHALL)**． これにより，なりすましの検証者が，実際の検証者を表す証明書を取得したとしても，別の認証された保護されたチャネルでその認証を正常に中継することができなくなる．
 
-An example of a phishing resistant authentication protocol that uses channel binding is client-authenticated TLS, because the client signs the authenticator output along with earlier messages from the protocol that are unique to the particular TLS connection being negotiated.
+> An authentication protocol with channel binding **SHALL** establish an authenticated protected channel with the verifier. It **SHALL** then strongly and irreversibly bind a channel identifier that was negotiated in establishing the authenticated protected channel to the authenticator output (e.g., by signing the two values together using a private key controlled by the claimant for which the public key is known to the verifier). The verifier **SHALL** validate the signature or other information used to prove phishing resistance. This prevents an impostor verifier, even one that has obtained a certificate representing the actual verifier, from successfully relaying that authentication on a different authenticated protected channel.
+
+チャネルバインディングを使用するフィッシング耐性のある認証プロトコルの例は，クライアント認証 TLS でである．これは，クライアントが，ネゴシエートされている特定の TLS 接続に固有のプロトコルからの以前のメッセージと共にオーセンティケーターの出力に署名するためである．
+
+> An example of a phishing resistant authentication protocol that uses channel binding is client-authenticated TLS, because the client signs the authenticator output along with earlier messages from the protocol that are unique to the particular TLS connection being negotiated.
 
 #### Verifier Name Binding
+オーセンティケータ名バインディングを伴う認証プロトコルは，検証者との認証された保護されたチャネルを確立し**なければならない(SHALL)**．次に，プロトコルの一部として認証されたベリファイア識別子に暗号的にバインドされたオーセンティケータ出力を生成する必要がある．ドメイン名システム (DNS) 識別子の場合，検証者の識別子は，検証者の認証済みホスト名，またはそのホスト名に関連付けられたパブリックサフィックス  [[PSL]](references.ja.md#ref-psl) の少なくとも 1レベル下にある親ドメインのいずれかで**なければならない(SHALL)**．バインディングは，関連付けられたオーセンティケータシークレットを選択するか，検証者識別子を使用してオーセンティケータシークレットを導出するか，検証者識別子を使用してオーセンティケータ出力に暗号署名するか，または同様の暗号学的に安全な手段によって確立され**てもよい(MAY)**．
 
-An authentication protocol with authenticator name binding **SHALL** establish an authenticated protected channel with the verifier. It **SHALL** then generate an authenticator output that is cryptographically bound to a verifier identifier that is authenticated as part of the protocol.  In the case of domain name system (DNS) identifiers, the verifier identifier **SHALL** be either the authenticated hostname of the verifier or a parent domain that is at least one level below the public suffix [[PSL]](references.md#ref-psl) associated with that hostname. The binding **MAY** be established by choosing an associated authenticator secret, by deriving an authenticator secret using the verifier identifier, by cryptographically signing the authenticator output with the verifier identifier, or similar cryptographically secure means.
+> An authentication protocol with authenticator name binding **SHALL** establish an authenticated protected channel with the verifier. It **SHALL** then generate an authenticator output that is cryptographically bound to a verifier identifier that is authenticated as part of the protocol.  In the case of domain name system (DNS) identifiers, the verifier identifier **SHALL** be either the authenticated hostname of the verifier or a parent domain that is at least one level below the public suffix [[PSL]](references.md#ref-psl) associated with that hostname. The binding **MAY** be established by choosing an associated authenticator secret, by deriving an authenticator secret using the verifier identifier, by cryptographically signing the authenticator output with the verifier identifier, or similar cryptographically secure means.
 
 ### Verifier-CSP Communications {#csp-verifier}
 
