@@ -47,19 +47,35 @@ _This section is informative._
 The following provides an example of how a CSP and an applicant might interact during a remote identity proofing process at IAL2:
 
 
-1. **Resolution**
-    1. The CSP collects attributes from the applicant, such as name, address, date of birth, email, and phone number.
-    2. The CSP also collects one or more pieces of identity evidence, such as a driver's license or a passport. 
+1. **収集(Resolution)**
+    1. CSP は，名前，住所，生年月日，電子メール，電話番号などの属性を申請者から収集する．
+    2. CSP は，運転免許証やパスポートなど，1 つ以上の Enidence も収集する．
+
+> 1. **Resolution**
+>    1. The CSP collects attributes from the applicant, such as name, address, date of birth, email, and phone number.
+>    2. The CSP also collects one or more pieces of identity evidence, such as a driver's license or a passport. 
     {:.letter-list}
-2. **Validation**
-    1. The CSP validates the attributes obtained in steps 1a by checking them against authoritative or credible sources.
-    2. The CSP validates the authenticity, accuracy, and currency of the presented evidence.
+
+2. **確認(Validation)**
+    1．CSP は，手順 1a で取得した属性を，権威のある情報源(authoritative source)または信頼できる情報源(credible source)と照合して確認する．
+    2. CSP は，提示された証拠の信頼性，正確性，および最新性を確認する．
+
+> 2. **Validation**
+>    1. The CSP validates the attributes obtained in steps 1a by checking them against authoritative or credible sources.
+>    2. The CSP validates the authenticity, accuracy, and currency of the presented evidence.
     {:.letter-list}
-3. **Verification**
-    1. The CSP asks the applicant to take a photo of themself, with liveness checks.
-    2. The CSP compares the pictures on the license and the passport to the photo of the live applicant's photo from the previous step and determines they match.
-    3. The CSP sends an enrollment code to the validated phone number of the applicant, the applicant provides the enrollment code to the CSP, and the CSP confirms they match, verifying they the applicant is in possession and control of the validated phone number.
-    4. The applicant has been successfully identity proofed and can be enrolled into a subscriber account.
+
+3. **検証(Verification)**
+    1. CSP は申請者(applicant)に，生きているかどうかをチェックして自分の写真を撮るように求める．
+    2. CSP は，運転免許証やパスポートの写真を，前のステップでの実際の申請者(applicant)の写真と比較し，それらが一致することを判断する．
+    3. CSP は，申請者(applicant)の検証済み電話番号に登録コードを送信し，申請者(applicant)は登録コードを CSP に提供し，CSP はそれらが一致することを確認し，申請者(applicant)が検証済み電話番号を所有および管理していることを確認する．
+    4. 申請者(applicant)は身元確認に成功し，加入者(subscriber)アカウントが登録される．
+
+> 3. **Verification**
+>     1. The CSP asks the applicant to take a photo of themself, with liveness checks.
+>     2. The CSP compares the pictures on the license and the passport to the photo of the live applicant's photo from the previous step and determines they match.
+>     3. The CSP sends an enrollment code to the validated phone number of the applicant, the applicant provides the enrollment code to the CSP, and the CSP confirms they match, verifying they the applicant is in possession and control of the validated phone number.
+>     4. The applicant has been successfully identity proofed and can be enrolled into a subscriber account.
     {:.letter-list}
 
 ## Identity Resolution {#resolve}
