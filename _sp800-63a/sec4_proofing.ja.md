@@ -78,39 +78,57 @@ The following provides an example of how a CSP and an applicant might interact d
 >     4. The applicant has been successfully identity proofed and can be enrolled into a subscriber account.
     {:.letter-list}
 
-## Identity Resolution {#resolve}
+## アイデンティティの解決 (Identity Resolution) {#resolve}
 
-The goal of identity resolution is to use the smallest set of attributes to uniquely distinguish an individual within a given population or context. While identity resolution is the starting point in the overall identity proofing process, to include the initial detection of potential fraud, it in no way represents a complete and successful identity proofing transaction.
+identity resolution の目標は、属性の最小セットを使用して，特定の母集団またはコンテキスト内で個人を一意に区別することである．identity resolution は，潜在的な不正行為の初期検出を含んだ，身元確認(identity proofing)プロセス全体の開始点であるが，完全で成功した身元確認(identity proofing)トランザクションを表すものではない．
 
-## Identity Validation and Identity Evidence Collection {#evidence-collection}
+> The goal of identity resolution is to use the smallest set of attributes to uniquely distinguish an individual within a given population or context. While identity resolution is the starting point in the overall identity proofing process, to include the initial detection of potential fraud, it in no way represents a complete and successful identity proofing transaction.
 
-The goal of identity validation is to collect the most appropriate identity evidence and attribute information from the applicant and determine it is authentic, accurate, current, and unexpired. Identity validation is made up of three process steps: 1) collecting the appropriate identity evidence; 2) confirming the evidence is authentic; and, 3) confirming key data contained on the identity evidence is valid, current, and related to a real-life subject.
+## アイデンティティの確認と アイデンティティEvidence の収集 (Identity Validation and Identity Evidence Collection) {#evidence-collection}
 
-Identity evidence collection supports the identity validation process and consists of two steps: 1) presentation of identity evidence by the identity proofing applicant to the CSP and 2) determination by the CSP that the presented evidence is acceptable. Evidence can be presented as a physical document or a copy, photograph, or scan of a document, or as a digital record. The characteristics for acceptable physical (documentary) identity evidence are presented in [Sec. 4.3.1](sec4_proofing.md#physical-evidence) and the characteristics for acceptable digital evidence are provided in [Sec. 4.3.2](sec4_proofing.md#digital-evidence).
+アイデンティティの確認(Validation) の目的は，申請者(Applicant)から最も適切なアイデンティティEvidenceと属性情報を収集し，それが本物で，正確で，最新であり，有効期限が切れていないことを確認することである．アイデンティティの確認(Validation) は，次の 3 つのプロセスステップで構成される．1) 適切なEvidenceの収集， 2) Evidencrが本物であることの確認， 3) Evidenceに含まれる重要なデータが有効で，最新で，実際の対象者に関連していることの確認．
 
-The CSP **SHALL** determine the acceptability of presented identity evidence for identity proofing based on the evidence characteristics in this section.
+> The goal of identity validation is to collect the most appropriate identity evidence and attribute information from the applicant and determine it is authentic, accurate, current, and unexpired. Identity validation is made up of three process steps: 1) collecting the appropriate identity evidence; 2) confirming the evidence is authentic; and, 3) confirming key data contained on the identity evidence is valid, current, and related to a real-life subject.
 
-The characteristics presented in this section are intended to guide CSPs in determining what is acceptable as identity evidence for the identity proofing process and are not an indication of strength of evidence. Once a CSP determines a particular type of evidence is acceptable, a determination must be made as to its strength, as provided in [Sec. 4.3.3](sec4_proofing.md#evidence-strength). 
+Evidenceの収集は，アイデンティティの確認(Validation) プロセスをサポートし，次の 2 つのステップで構成される．1) 身元確認(identity proofing)の申請者(Applicant)による CSP への Evidence の提示， 2) 提示された Evidence が受け入れ可能かどうかの CSP による決定．Evidence は，物理的な文書，文書のコピー，写真，スキャン，またはデジタル記録として提示できる．受け入れ可能な物的 (文書) Evidence の特性は [Sec. 4.3.1](sec4_proofing.ja.md#physical-evidence) ，受け入れ可能なデジタルEvidenceの特性は [Sec. 4.3.2](sec4_proofing.ja.md#digital-evidence) に示されている．
 
-### Characteristics of Acceptable Physical Evidence {#physical-evidence}
+> Identity evidence collection supports the identity validation process and consists of two steps: 1) presentation of identity evidence by the identity proofing applicant to the CSP and 2) determination by the CSP that the presented evidence is acceptable. Evidence can be presented as a physical document or a copy, photograph, or scan of a document, or as a digital record. The characteristics for acceptable physical (documentary) identity evidence are presented in [Sec. 4.3.1](sec4_proofing.ja.md#physical-evidence) and the characteristics for acceptable digital evidence are provided in [Sec. 4.3.2](sec4_proofing.ja.md#digital-evidence).
 
-Acceptable physical evidence **SHALL** contain all of the following characteristics:
+CSPは、本セクションのEvidence特性に基づいて，身元確認(identity proofing)のために提示されたEvidenceが受け入れ可能かどうかを決定し**なければならない(SHALL)**．
 
-1.	The presented document contains the printed name of the applicant. (See [Sec. 10.1](sec10_equity.md#EquityResolve) - Equity and Resolution - for guidance on dealing with a printed name that varies from the applicant's claimed identity.)
-2.	The presented document contains at least one printed reference number.
-3.	The presented document contains the printed name of the issuer of the document.
-4.	The issuer of the document performed identity proofing of the applicant prior to issuing the document.
-5.	There is reasonable assurance that the document was delivered to the intended person.
+> The CSP **SHALL** determine the acceptability of presented identity evidence for identity proofing based on the evidence characteristics in this section.
 
-### Characteristics of Acceptable Digital Evidence {#digital-evidence}
+本セクションで示される特性は，CSP が身元確認(identity proofing)プロセスの Evidence として受け入れられるものを決定する際の指針となることを目的としており，Evidence の強度を示すものではない．CSP が特定のタイプの Evidence が受け入れ可能であると判断したら，[Sec. 4.3.3](sec4_proofing.ja.md#evidence-strength) で規定されているように，その強度について判断をする必要がある.
 
-デジタル証拠は，次のすべての特性を含んでい**なければならない(SHALL)**．
+> The characteristics presented in this section are intended to guide CSPs in determining what is acceptable as identity evidence for the identity proofing process and are not an indication of strength of evidence. Once a CSP determines a particular type of evidence is acceptable, a determination must be made as to its strength, as provided in [Sec. 4.3.3](sec4_proofing.md#evidence-strength). 
 
-1. デジタル証拠は，デジタル情報またはアカウントの主体として申請者(Applicant)の名前を含む． ([Sec. 10.1](sec10_equity.md#EquityResolve) - Equity and Resolution - for guidance on dealing with a name on digital evidence that varies from the applicant's claimed identity 参照)
-2. デジタル証拠は，少なくとも 1つの参照 (口座番号など) またはデジタル情報を申請者(Applicant)に結び付けるのに十分な属性を含む．
-3. デジタル証拠は，デジタル情報の発行者の名前を含む．
-4. デジタル証拠の発行者は，デジタル証拠を発行する前に，申請者(Applicant)の身元確認(Identity Proofing)を行っている．
-5. デジタル証拠が配信された，または対象者がアクセスできるようになったという合理的な保証がある．
+### 受け入れ可能な 物的 Evidence の特性（Characteristics of Acceptable Physical Evidence） {#physical-evidence}
+
+受け入れ可能な 物的 Evidence は，次のすべての特性を含んでい**なければならない(SHALL)**．
+
+1. 提示された文書は，申請者(Applicant)の名前が印刷されている． (印刷された名前が，申請者(Applicant)が主張する身元とは異なる場合の取り扱いに関するガイダンスは [Sec. 10.1](sec10_equity.md#EquityResolve) - Equity and Resolution 参照)
+2. 提示された文書は，少なくとも1つの参照番号が印刷されている．
+3. 提示された文書は，文書の発行者の名前が印刷されている．
+4. 文書の発行者は，文書を発行する前に，(Applicant)申請者の身元確認(identity proofing)を行っている．
+5. 文書は，意図された人物に渡されたという合理的な保証がある．
+
+> Acceptable physical evidence **SHALL** contain all of the following characteristics:
+
+> 1.	The presented document contains the printed name of the applicant. (See [Sec. 10.1](sec10_equity.md#EquityResolve) - Equity and Resolution - for guidance on dealing with a printed name that varies from the applicant's claimed identity.)
+> 2.	The presented document contains at least one printed reference number.
+> 3.	The presented document contains the printed name of the issuer of the document.
+> 4.	The issuer of the document performed identity proofing of the applicant prior to issuing the document.
+> 5.	There is reasonable assurance that the document was delivered to the intended person.
+
+### 受け入れ可能な デジタルEvidence の特性（Characteristics of Acceptable Digital Evidence） {#digital-evidence}
+
+受け入れ可能な デジタル Evidence は，次のすべての特性を含んでい**なければならない(SHALL)**．
+
+1. デジタル Evidence は，デジタル情報またはアカウントの主体として申請者(Applicant)の名前を含む． (デジタル Evidence上の名前が，申請者(Applicant)が主張する身元とは異なる場合の取り扱いに関するガイダンスは[Sec. 10.1](sec10_equity.md#EquityResolve) - Equity and Resolution 参照)
+2. デジタル Evidence は，少なくとも 1つの参照 (口座番号など) またはデジタル情報を申請者(Applicant)に結び付けるのに十分な属性を含む．
+3. デジタル Evidence は，デジタル情報の発行者の名前を含む．
+4. デジタル Evidence の発行者は，デジタル証拠を発行する前に，申請者(Applicant)の身元確認(Identity Proofing)を行っている．
+5. デジタル Evidence が配信された，または対象者がアクセスできるようになったという合理的な保証がある．
 6. 該当する場合，提示されたデジタル証拠は，評価された IAL に対応する AAL または FAL での認証を通じて検証できる．
 
 > Acceptable digital evidence **SHALL** contain all of the following characteristics:
@@ -122,19 +140,19 @@ Acceptable physical evidence **SHALL** contain all of the following characterist
 > 5.  There is reasonable assurance that the digital evidence was delivered or made accessible to intended person.
 > 6.  If applicable, the presented digital evidence can be verified through authentication at an AAL or FAL commensurate with the assessed IAL. 
 
-###  証拠の強度の要件 (Evidence Strength Requirements) {#evidence-strength}
+### Evidence の強度の要件 (Evidence Strength Requirements) {#evidence-strength}
 
-本セクションでは，各強度での identity evidence の要件を定義する．identity evidence の強度は、次の 3 つの側面によって決定される．1) 発行の厳密さ 2) 検証に信頼を与える能力（属性の正確性と完全性を含む） 3) 証拠を提示する申請者(applicant)との紐付けに信頼を与える能力．全てのレベルの強度において証拠は，最新であり，有効期限が切れていない必要がある．
+本セクションでは，各強度での identity evidence の要件を定義する．identity evidence の強度は、次の 3 つの側面によって決定される．1) 発行の厳密さ 2) 検証に信頼を与える能力（属性の正確性と完全性を含む） 3) Evidence を提示する申請者(applicant)との紐付けに信頼を与える能力．全てのレベルの強度において証拠は，最新であり，有効期限が切れていない必要がある．
 > This section defines the requirements for identity evidence at each strength. Strength of identity evidence is determined by three aspects: 1) the issuing rigor; 2) the ability to provide confidence in validation, including accuracy and integrity of attributes; and 3) the ability to provide confidence in the verification of the applicant presenting the evidence. Evidence at all levels of strength must be current and unexpired. 
 
-#### FAIR な証拠の要件（Fair Evidence Requirements）
+#### FAIR Evidence の要件（Fair Evidence Requirements）
 
 FAIR であるには，identity evidence が次の要件を_すべて_満たさ**なければならない(SHALL)**:
 
-1. 証拠の発行元は，身元確認プロセスを通じて主張された身元を確認済みである．
-2. 証拠発行プロセスにより，証拠が関連する人物に引き渡されることになると合理的に想定できる．
-3. 証拠には，少なくとも 1 つの参照番号，顔の肖像画，または関連する人物を一意に識別するのに十分な属性が含まれている．
-4. 証拠の有効期限が切れていない，または過去 6 か月以内に期限切れになった，または有効期限が含まれていない場合は過去 6 か月以内に発行されたものである．
+1. Evidence の発行元は，身元確認プロセスを通じて主張された身元を確認済みである．
+2. Evidence 発行プロセスにより，Evidence が関連する人物に引き渡されることになると合理的に想定できる．
+3. Evidence には，少なくとも 1 つの参照番号，顔の肖像画，または関連する人物を一意に識別するのに十分な属性が含まれている．
+4. Evidence の有効期限が切れていない，または過去 6 か月以内に期限切れになった，または有効期限が含まれていない場合は過去 6 か月以内に発行されたものである．
 
 > In order to be considered FAIR, identity evidence **SHALL** meet _all_ the following requirements:
 > 
@@ -143,16 +161,16 @@ FAIR であるには，identity evidence が次の要件を_すべて_満たさ*
 > 3.  The evidence contains at least one reference number, a facial portrait, or sufficient attributes to uniquely identify the person to whom it relates.
 > 4.  The evidence has not expired or it expired within the previous six (6) months, or it was issued within the previous six (6) months if it does not contain an expiration date. 
 
-#### STRONG な証拠の要件（Strong Evidence Requirements)
+#### STRONG Evidence の要件（Strong Evidence Requirements)
 
-STRONG であるには，identity evidence が次の要件を_すべて_満たさ**なければならない(SHALL)**:
+STRONG であるには，identity evidence が次の要件を _すべて_ 満たさ**なければならない(SHALL)**:
 
-1. 証拠の発行元は，その人物の実際の身元を知っていると合理的に信頼できるよう設計されている決められた手順を通じて，主張された身元を確認済みである．手順は，規制機関または公的責任機関による定期的な監視の対象となる．たとえば，the USA PATRIOT Act of 2001 または [[RedFlagsRule]](sec11_references.md#ref-rfr) に対応して確立された顧客識別プログラム（the Customer Identification Program）のガイドラインや，2003年の公正かつ正確な信用取引法（Fair and Accurate Credit Transaction Act of 2003 (FACT Act)） の第 114 条など．
-2. 証拠発行プロセスにより，証拠が関連する人物に引き渡される可能性が高い. 
-3. 証拠には，関連する人物を一意に識別する参照番号またはその他の属性が含まれている．
-4. 証拠には，関連する人物の顔写真またはその他の生体特徴が含まれている．
-5. 証拠には，コピーまたは複製を困難にする物理的なセキュリティ機能が含まれている．
-6. 証拠には有効期限があり、有効期限が切れていない．
+1. Evidence の発行元は，その人物の実際の身元を知っていると合理的に信頼できるよう設計されている決められた手順を通じて，主張された身元を確認済みである．手順は，規制機関または公的責任機関による定期的な監視の対象となる．たとえば，the USA PATRIOT Act of 2001 または [[RedFlagsRule]](sec11_references.md#ref-rfr) に対応して確立された顧客識別プログラム（the Customer Identification Program）のガイドラインや，2003年の公正かつ正確な信用取引法（Fair and Accurate Credit Transaction Act of 2003 (FACT Act)） の第 114 条など．
+2. Evidence 発行プロセスにより，Evidence が関連する人物に引き渡される可能性が高い. 
+3. Evidence には，関連する人物を一意に識別する参照番号またはその他の属性が含まれている．
+4. Evidence には，関連する人物の顔写真またはその他の生体特徴が含まれている．
+5. Evidence には，コピーまたは複製を困難にする物理的なセキュリティ機能が含まれている．
+6. Evidence には有効期限があり、有効期限が切れていない．
 
 > In order to be considered STRONG, identity evidence **SHALL** meet _all_ the following requirements:
 > 
@@ -163,18 +181,18 @@ STRONG であるには，identity evidence が次の要件を_すべて_満た�
 > 5.  The evidence includes physical security features that make it difficult to copy or reproduce.
 > 6.  The evidence includes an expiration date and is unexpired. 
 
-#### SUPERIOR な証拠の要件Superior Evidence Requirements
+#### SUPERIOR Evidence の要件Superior Evidence Requirements
 
-SUPERIOR であるには，identity evidence が次の要件を_すべて_満たさ**なければならない(SHALL)**:
+SUPERIOR であるには，identity evidence が次の要件を _すべて_ 満たさ**なければならない(SHALL)**:
 
-1. 証拠の発行元は，情報源が対象者の実際の身元を知っていると高い信頼を得られるように設計されている決められた手順を通じて，主張された身元を確認済みである．手順は，規制機関または公的責任機関による定期的な監視の対象となる．
+1. Evidence の発行元は，情報源が対象者の実際の身元を知っていると高い信頼を得られるように設計されている決められた手順を通じて，主張された身元を確認済みである．手順は，規制機関または公的責任機関による定期的な監視の対象となる．
 2. 発行元は，申請者を視覚的に識別し，その人物の存在を確認するために追加の確認を行っている．
-3. 証拠発行プロセスにより，証拠がそれに関連する人の所有物として引き渡されたことが保証されている．
-4. 証拠には，関連する人物を一意に識別する少なくとも 1 つの参照番号が含まれる．
-5. 証拠には，関連する人物の顔写真またはその他の生体特徴が含まれている．
-6. 証拠には，暗号で署名されたデジタル情報が含まれる．
-7. 証拠には，コピーや複製を困難にする物理的なセキュリティ機能が含まれている．
-8. 証拠には有効期限があり、有効期限が切れていない．
+3. Evidence 発行プロセスにより，証拠がそれに関連する人の所有物として引き渡されたことが保証されている．
+4. Evidence には，関連する人物を一意に識別する少なくとも 1 つの参照番号が含まれる．
+5. Evidence には，関連する人物の顔写真またはその他の生体特徴が含まれている．
+6. Evidence には，暗号で署名されたデジタル情報が含まれる．
+7. Evidence には，コピーや複製を困難にする物理的なセキュリティ機能が含まれている．
+8. Evidence には有効期限があり、有効期限が切れていない．
 
 > In order to be considered SUPERIOR, identity evidence **SHALL** meet _all_ the following requirements:
 
