@@ -122,42 +122,70 @@ Acceptable physical evidence **SHALL** contain all of the following characterist
 > 5.  There is reasonable assurance that the digital evidence was delivered or made accessible to intended person.
 > 6.  If applicable, the presented digital evidence can be verified through authentication at an AAL or FAL commensurate with the assessed IAL. 
 
-###  Evidence Strength Requirements {#evidence-strength}
+###  証拠の強度の要件 (Evidence Strength Requirements) {#evidence-strength}
 
-This section defines the requirements for identity evidence at each strength. Strength of identity evidence is determined by three aspects: 1) the issuing rigor; 2) the ability to provide confidence in validation, including accuracy and integrity of attributes; and 3) the ability to provide confidence in the verification of the applicant presenting the evidence. Evidence at all levels of strength must be current and unexpired. 
+本セクションでは，各強度での identity evidence の要件を定義する．identity evidence の強度は、次の 3 つの側面によって決定される．1) 発行の厳密さ 2) 検証に信頼を与える能力（属性の正確性と完全性を含む） 3) 証拠を提示する申請者(applicant)との紐付けに信頼を与える能力．全てのレベルの強度において証拠は，最新であり，有効期限が切れていない必要がある．
+> This section defines the requirements for identity evidence at each strength. Strength of identity evidence is determined by three aspects: 1) the issuing rigor; 2) the ability to provide confidence in validation, including accuracy and integrity of attributes; and 3) the ability to provide confidence in the verification of the applicant presenting the evidence. Evidence at all levels of strength must be current and unexpired. 
 
-#### Fair Evidence Requirements
+#### FAIR な証拠の要件（Fair Evidence Requirements）
 
-In order to be considered FAIR, identity evidence **SHALL** meet _all_ the following requirements:
+FAIR であるには，identity evidence が次の要件を_すべて_満たさ**なければならない(SHALL)**:
 
-1.  The issuing source of the evidence confirmed the claimed identity through an identity proofing process.
-2.  It can be reasonably assumed that the evidence issuing process would result in the delivery of the evidence to the person to whom it relates.
-3.  The evidence contains at least one reference number, a facial portrait, or sufficient attributes to uniquely identify the person to whom it relates.
-4.  The evidence has not expired or it expired within the previous six (6) months, or it was issued within the previous six (6) months if it does not contain an expiration date. 
+1. 証拠の発行元は，身元確認プロセスを通じて主張された身元を確認済みである．
+2. 証拠発行プロセスにより，証拠が関連する人物に引き渡されることになると合理的に想定できる．
+3. 証拠には，少なくとも 1 つの参照番号，顔の肖像画，または関連する人物を一意に識別するのに十分な属性が含まれている．
+4. 証拠の有効期限が切れていない，または過去 6 か月以内に期限切れになった，または有効期限が含まれていない場合は過去 6 か月以内に発行されたものである．
 
-#### Strong Evidence Requirements
+> In order to be considered FAIR, identity evidence **SHALL** meet _all_ the following requirements:
+> 
+> 1.  The issuing source of the evidence confirmed the claimed identity through an identity proofing process.
+> 2.  It can be reasonably assumed that the evidence issuing process would result in the delivery of the evidence to the person to whom it relates.
+> 3.  The evidence contains at least one reference number, a facial portrait, or sufficient attributes to uniquely identify the person to whom it relates.
+> 4.  The evidence has not expired or it expired within the previous six (6) months, or it was issued within the previous six (6) months if it does not contain an expiration date. 
 
-In order to be considered STRONG, identity evidence **SHALL** meet _all_ the following requirements:
+#### STRONG な証拠の要件（Strong Evidence Requirements)
 
-1.  The issuing source of the evidence confirmed the claimed identity through written procedures designed to enable it to form a reasonable belief that it knows the real-life identity of the person. Such procedures are subject to recurring oversight by regulatory or publicly-accountable institutions. For example, the Customer Identification Program guidelines established in response to the USA PATRIOT Act of 2001 or the [[RedFlagsRule]](sec11_references.md#ref-rfr), under Sec. 114 of the Fair and Accurate Credit Transaction Act of 2003 (FACT Act).
-2.  There is a high likelihood that the evidence issuing process would result in the delivery of the evidence to the person to whom it relates.
-3.  The evidence contains a reference number or other attributes that uniquely identify the person to whom it relates.
-4.  The evidence contains a facial portrait or other biometric characteristic of the person to whom it relates.
-5.  The evidence includes physical security features that make it difficult to copy or reproduce.
-6.  The evidence includes an expiration date and is unexpired. 
+STRONG であるには，identity evidence が次の要件を_すべて_満たさ**なければならない(SHALL)**:
 
-#### Superior Evidence Requirements
+1. 証拠の発行元は，その人物の実際の身元を知っていると合理的に信頼できるよう設計されている決められた手順を通じて，主張された身元を確認済みである．手順は，規制機関または公的責任機関による定期的な監視の対象となる．たとえば，the USA PATRIOT Act of 2001 または [[RedFlagsRule]](sec11_references.md#ref-rfr) に対応して確立された顧客識別プログラム（the Customer Identification Program）のガイドラインや，2003年の公正かつ正確な信用取引法（Fair and Accurate Credit Transaction Act of 2003 (FACT Act)） の第 114 条など．
+2. 証拠発行プロセスにより，証拠が関連する人物に引き渡される可能性が高い. 
+3. 証拠には，関連する人物を一意に識別する参照番号またはその他の属性が含まれている．
+4. 証拠には，関連する人物の顔写真またはその他の生体特徴が含まれている．
+5. 証拠には，コピーまたは複製を困難にする物理的なセキュリティ機能が含まれている．
+6. 証拠には有効期限があり、有効期限が切れていない．
 
-In order to be considered SUPERIOR, identity evidence **SHALL** meet _all_ the following requirements:
+> In order to be considered STRONG, identity evidence **SHALL** meet _all_ the following requirements:
+> 
+> 1.  The issuing source of the evidence confirmed the claimed identity through written procedures designed to enable it to form a reasonable belief that it knows the real-life identity of the person. Such procedures are subject to recurring oversight by regulatory or publicly-accountable institutions. For example, the Customer Identification Program guidelines established in response to the USA PATRIOT Act of 2001 or the [[RedFlagsRule]](sec11_references.md#ref-rfr), under Sec. 114 of the Fair and Accurate Credit Transaction Act of 2003 (FACT Act).
+> 2.  There is a high likelihood that the evidence issuing process would result in the delivery of the evidence to the person to whom it relates.
+> 3.  The evidence contains a reference number or other attributes that uniquely identify the person to whom it relates.
+> 4.  The evidence contains a facial portrait or other biometric characteristic of the person to whom it relates.
+> 5.  The evidence includes physical security features that make it difficult to copy or reproduce.
+> 6.  The evidence includes an expiration date and is unexpired. 
 
-1.  The issuing source of the evidence confirmed the claimed identity by following written procedures designed to enable it to have high confidence that the source knows the real-life identity of the subject. Such procedures are subject to recurring oversight by regulatory or publicly accountable institutions.
-2.  The issuing source visually identified the applicant and performed further checks to confirm the existence of that person. 
-3.  The issuing process for the evidence ensured that it was delivered into the possession of the person to whom it relates.
-4.  The evidence contains at least one reference number that uniquely identifies the person to whom it relates.
-5.  The evidence contains a facial portrait or other biometric characteristic of the person to whom it relates.
-6.  The evidence includes digital information that is cryptographically signed.
-7.  The evidence includes physical security features that make it difficult to copy or reproduce.
-8.  The evidence includes an expiration date and is unexpired.
+#### SUPERIOR な証拠の要件Superior Evidence Requirements
+
+SUPERIOR であるには，identity evidence が次の要件を_すべて_満たさ**なければならない(SHALL)**:
+
+1. 証拠の発行元は，情報源が対象者の実際の身元を知っていると高い信頼を得られるように設計されている決められた手順を通じて，主張された身元を確認済みである．手順は，規制機関または公的責任機関による定期的な監視の対象となる．
+2. 発行元は，申請者を視覚的に識別し，その人物の存在を確認するために追加の確認を行っている．
+3. 証拠発行プロセスにより，証拠がそれに関連する人の所有物として引き渡されたことが保証されている．
+4. 証拠には，関連する人物を一意に識別する少なくとも 1 つの参照番号が含まれる．
+5. 証拠には，関連する人物の顔写真またはその他の生体特徴が含まれている．
+6. 証拠には，暗号で署名されたデジタル情報が含まれる．
+7. 証拠には，コピーや複製を困難にする物理的なセキュリティ機能が含まれている．
+8. 証拠には有効期限があり、有効期限が切れていない．
+
+> In order to be considered SUPERIOR, identity evidence **SHALL** meet _all_ the following requirements:
+
+> 1.  The issuing source of the evidence confirmed the claimed identity by following written procedures designed to enable it to have high confidence that the source knows the real-life identity of the subject. Such procedures are subject to recurring oversight by regulatory or publicly accountable institutions.
+> 2.  The issuing source visually identified the applicant and performed further checks to confirm the existence of that person. 
+> 3.  The issuing process for the evidence ensured that it was delivered into the possession of the person to whom it relates.
+> 4.  The evidence contains at least one reference number that uniquely identifies the person to whom it relates.
+> 5.  The evidence contains a facial portrait or other biometric characteristic of the person to whom it relates.
+> 6.  The evidence includes digital information that is cryptographically signed.
+> 7.  The evidence includes physical security features that make it difficult to copy or reproduce.
+> 8.  The evidence includes an expiration date and is unexpired.
 
 ### Identity Evidence and Attribute Validation 
 
